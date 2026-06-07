@@ -1,85 +1,20 @@
 /* =========================================================
-   HUMANICA — Lógica da aplicação
+   FUNCIONÁRIO ARTIFICIAL — Lógica por página
    ========================================================= */
 
-/* ---------- Estado ---------- */
-const STORE_KEYS = { listings: 'humanica_listings', jobs: 'humanica_jobs' };
+let listings = load(STORE.listings, SEED_LISTINGS);
+let jobs     = load(STORE.jobs, SEED_JOBS);
 
-function load(key, seed){
-  try{
-    const raw = localStorage.getItem(key);
-    if(raw) return JSON.parse(raw);
-  }catch(e){ /* ambiente sem storage */ }
-  return [...seed];
-}
-function save(key, data){
-  try{ localStorage.setItem(key, JSON.stringify(data)); }catch(e){}
-}
-
-let listings = load(STORE_KEYS.listings, SEED_LISTINGS);
-let jobs     = load(STORE_KEYS.jobs, SEED_JOBS);
-let activeTab = 'hire';
-
-/* ---------- Helpers ---------- */
-const $  = (s, el=document) => el.querySelector(s);
-const $$ = (s, el=document) => [...el.querySelectorAll(s)];
-const money = n => CONFIG.currency + ' ' + Number(n).toLocaleString('pt-BR');
-const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const uid = p => p + '-' + Math.random().toString(36).slice(2,7);
-
-function toast(msg){
-  const t = $('#toast');
-  t.textContent = msg;
-  t.classList.add('show');
-  clearTimeout(t._tm);
-  t._tm = setTimeout(()=>t.classList.remove('show'), 2600);
-}
-
-/* =========================================================
-   CALCULADORA DE COMISSÃO
-   ========================================================= */
-function updateCalc(){
-  const deal = Math.max(0, Number($('#deal').value) || 0);
-  const rate = Number($('#rate').value) / 100;
-  const plat = deal * rate;
-  const dev  = deal - plat;
-  $('#dev-gets').textContent   = money(Math.round(dev));
-  $('#plat-gets').textContent  = money(Math.round(plat));
-  $('#total-gets').textContent = money(Math.round(deal));
-  $('#rate-val').textContent   = (rate*100).toFixed(0) + '%';
-  $('#rate-pct').textContent   = (rate*100).toFixed(0);
-  $('#rate-label').textContent = (rate*100).toFixed(0) + '%';
-}
-
-/* =========================================================
-   RENDER DOS CARDS
-   ========================================================= */
-function currentData(){
-  const q = ($('#search').value || '').toLowerCase().trim();
-  let arr;
-  if(activeTab === 'job') arr = jobs;
-  else arr = listings.filter(l => l.type === activeTab);
-
-  if(q){
-    arr = arr.filter(x => (
-      (x.title||'') + (x.role||'') + (x.summary||'') + (x.stack||[]).join(' ')
-    ).toLowerCase().includes(q));
-  }
-  return arr;
-}
-
+/* ---------- Card genérico (NUNCA mostra comissão) ---------- */
 function cardHTML(item){
   const isJob = item.type === 'job';
-  const tagClass = item.type === 'hire' ? 'hire' : item.type === 'maint' ? 'maint' : 'job';
-  const tagText  = item.type === 'hire' ? 'IA À VENDA' : item.type === 'maint' ? 'MANUTENÇÃO' : 'VAGA ABERTA';
+  const tagClass = item.type==='hire'?'hire':item.type==='maint'?'maint':'job';
+  const tagText  = item.type==='hire'?'FUNCIONÁRIO IA':item.type==='maint'?'MANUTENÇÃO':'PROCURA-SE';
   const price = isJob ? item.budget : item.price;
-  const unit  = item.unit === 'mês' ? '/mês' : '';
+  const unit  = item.unit==='mês' ? '/mês' : ' · única';
   const author = isJob ? item.client : item.dev;
   const chips = (item.stack||[]).slice(0,4).map(s=>`<span class="chip">${esc(s)}</span>`).join('');
-  const meta = isJob
-    ? `${esc(item.posted||'')}<br>${item.proposals||0} propostas`
-    : `★ ${item.rating||'—'}<br>${item.sold||0} vendas`;
-
+  const meta = isJob ? esc(item.posted||'') : '@'+esc(author);
   return `
   <article class="card" data-id="${item.id}" data-kind="${isJob?'job':'listing'}">
     <div class="card-top">
@@ -93,229 +28,209 @@ function cardHTML(item){
     <p>${esc(item.summary)}</p>
     <div class="chips">${chips}</div>
     <div class="card-foot">
-      <div class="price">${money(price)}<small>${unit || ' · ' + (item.unit||'única')}</small></div>
+      <div class="price">${money(price)}<small>${unit}</small></div>
       <div class="meta">${meta}</div>
     </div>
   </article>`;
 }
 
-function render(){
-  const data = currentData();
-  const box = $('#cards');
-  box.innerHTML = data.length
-    ? data.map(cardHTML).join('')
-    : `<div class="empty">// NENHUM RESULTADO NESTE FILTRO //</div>`;
-  $('#count-label').textContent = `// ${data.length} ${data.length===1?'ITEM':'ITENS'}`;
-  // ligar clique de detalhe
-  $$('.card', box).forEach(c => c.addEventListener('click', ()=>openDetail(c.dataset.id, c.dataset.kind)));
-}
-
-/* =========================================================
-   ABAS + BUSCA
-   ========================================================= */
-function setTab(tab){
-  activeTab = tab;
-  $$('.tab').forEach(t => t.classList.toggle('active', t.dataset.tab === tab));
-  render();
-}
-
-/* =========================================================
-   MODAL
-   ========================================================= */
-const overlay = $('#overlay');
-const modal   = $('#modal');
-
-function openModal(html){
-  modal.innerHTML = `<button class="x" data-close>×</button>` + html;
-  overlay.classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-function closeModal(){
-  overlay.classList.remove('open');
-  document.body.style.overflow = '';
-}
-
-/* ---------- Detalhe de um item ---------- */
-function openDetail(id, kind){
-  const item = (kind === 'job' ? jobs : listings).find(x => x.id === id);
-  if(!item) return;
-  const isJob = item.type === 'job';
-  const price = isJob ? item.budget : item.price;
-  const rate  = CONFIG.rates[item.type] ?? CONFIG.commissionRate;
-  const plat  = Math.round(price * rate);
-  const other = price - plat;
-  const author = isJob ? item.client : item.dev;
+/* ---------- Detalhe (cliente vê oferta de programador) ---------- */
+function openListingDetail(id){
+  const item = listings.find(x=>x.id===id); if(!item) return;
   const tasks = (item.tasks||[]).map(t=>`<li>${esc(t)}</li>`).join('');
   const stack = (item.stack||[]).map(s=>`<span class="chip">${esc(s)}</span>`).join('');
-
   openModal(`
-    <span class="label">${isJob?'VAGA ABERTA':item.type==='maint'?'SERVIÇO DE MANUTENÇÃO':'FUNCIONÁRIO IA'}</span>
-    <div class="detail-head">
-      <div>
-        <h2>${esc(item.title)}</h2>
-        <div class="role">${esc(item.role)} · @${esc(author)}</div>
-      </div>
-    </div>
+    <span class="label">${item.type==='maint'?'SERVIÇO DE MANUTENÇÃO':'FUNCIONÁRIO IA'}</span>
+    <h2>${esc(item.title)}</h2>
+    <div class="role">${esc(item.role)} · @${esc(item.dev)}</div>
     <div class="detail-body">
       <div><h4>Resumo</h4><p>${esc(item.summary)}</p></div>
       <div><h4>Atribuições que a IA executa</h4><ul>${tasks}</ul></div>
       <div><h4>Stack / capacidades</h4><div class="chips">${stack}</div></div>
       <div class="detail-split">
-        <div class="row"><span>Valor ${item.unit==='mês'?'mensal':'do acordo'}</span><b>${money(price)}</b></div>
-        <div class="row"><span>${isJob?'Desenvolvedor recebe':'Você recebe'}</span><b>${money(other)}</b></div>
-        <div class="row"><span>Taxa HUMANICA (${(rate*100).toFixed(0)}%)</span><b>${money(plat)}</b></div>
+        <div class="row"><span>Preço pedido</span><b>${money(item.price)} ${item.unit==='mês'?'/mês':'· única'}</b></div>
       </div>
-      <button class="btn ${isJob?'signal':'primary'} block lg" data-action="contact">
-        ${isJob ? 'Enviar proposta como programador' : 'Contratar / falar com o dev'}
-      </button>
+      <div class="deal-actions">
+        <button class="btn block lg" data-action="direct">Combinar diretamente com o dev</button>
+        <button class="btn signal block lg" data-action="site">Fechar acordo pelo site</button>
+      </div>
     </div>
   `);
-  $('[data-action="contact"]', modal).addEventListener('click', ()=>{
-    closeModal();
-    toast(isJob ? 'Proposta enviada ✓' : 'Solicitação enviada ao desenvolvedor ✓');
-  });
+  const m = $('#modal');
+  $('[data-action="direct"]', m).addEventListener('click', ()=>{ closeModal(); toast('Contato liberado — combinem direto ✓'); });
+  $('[data-action="site"]',   m).addEventListener('click', ()=> openDealClose(item.price, item.title));
 }
 
-/* ---------- Formulário: perfil de programador / publicar IA ---------- */
-function openDevForm(){
+/* ---------- Detalhe de vaga (programador vê o que o cliente procura) ---------- */
+function openJobDetail(id){
+  const item = jobs.find(x=>x.id===id); if(!item) return;
+  const tasks = (item.tasks||[]).map(t=>`<li>${esc(t)}</li>`).join('');
+  const stack = (item.stack||[]).map(s=>`<span class="chip">${esc(s)}</span>`).join('');
   openModal(`
-    <span class="label">PERFIL DO PROGRAMADOR</span>
-    <h2>Publicar funcionário IA</h2>
-    <form id="f-dev">
-      <div class="field-row">
-        <div class="field"><label>Seu handle</label><input name="dev" placeholder="ex.: nucleo.kernel" required></div>
-        <div class="field"><label>Tipo de oferta</label>
-          <select name="type">
-            <option value="hire">Funcionário IA pronto (venda)</option>
-            <option value="maint">Serviço de manutenção (mensal)</option>
-          </select>
-        </div>
+    <span class="label">VAGA PUBLICADA POR CLIENTE</span>
+    <h2>${esc(item.title)}</h2>
+    <div class="role">${esc(item.role)} · @${esc(item.client)}</div>
+    <div class="detail-body">
+      <div><h4>Contexto</h4><p>${esc(item.summary)}</p></div>
+      <div><h4>Atribuições do trabalho</h4><ul>${tasks}</ul></div>
+      <div><h4>Requisitos</h4><div class="chips">${stack}</div></div>
+      <div class="detail-split">
+        <div class="row"><span>Orçamento</span><b>${money(item.budget)} ${item.unit==='mês'?'/mês':'· único'}</b></div>
       </div>
-      <div class="field"><label>Título do agente</label><input name="title" placeholder="ex.: ANALYST-7 · Analista de Dados" required></div>
-      <div class="field"><label>Cargo / função que ele substitui</label><input name="role" placeholder="ex.: Analista de Dados Financeiros" required></div>
-      <div class="field"><label>Resumo</label><textarea name="summary" placeholder="O que esse agente faz, em poucas linhas." required></textarea></div>
-      <div class="field"><label>Atribuições (uma por linha)</label><textarea name="tasks" placeholder="Consolidar relatórios&#10;Detectar anomalias&#10;Responder por chat"></textarea></div>
-      <div class="field-row">
-        <div class="field"><label>Stack (vírgulas)</label><input name="stack" placeholder="Python, LangChain, GPT-4o"></div>
-        <div class="field"><label>Preço (${CONFIG.currency})</label><input name="price" type="number" min="0" step="100" placeholder="4800" required></div>
+      <div class="deal-actions">
+        <button class="btn block lg" data-action="direct">Combinar diretamente com o cliente</button>
+        <button class="btn signal block lg" data-action="site">Propor e fechar pelo site</button>
       </div>
-      <button class="btn signal block lg" type="submit">Publicar no marketplace</button>
-      <p class="help" style="margin-top:14px">A plataforma retém ${(CONFIG.commissionRate*100).toFixed(0)}% de cada acordo fechado.</p>
-    </form>
+    </div>
   `);
-  $('#f-dev', modal).addEventListener('submit', e=>{
-    e.preventDefault();
-    const f = e.target;
-    const item = {
-      id: uid('l'),
-      type: f.type.value,
-      title: f.title.value.trim(),
-      role: f.role.value.trim(),
-      dev: f.dev.value.trim().replace(/^@/,''),
-      price: Number(f.price.value)||0,
-      unit: f.type.value === 'maint' ? 'mês' : 'única',
-      summary: f.summary.value.trim(),
-      tasks: f.tasks.value.split('\n').map(s=>s.trim()).filter(Boolean),
-      stack: f.stack.value.split(',').map(s=>s.trim()).filter(Boolean),
-      rating: '—', sold: 0
-    };
-    listings.unshift(item);
-    save(STORE_KEYS.listings, listings);
-    closeModal();
-    setTab(item.type);
-    toast('Funcionário IA publicado ✓');
-  });
+  const m = $('#modal');
+  $('[data-action="direct"]', m).addEventListener('click', ()=>{ closeModal(); toast('Contato liberado — combinem direto ✓'); });
+  $('[data-action="site"]',   m).addEventListener('click', ()=> openDealClose(item.budget, item.title));
 }
 
-/* ---------- Formulário: cliente publica vaga ---------- */
-function openJobForm(){
-  openModal(`
-    <span class="label">PERFIL DO CLIENTE</span>
-    <h2>Publicar vaga para IA</h2>
-    <form id="f-job">
-      <div class="field-row">
-        <div class="field"><label>Sua empresa</label><input name="client" placeholder="ex.: Distribuidora Norte" required></div>
-        <div class="field"><label>Modelo</label>
-          <select name="unit">
-            <option value="única">Compra única</option>
-            <option value="mês">Mensal (operação)</option>
-          </select>
-        </div>
-      </div>
-      <div class="field"><label>Título da vaga</label><input name="title" placeholder="ex.: Procuro: Analista de Estoque IA" required></div>
-      <div class="field"><label>Cargo a ser substituído</label><input name="role" placeholder="ex.: Analista de Estoque / Compras" required></div>
-      <div class="field"><label>Contexto</label><textarea name="summary" placeholder="Descreva o cenário e o objetivo do agente." required></textarea></div>
-      <div class="field"><label>Atribuições do trabalho — o que a IA deve executar (uma por linha)</label><textarea name="tasks" placeholder="Ler movimentação do ERP&#10;Prever ruptura de estoque&#10;Sugerir ordens de compra" required></textarea></div>
-      <div class="field-row">
-        <div class="field"><label>Requisitos / integrações (vírgulas)</label><input name="stack" placeholder="ERP Bling, e-mail, previsão"></div>
-        <div class="field"><label>Orçamento (${CONFIG.currency})</label><input name="budget" type="number" min="0" step="100" placeholder="5000" required></div>
-      </div>
-      <button class="btn primary block lg" type="submit">Publicar vaga</button>
-      <p class="help" style="margin-top:14px">Ao fechar com um desenvolvedor, a plataforma retém ${(CONFIG.commissionRate*100).toFixed(0)}% do acordo.</p>
-    </form>
-  `);
-  $('#f-job', modal).addEventListener('submit', e=>{
-    e.preventDefault();
-    const f = e.target;
-    const item = {
-      id: uid('j'),
-      type: 'job',
-      title: f.title.value.trim(),
-      role: f.role.value.trim(),
-      client: f.client.value.trim(),
-      budget: Number(f.budget.value)||0,
-      unit: f.unit.value,
-      summary: f.summary.value.trim(),
-      tasks: f.tasks.value.split('\n').map(s=>s.trim()).filter(Boolean),
-      stack: f.stack.value.split(',').map(s=>s.trim()).filter(Boolean),
-      posted: 'agora', proposals: 0
-    };
-    jobs.unshift(item);
-    save(STORE_KEYS.jobs, jobs);
-    closeModal();
-    setTab('job');
-    toast('Vaga publicada ✓');
-    document.getElementById('market').scrollIntoView({behavior:'smooth'});
-  });
+function wireCards(box, kind){
+  $$('.card', box).forEach(c=>c.addEventListener('click', ()=>{
+    if((c.dataset.kind||kind)==='job') openJobDetail(c.dataset.id);
+    else openListingDetail(c.dataset.id);
+  }));
 }
 
 /* =========================================================
-   EVENTOS GLOBAIS
+   PÁGINA: INÍCIO (destaques)
    ========================================================= */
-function bind(){
-  // calculadora
-  $('#deal').addEventListener('input', updateCalc);
-  $('#rate').addEventListener('input', updateCalc);
-  $('#cur').textContent = CONFIG.currency;
-
-  // abas
-  $$('.tab').forEach(t => t.addEventListener('click', ()=>setTab(t.dataset.tab)));
-  // busca
-  $('#search').addEventListener('input', render);
-
-  // aberturas de modal
-  $$('[data-open]').forEach(b => b.addEventListener('click', ()=>{
-    if(b.dataset.open === 'form-dev') openDevForm();
-    if(b.dataset.open === 'form-job') openJobForm();
-  }));
-
-  // fechar modal
-  overlay.addEventListener('click', e=>{
-    if(e.target === overlay || e.target.hasAttribute('data-close')) closeModal();
-  });
-  document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeModal(); });
-
-  // ajustar taxa-padrão na UI a partir do CONFIG
-  $('#rate').value = Math.round(CONFIG.commissionRate*100);
-
-  // reveal on scroll
-  const io = new IntersectionObserver(es=>{
-    es.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target);} });
-  }, {threshold:.12});
-  $$('.reveal').forEach(el=>io.observe(el));
+function initIndex(){
+  const box = $('#featured'); if(!box) return;
+  const feat = listings.slice(0,3);
+  box.innerHTML = feat.map(cardHTML).join('');
+  wireCards(box, 'listing');
 }
 
-/* ---------- init ---------- */
-bind();
-updateCalc();
-render();
+/* =========================================================
+   PÁGINA: OFERTAS (produtos e soluções)
+   ========================================================= */
+function initOfertas(){
+  const box = $('#cards'); if(!box) return;
+  let tab = 'hire';
+  function data(){
+    const q = ($('#search').value||'').toLowerCase().trim();
+    let arr = listings.filter(l=>l.type===tab);
+    if(q) arr = arr.filter(x=>((x.title+x.role+x.summary+(x.stack||[]).join(' ')).toLowerCase().includes(q)));
+    return arr;
+  }
+  function render(){
+    const d = data();
+    box.innerHTML = d.length ? d.map(cardHTML).join('') : `<div class="empty">// NENHUMA OFERTA NESTE FILTRO //</div>`;
+    $('#count').textContent = `// ${d.length} ${d.length===1?'OFERTA':'OFERTAS'}`;
+    wireCards(box, 'listing');
+  }
+  $$('.tab').forEach(t=>t.addEventListener('click', ()=>{
+    tab = t.dataset.tab; $$('.tab').forEach(x=>x.classList.toggle('active', x===t)); render();
+  }));
+  $('#search').addEventListener('input', render);
+  render();
+}
+
+/* =========================================================
+   PÁGINA: PROGRAMADOR
+   ========================================================= */
+function initProgramador(){
+  // perfil
+  const prof = load(STORE.devProfile, { handle:'', bio:'', skills:'', link:'' });
+  const pf = $('#dev-profile');
+  if(pf){
+    pf.handle.value = prof.handle; pf.bio.value = prof.bio; pf.skills.value = prof.skills; pf.link.value = prof.link;
+    pf.addEventListener('submit', e=>{
+      e.preventDefault();
+      const data = { handle:pf.handle.value.trim().replace(/^@/,''), bio:pf.bio.value.trim(), skills:pf.skills.value.trim(), link:pf.link.value.trim() };
+      save(STORE.devProfile, data); toast('Perfil salvo ✓'); renderMine();
+    });
+  }
+
+  // publicar oferta
+  const of = $('#dev-offer');
+  if(of){
+    of.addEventListener('submit', e=>{
+      e.preventDefault();
+      const item = {
+        id: uid('l'), type: of.type.value,
+        title: of.title.value.trim(), role: of.role.value.trim(),
+        dev: (load(STORE.devProfile,{}).handle || of.dev.value.trim() || 'eu').replace(/^@/,''),
+        price: Number(of.price.value)||0,
+        unit: of.type.value==='maint'?'mês':'única',
+        summary: of.summary.value.trim(),
+        tasks: of.tasks.value.split('\n').map(s=>s.trim()).filter(Boolean),
+        stack: of.stack.value.split(',').map(s=>s.trim()).filter(Boolean)
+      };
+      listings.unshift(item); save(STORE.listings, listings);
+      of.reset(); toast('Oferta publicada ✓'); renderMine();
+    });
+  }
+
+  // minhas ofertas
+  function renderMine(){
+    const box = $('#dev-mine'); if(!box) return;
+    const handle = (load(STORE.devProfile,{}).handle||'').toLowerCase();
+    const mine = listings.filter(l=> handle && (l.dev||'').toLowerCase()===handle);
+    box.innerHTML = mine.length ? mine.map(cardHTML).join('') : `<div class="empty">// SUAS OFERTAS APARECEM AQUI APÓS PUBLICAR //</div>`;
+    wireCards(box,'listing');
+  }
+  renderMine();
+
+  // vagas abertas de clientes
+  const jb = $('#dev-jobs');
+  if(jb){ jb.innerHTML = jobs.map(cardHTML).join(''); wireCards(jb,'job'); }
+}
+
+/* =========================================================
+   PÁGINA: CLIENTE
+   ========================================================= */
+function initCliente(){
+  const prof = load(STORE.clientProfile, { company:'', sector:'', need:'' });
+  const pf = $('#client-profile');
+  if(pf){
+    pf.company.value = prof.company; pf.sector.value = prof.sector; pf.need.value = prof.need;
+    pf.addEventListener('submit', e=>{
+      e.preventDefault();
+      save(STORE.clientProfile, { company:pf.company.value.trim(), sector:pf.sector.value.trim(), need:pf.need.value.trim() });
+      toast('Perfil salvo ✓');
+    });
+  }
+
+  const jf = $('#client-job');
+  if(jf){
+    jf.addEventListener('submit', e=>{
+      e.preventDefault();
+      const item = {
+        id: uid('j'), type:'job',
+        title: jf.title.value.trim(), role: jf.role.value.trim(),
+        client: (load(STORE.clientProfile,{}).company || jf.client.value.trim() || 'minha empresa'),
+        budget: Number(jf.budget.value)||0,
+        unit: jf.unit.value,
+        summary: jf.summary.value.trim(),
+        tasks: jf.tasks.value.split('\n').map(s=>s.trim()).filter(Boolean),
+        stack: jf.stack.value.split(',').map(s=>s.trim()).filter(Boolean),
+        posted: 'agora'
+      };
+      jobs.unshift(item); save(STORE.jobs, jobs);
+      jf.reset(); toast('Publicado ✓'); renderMine();
+    });
+  }
+
+  function renderMine(){
+    const box = $('#client-mine'); if(!box) return;
+    const company = (load(STORE.clientProfile,{}).company||'').toLowerCase();
+    const mine = jobs.filter(j=> company && (j.client||'').toLowerCase()===company);
+    box.innerHTML = mine.length ? mine.map(cardHTML).join('') : `<div class="empty">// SUAS PUBLICAÇÕES APARECEM AQUI //</div>`;
+    wireCards(box,'job');
+  }
+  renderMine();
+}
+
+/* ---------- Router ---------- */
+document.addEventListener('DOMContentLoaded', ()=>{
+  const page = document.body.dataset.page;
+  if(page==='index')       initIndex();
+  if(page==='ofertas')     initOfertas();
+  if(page==='programador') initProgramador();
+  if(page==='cliente')     initCliente();
+});

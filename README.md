@@ -1,62 +1,72 @@
-# HUMANICA — AI Workforce Exchange
+# Funcionário Artificial
 
-Marketplace que conecta **clientes** (que querem contratar uma IA para substituir uma função, ex.: um analista) a **programadores** (que constroem, vendem e mantêm esses funcionários de IA). A plataforma lucra com uma comissão sobre cada acordo.
+Marketplace que conecta **clientes** (querem automatizar uma função com IA) a **programadores** (constroem, vendem e mantêm esses funcionários de IA).
 
 Protótipo **front-end estático** — HTML + CSS + JS puro, sem build, pronto para GitHub Pages.
 
 ## Estrutura
 
 ```
-humanica/
-├── index.html        # página principal (landing + marketplace)
-├── css/
-│   └── style.css      # design system techwear monocromático
+funcionario-artificial/
+├── index.html          # página inicial explicativa
+├── ofertas.html        # ofertas de produtos e soluções
+├── programador.html    # perfil do programador
+├── cliente.html        # perfil do cliente
+├── css/style.css       # design system
 ├── js/
-│   ├── data.js        # CONFIG + dados-semente
-│   └── app.js         # lógica (render, abas, calculadora, formulários)
+│   ├── config.js       # ⚠️ regras de receita (parte pública + parte PRIVADA)
+│   ├── data.js         # dados-semente
+│   ├── layout.js       # nav/rodapé + utilitários + fechamento de acordo
+│   └── app.js          # lógica de cada página
 └── README.md
 ```
 
-## Como rodar
-
-Abra `index.html` no navegador, ou sirva localmente:
+## Como rodar / publicar
 
 ```bash
-python3 -m http.server 8000
-# acesse http://localhost:8000
+python3 -m http.server 8000   # http://localhost:8000
 ```
+GitHub Pages: suba a pasta e ative **Settings → Pages → Branch: main / root**.
 
-## Como publicar no GitHub Pages
+---
 
-1. Suba a pasta para um repositório.
-2. **Settings → Pages → Branch: main / root**.
-3. O site fica disponível em `https://SEU-USUARIO.github.io/REPO/`.
+## 💰 Modelo de receita
 
-## Ajustar a comissão (5%)
+> **Importante:** o site **não divulga** quanto fatura. Os usuários só veem
+> **o que eles pagam para usar**. A comissão sobre o acordo só aparece **no
+> momento de fechar o negócio pelo site**.
 
-A porcentagem da plataforma fica em **um único lugar**, no topo de `js/data.js`:
+### 1) O que o usuário vê (acesso)
+Definido em `js/config.js → CONFIG.access`:
 
-```js
-const CONFIG = {
-  commissionRate: 0.05,   // 5% — altere aqui
-  rates: { hire: 0.05, maint: 0.05, job: 0.05 }  // por tipo, se quiser
-};
-```
+| Público | Paga | Para |
+|---|---|---|
+| Programador | **R$ 50/mês** | expor seus serviços |
+| Cliente | **R$ 5** | buscar e contratar soluções |
 
-`0.05` = 5%, `0.08` = 8%, e assim por diante. A interface (hero, calculadora e detalhes) lê esse valor automaticamente.
+### 2) Comissão — lógica PRIVADA (só você sabe)
+Como os dois lados podem se conhecer e fechar por fora, a comissão é
+**opcional** e só incide quando o acordo é fechado **dentro do site**
+(que oferece registro, intermediação e garantia). As faixas ficam em
+`js/config.js → _PRIVATE.commissionTiers` e **não aparecem em nenhuma
+página pública** — só na tela de "Fechar acordo pelo site".
 
-## Os dois públicos
-
-| Programador | Cliente |
+| Valor do acordo | Comissão |
 |---|---|
-| Cria perfil e expõe seus trabalhos | Cria perfil e descreve a função |
-| Vende IA pronta **ou** manutenção mensal | Publica vaga com as **atribuições** exatas |
-| Recebe propostas | Recebe propostas de devs |
+| até R$ 500 | 15% |
+| até R$ 1.000 | 13% |
+| até R$ 2.000 | 11% |
+| até R$ 5.000 | 9% |
+| até R$ 10.000 | 7% |
+| até R$ 15.000 | 6% |
+| acima de R$ 15.000 | 5% (piso) |
 
-Os dados publicados ficam salvos no `localStorage` do navegador (protótipo). Para produção, troque por uma API/banco real.
+Editar é só mudar a tabela em `config.js`. As funções `commissionRate()` e
+`commissionFor()` cuidam do cálculo.
 
-## Próximos passos (backend)
+---
 
-- Autenticação dos dois tipos de perfil
-- Pagamentos com retenção automática da comissão (ex.: Stripe Connect)
-- Chat entre as partes e fechamento de acordo dentro da plataforma
+## Observações técnicas
+
+- Dados publicados (perfis, ofertas, vagas) ficam no `localStorage` do navegador — é protótipo. Em produção, troque por API + banco.
+- Para um produto real: autenticação dos dois perfis, cobrança recorrente (R$ 50/mês) e avulsa (R$ 5), pagamento com retenção da comissão (ex.: Stripe Connect) e chat interno.

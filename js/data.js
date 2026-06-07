@@ -1,30 +1,10 @@
 /* =========================================================
-   HUMANICA — Configuração e dados-semente
+   FUNCIONÁRIO ARTIFICIAL — Dados-semente
    ========================================================= */
 
-/* -----------------------------------------------------------
-   CONFIG GLOBAL
-   Altere a comissão da plataforma em UM único lugar.
-   Ex.: 0.05 = 5%   |   0.08 = 8%   |   0.03 = 3%
------------------------------------------------------------ */
-const CONFIG = {
-  brand: 'HUMANICA',
-  tagline: 'AI WORKFORCE EXCHANGE',
-  commissionRate: 0.05,          // <<< porcentagem da plataforma (ajustável)
-  currency: 'R$',
-  // comissões podem variar por tipo de transação no futuro:
-  rates: {
-    hire:  0.05,                 // venda de funcionário IA pronto
-    maint: 0.05,                 // contrato de manutenção mensal
-    job:   0.05                  // intermediação de vaga publicada
-  }
-};
-
-/* -----------------------------------------------------------
-   FUNCIONÁRIOS IA + SERVIÇOS  (publicados por PROGRAMADORES)
-   type: 'hire'  -> funcionário IA pronto (venda)
-   type: 'maint' -> serviço de manutenção/operação (mensal)
------------------------------------------------------------ */
+/* OFERTAS publicadas por PROGRAMADORES
+   type: 'hire'  -> funcionário IA pronto
+   type: 'maint' -> serviço de manutenção / operação (mensal) */
 const SEED_LISTINGS = [
   {
     id: 'l-001', type: 'hire', title: 'ANALYST-7 · Analista de Dados',
@@ -37,8 +17,7 @@ const SEED_LISTINGS = [
       'Detectar anomalias e desvios de meta',
       'Responder perguntas via chat sobre indicadores'
     ],
-    stack: ['Python', 'LangChain', 'Postgres', 'GPT-4o'],
-    rating: 4.9, sold: 23
+    stack: ['Python', 'LangChain', 'Postgres', 'GPT-4o']
   },
   {
     id: 'l-002', type: 'hire', title: 'SDR-AUTO · Pré-vendas',
@@ -51,8 +30,7 @@ const SEED_LISTINGS = [
       'Atualizar status no CRM (HubSpot/Pipedrive)',
       'Enviar follow-ups personalizados'
     ],
-    stack: ['Node.js', 'OpenAI', 'WhatsApp API', 'HubSpot'],
-    rating: 4.7, sold: 41
+    stack: ['Node.js', 'OpenAI', 'WhatsApp API', 'HubSpot']
   },
   {
     id: 'l-003', type: 'maint', title: 'Operação & Tuning · ANALYST-7',
@@ -65,8 +43,7 @@ const SEED_LISTINGS = [
       'Atualizar para novos modelos quando saírem',
       'Suporte e correções em até 24h'
     ],
-    stack: ['Observability', 'Eval', 'Prompt Eng.'],
-    rating: 5.0, sold: 12
+    stack: ['Observability', 'Eval', 'Prompt Eng.']
   },
   {
     id: 'l-004', type: 'hire', title: 'SUPPORT-TIER1 · Suporte N1',
@@ -79,21 +56,30 @@ const SEED_LISTINGS = [
       'Classificar e escalar casos complexos',
       'Manter tom de voz da marca'
     ],
-    stack: ['RAG', 'Zendesk', 'Claude', 'Pinecone'],
-    rating: 4.8, sold: 30
+    stack: ['RAG', 'Zendesk', 'Claude', 'Pinecone']
+  },
+  {
+    id: 'l-005', type: 'maint', title: 'Plantão & SLA · qualquer agente',
+    role: 'Manutenção de Agente', dev: 'mira.dev',
+    price: 1200, unit: 'mês',
+    summary: 'Plantão mensal com SLA, ajustes de comportamento e relatório de desempenho do seu funcionário IA.',
+    tasks: [
+      'Plantão com SLA de resposta',
+      'Ajustes mensais de comportamento',
+      'Relatório de uso e qualidade',
+      'Backups e versionamento de prompts'
+    ],
+    stack: ['SLA', 'Monitoring', 'Versioning']
   }
 ];
 
-/* -----------------------------------------------------------
-   VAGAS  (publicadas por CLIENTES procurando um funcionário IA)
-   type: 'job'
------------------------------------------------------------ */
+/* VAGAS publicadas por CLIENTES (o que procuram) */
 const SEED_JOBS = [
   {
     id: 'j-001', type: 'job', title: 'Procuro: Analista de Estoque IA',
     role: 'Analista de Estoque / Compras', client: 'Distribuidora Norte',
     budget: 5000, unit: 'única',
-    summary: 'Empresa de distribuição quer um agente que preveja ruptura de estoque e sugira pedidos de compra automaticamente.',
+    summary: 'Distribuidora quer um agente que preveja ruptura de estoque e sugira pedidos de compra automaticamente.',
     tasks: [
       'Ler movimentação de estoque do ERP (Bling)',
       'Prever quando cada item vai acabar',
@@ -101,7 +87,7 @@ const SEED_JOBS = [
       'Alertar gestor sobre itens críticos por e-mail'
     ],
     stack: ['Integração ERP', 'Previsão de demanda'],
-    posted: 'há 2 dias', proposals: 6
+    posted: 'há 2 dias'
   },
   {
     id: 'j-002', type: 'job', title: 'Procuro: Redator IA para blog',
@@ -112,10 +98,10 @@ const SEED_JOBS = [
       'Pesquisar palavras-chave por tópico',
       'Escrever artigos de 1.200+ palavras',
       'Seguir tom de voz e diretrizes da marca',
-      'Entregar em rascunho no WordPress'
+      'Entregar rascunho no WordPress'
     ],
     stack: ['SEO', 'WordPress API', 'Brand voice'],
-    posted: 'há 5 horas', proposals: 11
+    posted: 'há 5 horas'
   },
   {
     id: 'j-003', type: 'job', title: 'Procuro: Recrutador IA (triagem)',
@@ -129,6 +115,6 @@ const SEED_JOBS = [
       'Marcar entrevistas dos aprovados'
     ],
     stack: ['Parsing CV', 'Scoring', 'Calendário'],
-    posted: 'há 1 dia', proposals: 4
+    posted: 'há 1 dia'
   }
 ];

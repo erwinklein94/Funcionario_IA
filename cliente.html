@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sou Cliente — Funcionário Artificial</title>
+<meta name="description" content="Crie seu perfil e descreva o funcionário de IA que você procura.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="cliente">
+
+<section class="page-hero">
+  <div class="wrap">
+    <span class="label kicker">// PERFIL DO CLIENTE</span>
+    <h1>Sou Cliente</h1>
+    <p>Descreva literalmente as atribuições do cargo que você quer automatizar e receba propostas de quem constrói a IA.</p>
+    <div class="plan">
+      <span class="plan-what">Para buscar e contratar soluções</span>
+      <span class="price-tag">R$ 5</span>
+    </div>
+  </div>
+</section>
+
+<section class="profile-wrap wrap">
+  <div class="profile-grid">
+
+    <div style="display:grid;gap:24px;">
+      <div class="panel">
+        <h3>Seu perfil</h3>
+        <span class="label">Quem está contratando</span>
+        <form id="client-profile">
+          <div class="field"><label>Empresa</label><input name="company" placeholder="ex.: Distribuidora Norte" required></div>
+          <div class="field"><label>Setor</label><input name="sector" placeholder="ex.: Varejo / Logística"></div>
+          <div class="field"><label>O que você quer automatizar</label><textarea name="need" placeholder="Resumo geral das funções que pretende substituir por IA."></textarea></div>
+          <button class="btn primary block lg" type="submit">Salvar perfil</button>
+        </form>
+      </div>
+
+      <div class="panel">
+        <h3>Publicar o que procuro</h3>
+        <span class="label">Defina o funcionário IA desejado</span>
+        <form id="client-job">
+          <div class="field-row">
+            <div class="field"><label>Modelo</label>
+              <select name="unit">
+                <option value="única">Compra única</option>
+                <option value="mês">Mensal (operação)</option>
+              </select>
+            </div>
+            <div class="field"><label>Orçamento (R$)</label><input name="budget" type="number" min="0" step="100" placeholder="5000" required></div>
+          </div>
+          <div class="field"><label>Título</label><input name="title" placeholder="Procuro: Analista de Estoque IA" required></div>
+          <div class="field"><label>Cargo a substituir</label><input name="role" placeholder="Analista de Estoque / Compras" required></div>
+          <div class="field"><label>Contexto</label><textarea name="summary" placeholder="Cenário e objetivo do agente." required></textarea></div>
+          <div class="field"><label>Atribuições — o que a IA deve executar (uma por linha)</label><textarea name="tasks" placeholder="Ler movimentação do ERP&#10;Prever ruptura de estoque&#10;Sugerir ordens de compra" required></textarea></div>
+          <div class="field"><label>Requisitos / integrações (vírgulas)</label><input name="stack" placeholder="ERP Bling, e-mail, previsão"></div>
+          <input type="hidden" name="client">
+          <button class="btn signal block lg" type="submit">Publicar vaga</button>
+          <p class="help">Sua vaga fica visível para os programadores responderem.</p>
+        </form>
+      </div>
+    </div>
+
+    <div>
+      <div class="section-head"><h2 style="font-size:20px">Minhas publicações</h2></div>
+      <div class="cards" id="client-mine" style="grid-template-columns:1fr;"></div>
+    </div>
+
+  </div>
+</section>
+
+<script src="js/config.js"></script>
+<script src="js/data.js"></script>
+<script src="js/layout.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

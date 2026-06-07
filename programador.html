@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sou Programador — Funcionário Artificial</title>
+<meta name="description" content="Crie seu perfil, exponha seus funcionários de IA e ofereça manutenção.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="programador">
+
+<section class="page-hero">
+  <div class="wrap">
+    <span class="label kicker">// PERFIL DO PROGRAMADOR</span>
+    <h1>Sou Programador</h1>
+    <p>Monte sua vitrine, publique funcionários de IA prontos, ofereça manutenção e responda às vagas dos clientes.</p>
+    <div class="plan">
+      <span class="plan-what">Para expor seus serviços</span>
+      <span class="price-tag">R$ 50<small> / mês</small></span>
+    </div>
+  </div>
+</section>
+
+<section class="profile-wrap wrap">
+  <div class="profile-grid">
+
+    <!-- coluna esquerda: perfil + publicar -->
+    <div style="display:grid;gap:24px;">
+      <div class="panel">
+        <h3>Seu perfil</h3>
+        <span class="label">Capacidades e vitrine</span>
+        <form id="dev-profile">
+          <div class="field"><label>Handle público</label><input name="handle" placeholder="ex.: nucleo.kernel" required></div>
+          <div class="field"><label>Bio / o que você faz</label><textarea name="bio" placeholder="Especialista em agentes de dados e automação de back-office."></textarea></div>
+          <div class="field"><label>Habilidades (vírgulas)</label><input name="skills" placeholder="Python, LangChain, RAG, n8n"></div>
+          <div class="field"><label>Portfólio / link</label><input name="link" placeholder="https://github.com/seu-usuario"></div>
+          <button class="btn primary block lg" type="submit">Salvar perfil</button>
+        </form>
+      </div>
+
+      <div class="panel">
+        <h3>Publicar oferta</h3>
+        <span class="label">Funcionário IA ou manutenção</span>
+        <form id="dev-offer">
+          <div class="field-row">
+            <div class="field"><label>Tipo</label>
+              <select name="type">
+                <option value="hire">Funcionário IA pronto (venda)</option>
+                <option value="maint">Manutenção (mensal)</option>
+              </select>
+            </div>
+            <div class="field"><label>Preço (R$)</label><input name="price" type="number" min="0" step="100" placeholder="4800" required></div>
+          </div>
+          <div class="field"><label>Título</label><input name="title" placeholder="ANALYST-7 · Analista de Dados" required></div>
+          <div class="field"><label>Função que substitui</label><input name="role" placeholder="Analista de Dados Financeiros" required></div>
+          <div class="field"><label>Resumo</label><textarea name="summary" placeholder="O que o agente faz, em poucas linhas." required></textarea></div>
+          <div class="field"><label>Atribuições (uma por linha)</label><textarea name="tasks" placeholder="Consolidar relatórios&#10;Detectar anomalias&#10;Responder por chat"></textarea></div>
+          <div class="field"><label>Stack (vírgulas)</label><input name="stack" placeholder="Python, LangChain, GPT-4o"></div>
+          <input type="hidden" name="dev">
+          <button class="btn signal block lg" type="submit">Publicar oferta</button>
+          <p class="help">A oferta aparece na página de Ofertas para os clientes.</p>
+        </form>
+      </div>
+    </div>
+
+    <!-- coluna direita: minhas ofertas + vagas abertas -->
+    <div style="display:grid;gap:24px;">
+      <div>
+        <div class="section-head"><h2 style="font-size:20px">Minhas ofertas</h2></div>
+        <div class="cards" id="dev-mine" style="grid-template-columns:1fr;"></div>
+      </div>
+      <div>
+        <div class="section-head"><h2 style="font-size:20px">Vagas abertas de clientes</h2></div>
+        <div class="cards" id="dev-jobs" style="grid-template-columns:1fr;"></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script src="js/config.js"></script>
+<script src="js/data.js"></script>
+<script src="js/layout.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
