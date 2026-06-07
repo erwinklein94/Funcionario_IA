@@ -1,0 +1,9 @@
+# OS
+.DS_Store
+Thumbs.db
+# Editores
+.vscode/
+.idea/
+*.swp
+# Dependências (caso adicione backend depois)
+node_modules/
