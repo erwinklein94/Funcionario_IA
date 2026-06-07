@@ -1,85 +1,92 @@
 # Funcionário Artificial
 
 Marketplace que conecta **clientes** (querem automatizar uma função com IA) a
-**programadores** (constroem, vendem e mantêm esses funcionários de IA).
-
-Protótipo **front-end** (HTML + CSS + JS puro) com **acesso pago por assinatura**
-e cobrança inicial via **PIX**.
+**programadores** (constroem/vendem/mantêm esses funcionários de IA), agora com
+**banco de dados, login e segurança no servidor via Supabase**.
 
 ## Estrutura
-
 ```
 funcionario-artificial/
-├── index.html          # página inicial explicativa
-├── ofertas.html        # ofertas (acesso de CLIENTE)
-├── programador.html    # perfil do programador (acesso de PROGRAMADOR)
-├── cliente.html        # perfil do cliente (acesso de CLIENTE)
+├── index.html  ofertas.html  programador.html  cliente.html
 ├── css/style.css
 ├── js/
-│   ├── config.js       # preços, PIX e regras de comissão (parte PRIVADA)
-│   ├── data.js         # dados-semente
-│   ├── layout.js       # nav/rodapé, PIX, assinatura/paywall, acordo
-│   └── app.js          # lógica de cada página
-└── README.md
+│   ├── config.js     # preços, PIX, faixas de comissão (PRIVADO)
+│   ├── supabase.js   # << COLE AQUI sua URL + anon key
+│   ├── api.js        # auth + acesso ao banco
+│   ├── layout.js     # nav, login, PIX, paywall, fechar acordo
+│   └── app.js        # lógica de cada página
+└── supabase/
+    ├── schema.sql                    # << RODE ISTO no SQL Editor
+    └── functions/pix-webhook/index.ts# confirmação automática de PIX (PSP)
 ```
 
-## Modelo atual
+## Passo a passo para colocar no ar
 
-- **Assinatura:** R$ 19,90/mês para **cada** perfil (cliente e programador).
-- **Cliente** só vê as ofertas com a assinatura ativa.
-- **Programador** só expõe serviços e vê o que os clientes querem com a assinatura ativa.
-- **PIX (fase inicial):** chave `40468707883` (CPF). O site gera o "copia e cola"
-  com valor de R$ 19,90 já preenchido.
-- **Comissão (privada):** continua existindo só quando o acordo é fechado pelo
-  site, começando em 15% (até R$ 500) e caindo até 5% (acima de R$ 15.000).
-  Editável em `js/config.js → _PRIVATE.commissionTiers`. **Não aparece em
-  página pública** — só na tela de fechar acordo.
+### 1. Criar o projeto Supabase
+Crie um projeto em supabase.com. Em **Project Settings → API**, copie a
+**Project URL** e a chave **anon public**.
 
-Trocar preço/PIX: `js/config.js → CONFIG.access` e `CONFIG.pix`.
+### 2. Criar o banco
+Abra **SQL Editor**, cole todo o conteúdo de `supabase/schema.sql` e clique em
+**Run**. Isso cria as tabelas, as funções e as **políticas de segurança (RLS)**.
 
----
+### 3. Conectar o site ao banco
+Em `js/supabase.js`, cole a URL e a anon key:
+```js
+const SUPABASE_URL      = 'https://SEU-PROJETO.supabase.co';
+const SUPABASE_ANON_KEY = 'sua-anon-key';
+```
+(A anon key pode ser pública — a segurança real está no RLS do banco.)
 
-## ⚠️ Importante antes de lançar de verdade
+### 4. Auth
+Em **Authentication → Providers → Email**, deixe o e-mail habilitado. Para
+testar rápido, você pode **desligar "Confirm email"** (assim o login funciona na
+hora). Em produção, mantenha a confirmação ligada.
 
-Este protótipo guarda tudo no `localStorage` e libera o acesso quando o usuário
-clica em **"Já fiz o PIX"**. Isso é só demonstração: **qualquer pessoa
-conseguiria liberar sem pagar**. Para virar um site real é preciso mover a regra
-para um servidor. Veja abaixo.
+### 5. Publicar
+Suba a pasta no GitHub e ative **Settings → Pages**. Pronto: cadastro, login,
+perfis, ofertas e vagas já gravam no Supabase.
 
-## Arquitetura de um site de verdade
+## Como o acesso é controlado (no servidor)
 
-1. **Backend + banco de dados**
-   Tabelas: `usuarios` (com `papel`: cliente/programador), `assinaturas`
-   (status, validade), `ofertas`, `vagas`, `acordos`.
+| Ação | Quem pode |
+|---|---|
+| Ver ofertas (página Ofertas) | assinatura de **cliente** ativa |
+| Publicar vaga (página Cliente) | assinatura de **cliente** ativa |
+| Publicar oferta / ver vagas (página Programador) | assinatura de **programador** ativa |
 
-2. **Autenticação**
-   Cadastro/login (e-mail + senha ou login social). Cada conta tem um papel.
+Isso é garantido pelas **políticas RLS** — não dá para burlar pelo navegador.
+A função `has_active_sub()` checa a assinatura em cada consulta.
 
-3. **Cobrança PIX automática (recomendado)**
-   Use um provedor (PSP) que gera PIX dinâmico e avisa o pagamento por **webhook**:
-   Mercado Pago, Asaas, Efí (Gerencianet), PagBank, Stripe (PIX). Fluxo:
-   - backend pede ao PSP um PIX de R$ 19,90 → recebe QR + copia e cola;
-   - usuário paga;
-   - o PSP chama seu **webhook** confirmando → o backend marca a assinatura ativa.
-   Só o webhook confirma de forma confiável. Para recorrência mensal: **PIX
-   Automático**, ou assinatura no cartão, ou renovação manual a cada mês.
+## Pagamento (R$ 19,90/mês via PIX)
 
-4. **Controle de acesso no SERVIDOR (essencial)**
-   A API só devolve ofertas/vagas se a assinatura daquele papel estiver ativa.
-   Travar só no front (como neste protótipo) é facilmente burlável.
+O site mostra o PIX (chave `40468707883` + copia e cola) e, ao clicar em
+**"Já fiz o PIX"**, grava um registro em `payments` com status `pending`.
+**A liberação só acontece quando esse pagamento é confirmado** — e a confirmação
+NÃO pode ser feita pelo usuário (o RLS bloqueia). Há dois caminhos:
 
-5. **Comissão**
-   Quando o acordo é fechado pelo site, o backend calcula a taxa (tabela
-   privada) e — idealmente — usa split de pagamento (ex.: Stripe Connect / Asaas
-   split) para reter automaticamente sua parte e repassar o resto ao programador.
+**A) Confirmação manual (MVP, sem provedor)**
+Você recebe o PIX, confere no seu banco e roda no SQL Editor:
+```sql
+-- veja os pagamentos pendentes:
+select id, user_id, role, amount, created_at from payments where status='pending';
+-- confirme um deles (cria/renova a assinatura por 30 dias):
+select confirm_payment('COLE_O_ID_AQUI');
+```
 
-### Fase inicial sem backend (MVP manual)
-Funciona em pequena escala: o usuário paga no PIX, manda o comprovante, **você
-confere no seu banco** e libera o acesso na mão. Dá trabalho e não escala, mas
-valida o negócio antes de investir no backend.
-
-## Rodar / publicar
+**B) Confirmação automática (produção)**
+Use um provedor (Mercado Pago, Asaas, Efí, PagBank, Stripe-PIX) que gera PIX
+dinâmico e chama um **webhook** quando o pagamento cai. O arquivo
+`supabase/functions/pix-webhook/index.ts` é o esqueleto desse webhook: ele recebe
+o aviso do PSP e chama `confirm_payment()` com a service role. Deploy:
 ```bash
-python3 -m http.server 8000   # http://localhost:8000
+supabase functions deploy pix-webhook --no-verify-jwt
+supabase secrets set SUPABASE_URL=... SERVICE_ROLE_KEY=... PSP_SECRET=...
 ```
-GitHub Pages: **Settings → Pages → Branch: main / root**.
+Para mensalidade recorrente: PIX Automático, assinatura no cartão, ou renovação
+manual a cada mês.
+
+## Comissão (privada)
+Continua só no fechamento de acordo pelo site: começa em 15% (até R$ 500) e cai
+até 5% (acima de R$ 15.000). Fica em `js/config.js → _PRIVATE.commissionTiers` e
+**não aparece em nenhuma página pública**.

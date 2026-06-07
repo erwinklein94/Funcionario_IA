@@ -244,3 +244,13 @@ body.gated .profile-wrap{filter:blur(7px);pointer-events:none;user-select:none;}
 .pix-cc{margin-top:14px;}
 .pix-cc>.label{display:block;margin-bottom:8px;}
 .pix-cc textarea{width:100%;height:74px;resize:none;background:var(--bg-soft);border:1px solid var(--line);color:var(--ink-dim);font-family:var(--ff-mono);font-size:11px;padding:10px;line-height:1.5;outline:none;margin-bottom:10px;}
+
+/* ---------- AUTH / NAV USER / SETUP ---------- */
+.nav-user{font-family:var(--ff-mono);font-size:11px;color:var(--ink-dim);letter-spacing:.06em;}
+.nav-cta{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:flex-end;}
+.auth-tabs{display:flex;gap:1px;background:var(--line);border:1px solid var(--line);margin-bottom:20px;}
+.atab{flex:1;background:var(--bg);border:none;color:var(--ink-dim);font-family:var(--ff-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:11px;transition:.18s;}
+.atab.active{background:var(--white);color:#000;font-weight:700;}
+.setup-banner{position:sticky;top:0;z-index:50;background:var(--danger);color:#000;font-family:var(--ff-mono);font-size:12px;text-align:center;padding:10px 14px;letter-spacing:.04em;}
+.setup-banner code{background:rgba(0,0,0,.18);padding:2px 6px;}
+.card.teaser{cursor:pointer;}
