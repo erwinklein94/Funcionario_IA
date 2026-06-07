@@ -8,22 +8,26 @@ const CONFIG = {
   currency: 'R$',
 
   /* -------------------------------------------------------
-     VISÍVEL AO PÚBLICO — o que cada lado PAGA para usar o site.
-     (É o único número de receita que os usuários enxergam.)
+     VISÍVEL AO PÚBLICO — assinatura mensal para usar o site.
+     Cliente e Programador pagam o MESMO valor.
   ------------------------------------------------------- */
   access: {
-    devMonthly:   50,   // PROGRAMADOR: R$ 50/mês para expor seus serviços
-    clientSearch: 5     // CLIENTE: R$ 5 para buscar e contratar soluções
+    monthly: 19.90,        // R$ 19,90 / mês para qualquer um dos dois perfis
+    periodDays: 30
+  },
+
+  /* Dados de cobrança via PIX (fase inicial — pagamento manual) */
+  pix: {
+    key:  '40468707883',           // chave PIX (CPF)
+    keyType: 'CPF',
+    name: 'FUNCIONARIO ARTIFICIAL', // máx. 25 caracteres, sem acento
+    city: 'SAO PAULO'               // máx. 15 caracteres, sem acento
   }
 };
 
 /* =========================================================================
    ███  LÓGICA PRIVADA DO DONO — NÃO é divulgada em NENHUMA página pública.
-   ███  A comissão só é exibida no momento de FECHAR O ACORDO PELO SITE.
-   ███  Os usuários NÃO veem essas faixas nem sabem quanto o site fatura.
-   =========================================================================
-   Regra: começa em 15% para acordos até R$ 500 e vai caindo conforme o
-   valor sobe (1.000 / 2.000 / 5.000 / 10.000 / 15.000 ...), com piso de 5%.
+   ███  A comissão só é exibida ao FECHAR O ACORDO PELO SITE.
    ========================================================================= */
 const _PRIVATE = {
   commissionTiers: [
@@ -36,19 +40,13 @@ const _PRIVATE = {
     { upTo: Infinity, rate: 0.05 }   // piso de 5%
   ]
 };
-
-/* Retorna a taxa (decimal) aplicável a um valor de acordo. */
 function commissionRate(value){
-  for(const t of _PRIVATE.commissionTiers){
-    if(value <= t.upTo) return t.rate;
-  }
+  for(const t of _PRIVATE.commissionTiers){ if(value <= t.upTo) return t.rate; }
   return 0.05;
 }
-
-/* Calcula a divisão de um acordo fechado PELO site. */
 function commissionFor(value){
-  const v = Math.max(0, Number(value) || 0);
+  const v = Math.max(0, Number(value)||0);
   const rate = commissionRate(v);
-  const fee  = Math.round(v * rate);
-  return { value: v, rate, fee, net: v - fee };
+  const fee = Math.round(v*rate);
+  return { value:v, rate, fee, net:v-fee };
 }
