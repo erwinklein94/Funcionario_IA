@@ -30,6 +30,12 @@ const NAV=[
   {href:'programador.html',label:'Sou Programador'},
   {href:'cliente.html',label:'Sou Cliente'}
 ];
+const LEGAL_NAV=[
+  {href:'termos-de-uso.html',label:'Termos de Uso'},
+  {href:'politica-de-pagamentos.html',label:'Política de Pagamentos'},
+  {href:'contrato-de-intermediacao.html',label:'Contrato de Intermediação'},
+  {href:'cookies.html',label:'Cookies'}
+];
 async function navCtaHTML(){
   const u = await API.user();
   if(!u) return `<button class="btn primary" id="nav-login">Entrar</button>`;
@@ -57,7 +63,7 @@ async function renderChrome(){
       <div><div class="foot-brand">FUNCIONÁRIO ARTIFICIAL</div>
         <p class="foot-meta" style="margin-top:10px">// O MERCADO DE FUNCIONÁRIOS DE IA</p></div>
       <p class="foot-mission">Conectamos quem precisa automatizar uma função a quem sabe construir o agente que faz o trabalho.</p>
-      <nav class="foot-links">${NAV.map(n=>`<a href="${n.href}">${n.label}</a>`).join('')}<span class="foot-meta">© 2026 · v1.0</span></nav>
+      <nav class="foot-links">${NAV.map(n=>`<a href="${n.href}">${n.label}</a>`).join('')}${LEGAL_NAV.map(n=>`<a href="${n.href}">${n.label}</a>`).join('')}<span class="foot-meta">© 2026 · v1.0</span></nav>
     </div>`;
   document.body.append(footer);
 
@@ -138,7 +144,7 @@ function renderPaywall(role){
   const el=gateShell(`
     <span class="label">ACESSO DE ${roleLabel(role).toUpperCase()}</span>
     <h2>Assine para liberar</h2>
-    <div class="plan" style="margin:18px 0 6px"><span class="plan-what">Assinatura mensal</span><span class="price-tag">R$ 19,90<small> / mês</small></span></div>
+    <div class="plan" style="margin:18px 0 6px"><span class="plan-what">Assinatura mensal</span><span class="price-tag">R$ 299<small> / mês</small></span></div>
     <ul class="gate-list paywall-perks">${perks}</ul>
     <div class="pix-box">
       <span class="label">PAGUE VIA PIX</span>
@@ -203,7 +209,8 @@ async function boot(){
 }
 async function renderChromeOffline(){
   const header=document.createElement('header'); header.className='nav';
-  header.innerHTML=`<div class="wrap nav-inner"><a href="index.html" class="brand"><span class="dot"></span>FUNCIONÁRIO&nbsp;ARTIFICIAL</a></div>`;
+  const links=NAV.map(n=>`<a href="${n.href}">${n.label}</a>`).join('');
+  header.innerHTML=`<div class="wrap nav-inner"><a href="index.html" class="brand"><span class="dot"></span>FUNCIONÁRIO&nbsp;ARTIFICIAL</a><nav class="nav-links">${links}</nav></div>`;
   document.body.prepend(header);
 }
 document.addEventListener('DOMContentLoaded', boot);

@@ -254,3 +254,63 @@ body.gated .profile-wrap{filter:blur(7px);pointer-events:none;user-select:none;}
 .setup-banner{position:sticky;top:0;z-index:50;background:var(--danger);color:#000;font-family:var(--ff-mono);font-size:12px;text-align:center;padding:10px 14px;letter-spacing:.04em;}
 .setup-banner code{background:rgba(0,0,0,.18);padding:2px 6px;}
 .card.teaser{cursor:pointer;}
+
+/* =========================================================
+   NOVAS SEÇÕES — economia, ganho e manutenção
+   ========================================================= */
+.savings,.dev-money,.maintenance{padding-block:clamp(46px,7vw,86px);}
+.savings-grid,.earn-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.saving-card,.earn-card{border:1px solid var(--line);background:var(--bg-soft);clip-path:var(--clip);padding:clamp(20px,3vw,30px);display:grid;gap:14px;min-height:100%;}
+.saving-card h3,.earn-card h3{font-size:clamp(20px,2vw,28px);font-weight:600;text-transform:uppercase;line-height:1.05;}
+.saving-card p,.earn-card p{color:var(--ink-dim);font-size:14px;}
+.saving-card small{font-family:var(--ff-mono);font-size:10px;color:var(--ink-faint);line-height:1.6;}
+.saving-math{border:1px solid var(--line-soft);background:var(--bg);clip-path:var(--clip-sm);padding:14px;display:grid;gap:8px;}
+.saving-math div{display:flex;justify-content:space-between;gap:14px;font-family:var(--ff-mono);font-size:12px;color:var(--ink-dim);border-bottom:1px solid var(--line-soft);padding-bottom:8px;}
+.saving-math div:last-child{border-bottom:none;padding-bottom:0;}
+.saving-math b{color:var(--white);white-space:nowrap;}
+.saving-math .gain b{color:var(--signal);font-size:15px;}
+.dev-money{border-top:1px solid var(--line);}
+.earn-card b{font-family:var(--ff-mono);font-size:15px;color:var(--white);}
+.earn-card strong{font-family:var(--ff-mono);font-size:20px;color:var(--signal);font-weight:700;}
+.maintenance-grid{display:grid;gap:12px;}
+.maint-line{display:grid;grid-template-columns:180px 1fr auto;gap:18px;align-items:center;border:1px solid var(--line);background:var(--bg-soft);clip-path:var(--clip-sm);padding:18px 20px;}
+.maint-line b{text-transform:uppercase;font-size:15px;color:var(--white);}
+.maint-line span{color:var(--ink-dim);font-size:14px;}
+.maint-line em{font-family:var(--ff-mono);font-style:normal;color:var(--signal);font-size:13px;white-space:nowrap;}
+@media (max-width:900px){
+  .savings-grid,.earn-grid{grid-template-columns:1fr;}
+  .maint-line{grid-template-columns:1fr;gap:8px;}
+}
+
+
+/* =========================================================
+   PÁGINAS LEGAIS / CONFIANÇA / ERRO
+   ========================================================= */
+.trust{padding-block:clamp(46px,7vw,86px);border-top:1px solid var(--line);}
+.trust-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.trust-card{border:1px solid var(--line);background:var(--bg-soft);clip-path:var(--clip);padding:clamp(20px,3vw,30px);display:grid;gap:14px;}
+.trust-card h3{font-size:clamp(20px,2vw,28px);font-weight:600;text-transform:uppercase;line-height:1.05;}
+.trust-card p{color:var(--ink-dim);font-size:14px;line-height:1.75;}
+.trust-strip{margin-top:18px;border:1px solid var(--signal);background:rgba(170,255,0,.06);clip-path:var(--clip-sm);padding:18px 20px;color:var(--ink-dim);line-height:1.7;}
+.trust-strip b{color:var(--signal);}
+.legal-wrap{padding-block:clamp(42px,6vw,80px);display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:28px;align-items:start;}
+.legal-doc{border:1px solid var(--line);background:var(--bg-soft);clip-path:var(--clip);padding:clamp(22px,4vw,42px);}
+.legal-doc h2{font-size:clamp(22px,3vw,36px);text-transform:uppercase;margin:28px 0 12px;}
+.legal-doc h2:first-child{margin-top:0;}
+.legal-doc h3{font-size:18px;text-transform:uppercase;margin:20px 0 8px;color:var(--white);}
+.legal-doc p,.legal-doc li{color:var(--ink-dim);font-size:14px;line-height:1.8;}
+.legal-doc ul,.legal-doc ol{margin:10px 0 16px 20px;}
+.legal-note{border:1px solid var(--danger);background:rgba(255,49,91,.06);clip-path:var(--clip-sm);padding:16px;margin-bottom:22px;color:var(--ink-dim);font-size:13px;line-height:1.7;}
+.legal-note b{color:var(--danger);}
+.legal-side{position:sticky;top:96px;border:1px solid var(--line);background:var(--bg-soft);clip-path:var(--clip-sm);padding:18px;display:grid;gap:10px;}
+.legal-side a{font-family:var(--ff-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-dim);padding:9px 0;border-bottom:1px solid var(--line-soft);}
+.legal-side a:last-child{border-bottom:none;}
+.legal-side a:hover{color:var(--signal);}
+.error-box{min-height:62vh;display:grid;place-items:center;text-align:center;padding-block:80px;}
+.error-code{font-size:clamp(88px,18vw,220px);font-weight:700;line-height:.8;color:var(--signal);letter-spacing:-.08em;}
+.error-box p{max-width:560px;color:var(--ink-dim);margin:18px auto 28px;line-height:1.8;}
+@media (max-width:900px){
+  .trust-grid{grid-template-columns:1fr;}
+  .legal-wrap{grid-template-columns:1fr;}
+  .legal-side{position:relative;top:0;}
+}

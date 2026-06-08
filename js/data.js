@@ -9,8 +9,8 @@ const SEED_LISTINGS = [
   {
     id: 'l-001', type: 'hire', title: 'ANALYST-7 · Analista de Dados',
     role: 'Analista de Dados Financeiros', dev: 'núcleo.kernel',
-    price: 4800, unit: 'única',
-    summary: 'Agente que ingere planilhas e ERPs, gera relatórios semanais e responde perguntas em linguagem natural sobre os números.',
+    price: 12000, unit: 'única',
+    summary: 'Funcionário digital financeiro que substitui rotinas de análise, gera relatórios semanais, aponta desvios e pode economizar R$ 60k+/ano em trabalho operacional.',
     tasks: [
       'Consolidar dados de vendas de múltiplas fontes',
       'Gerar dashboards e relatórios automáticos',
@@ -22,8 +22,8 @@ const SEED_LISTINGS = [
   {
     id: 'l-002', type: 'hire', title: 'SDR-AUTO · Pré-vendas',
     role: 'Representante de Pré-vendas (SDR)', dev: 'lia.systems',
-    price: 3200, unit: 'única',
-    summary: 'Qualifica leads por e-mail e WhatsApp, agenda reuniões no calendário e atualiza o CRM sozinho.',
+    price: 8500, unit: 'única',
+    summary: 'SDR digital que qualifica leads por e-mail e WhatsApp, agenda reuniões e atualiza o CRM. Ideal para reduzir custo de pré-vendas sem parar a operação.',
     tasks: [
       'Responder e qualificar leads 24/7',
       'Agendar reuniões automaticamente',
@@ -35,8 +35,8 @@ const SEED_LISTINGS = [
   {
     id: 'l-003', type: 'maint', title: 'Operação & Tuning · ANALYST-7',
     role: 'Manutenção de Agente', dev: 'núcleo.kernel',
-    price: 890, unit: 'mês',
-    summary: 'Monitoramento, ajuste de prompts, atualização de modelo e suporte para qualquer funcionário IA já em produção.',
+    price: 1490, unit: 'mês',
+    summary: 'Manutenção mensal com monitoramento, ajuste de prompts, redução de alucinações, atualização de modelo e suporte para funcionário digital em produção.',
     tasks: [
       'Monitorar custo de tokens e desempenho',
       'Reduzir alucinações e ajustar prompts',
@@ -48,8 +48,8 @@ const SEED_LISTINGS = [
   {
     id: 'l-004', type: 'hire', title: 'SUPPORT-TIER1 · Suporte N1',
     role: 'Atendente de Suporte Nível 1', dev: 'mira.dev',
-    price: 2600, unit: 'única',
-    summary: 'Atende tickets, consulta a base de conhecimento e escala só o que humano precisa ver.',
+    price: 6500, unit: 'única',
+    summary: 'Atendente digital N1 que responde tickets recorrentes, consulta base de conhecimento e escala apenas casos que exigem humano.',
     tasks: [
       'Responder tickets de suporte recorrentes',
       'Buscar respostas na base de conhecimento (RAG)',
@@ -61,8 +61,8 @@ const SEED_LISTINGS = [
   {
     id: 'l-005', type: 'maint', title: 'Plantão & SLA · qualquer agente',
     role: 'Manutenção de Agente', dev: 'mira.dev',
-    price: 1200, unit: 'mês',
-    summary: 'Plantão mensal com SLA, ajustes de comportamento e relatório de desempenho do seu funcionário IA.',
+    price: 1990, unit: 'mês',
+    summary: 'Plantão mensal com SLA, ajustes anti-alucinação, relatório de desempenho, backups e evolução contínua do funcionário digital.',
     tasks: [
       'Plantão com SLA de resposta',
       'Ajustes mensais de comportamento',
@@ -78,7 +78,7 @@ const SEED_JOBS = [
   {
     id: 'j-001', type: 'job', title: 'Procuro: Analista de Estoque IA',
     role: 'Analista de Estoque / Compras', client: 'Distribuidora Norte',
-    budget: 5000, unit: 'única',
+    budget: 10000, unit: 'única',
     summary: 'Distribuidora quer um agente que preveja ruptura de estoque e sugira pedidos de compra automaticamente.',
     tasks: [
       'Ler movimentação de estoque do ERP (Bling)',
@@ -92,7 +92,7 @@ const SEED_JOBS = [
   {
     id: 'j-002', type: 'job', title: 'Procuro: Redator IA para blog',
     role: 'Redator de Conteúdo SEO', client: 'agência Vértice',
-    budget: 1800, unit: 'mês',
+    budget: 2990, unit: 'mês',
     summary: 'Precisamos de um agente que escreva 20 artigos/mês otimizados para SEO seguindo nosso guia de marca.',
     tasks: [
       'Pesquisar palavras-chave por tópico',
@@ -106,7 +106,7 @@ const SEED_JOBS = [
   {
     id: 'j-003', type: 'job', title: 'Procuro: Recrutador IA (triagem)',
     role: 'Analista de Recrutamento', client: 'TechFolks RH',
-    budget: 3500, unit: 'única',
+    budget: 8000, unit: 'única',
     summary: 'Queremos um agente que faça a triagem inicial de currículos e a primeira entrevista por texto.',
     tasks: [
       'Ler e pontuar currículos contra a vaga',

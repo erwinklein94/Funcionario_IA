@@ -12,7 +12,7 @@ const CONFIG = {
      Cliente e Programador pagam o MESMO valor.
   ------------------------------------------------------- */
   access: {
-    monthly: 19.90,        // R$ 19,90 / mês para qualquer um dos dois perfis
+    monthly: 299.00,       // R$ 299 / mês para qualquer um dos dois perfis
     periodDays: 30
   },
 

@@ -13,10 +13,10 @@
   <div class="wrap">
     <span class="label kicker">// PERFIL DO CLIENTE</span>
     <h1>Sou Cliente</h1>
-    <p>Descreva literalmente as atribuições do cargo que você quer automatizar e receba propostas de quem constrói a IA.</p>
+    <p>Descreva o cargo que quer reduzir ou substituir, estime o custo anual do funcionário humano e receba propostas de funcionários digitais com implantação e manutenção.</p>
     <div class="plan">
-      <span class="plan-what">Para buscar e contratar soluções</span>
-      <span class="price-tag">R$ 19,90<small> / mês</small></span>
+      <span class="plan-what">Plano de contratação</span>
+      <span class="price-tag">R$ 299<small> / mês</small></span>
     </div>
   </div>
 </section>
@@ -31,9 +31,17 @@
         <form id="client-profile">
           <div class="field"><label>Empresa</label><input name="company" placeholder="ex.: Distribuidora Norte" required></div>
           <div class="field"><label>Setor</label><input name="sector" placeholder="ex.: Varejo / Logística"></div>
-          <div class="field"><label>O que você quer automatizar</label><textarea name="need" placeholder="Resumo geral das funções que pretende substituir por IA."></textarea></div>
+          <div class="field"><label>O que você quer automatizar</label><textarea name="need" placeholder="Ex.: quero reduzir custo de SDR, atendimento, financeiro, estoque ou RH sem perder produtividade."></textarea></div>
           <button class="btn primary block lg" type="submit">Salvar perfil</button>
         </form>
+      </div>
+
+
+      <div class="panel">
+        <h3>Contratação protegida</h3>
+        <span class="label">Escopo + pagamento + aceite</span>
+        <p class="help">Feche acordos dentro da plataforma para registrar escopo, prazo, critérios de aceite, marcos de entrega e pagamento protegido. Isso reduz risco de pagar por algo que não foi entregue.</p>
+        <a href="politica-de-pagamentos.html" class="btn ghost block">Ver política de pagamentos</a>
       </div>
 
       <div class="panel">
@@ -47,16 +55,16 @@
                 <option value="mês">Mensal (operação)</option>
               </select>
             </div>
-            <div class="field"><label>Orçamento (R$)</label><input name="budget" type="number" min="0" step="100" placeholder="5000" required></div>
+            <div class="field"><label>Orçamento (R$)</label><input name="budget" type="number" min="0" step="100" placeholder="10000" required></div>
           </div>
           <div class="field"><label>Título</label><input name="title" placeholder="Procuro: Analista de Estoque IA" required></div>
           <div class="field"><label>Cargo a substituir</label><input name="role" placeholder="Analista de Estoque / Compras" required></div>
-          <div class="field"><label>Contexto</label><textarea name="summary" placeholder="Cenário e objetivo do agente." required></textarea></div>
+          <div class="field"><label>Contexto</label><textarea name="summary" placeholder="Cenário, salário/custo atual do cargo e economia desejada." required></textarea></div>
           <div class="field"><label>Atribuições — o que a IA deve executar (uma por linha)</label><textarea name="tasks" placeholder="Ler movimentação do ERP&#10;Prever ruptura de estoque&#10;Sugerir ordens de compra" required></textarea></div>
           <div class="field"><label>Requisitos / integrações (vírgulas)</label><input name="stack" placeholder="ERP Bling, e-mail, previsão"></div>
           <input type="hidden" name="client">
           <button class="btn signal block lg" type="submit">Publicar vaga</button>
-          <p class="help">Sua vaga fica visível para os programadores responderem.</p>
+          <p class="help">Quanto mais claro for o custo atual do funcionário humano, melhores serão as propostas de economia.</p>
         </form>
       </div>
     </div>
@@ -77,3 +85,5 @@
 <script src="js/app.js"></script>
 </body>
 </html>
+
+<!-- Atualizado modelo comercial: Starter 99, Pro 299, Elite 999; comissão 15% implantação e 10% manutenção -->
