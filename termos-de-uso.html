@@ -4,75 +4,307 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Termos de Uso — Funcionário Artificial</title>
-<meta name="description" content="Versão-base dos Termos de Uso da plataforma Funcionário Artificial.">
+<meta name="description" content="Termos de Uso do marketplace Funcionário Artificial: cadastro, assinatura, anúncios, propostas, responsabilidades, IA, pagamentos, reputação, dados e disputas.">
 <link rel="stylesheet" href="css/style.css">
+<style>
+/* ===== Melhorias específicas da página de termos (escopadas em .legal-doc) ===== */
+.doc-meta{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:22px;}
+.doc-meta .meta-chip{font-family:var(--ff-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-dim);border:1px solid var(--line);background:var(--bg);clip-path:var(--clip-sm);padding:8px 12px;display:inline-flex;gap:8px;align-items:center;}
+.doc-meta .meta-chip b{color:var(--white);font-weight:500;letter-spacing:.06em;}
+.doc-meta .meta-chip .dotk{width:6px;height:6px;background:var(--signal);clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);}
+
+.clause-index{border:1px solid var(--line);background:var(--bg);clip-path:var(--clip-sm);padding:18px 20px;margin:8px 0 30px;}
+.clause-index>.label{display:block;margin-bottom:14px;}
+.clause-index ol{list-style:none;margin:0;columns:2;column-gap:30px;}
+.clause-index li{break-inside:avoid;margin:0 0 7px;}
+.clause-index a{font-family:var(--ff-mono);font-size:12px;letter-spacing:.02em;color:var(--ink-dim);display:flex;gap:10px;padding:3px 0;border-bottom:1px solid transparent;transition:.16s;}
+.clause-index a:hover{color:var(--signal);border-bottom-color:var(--line-soft);}
+.clause-index a .n{color:var(--ink-faint);min-width:24px;}
+@media(max-width:640px){ .clause-index ol{columns:1;} }
+
+.legal-doc h2[id]{scroll-margin-top:90px;}
+.legal-doc h2 .cn{font-family:var(--ff-mono);font-size:.46em;color:var(--signal);letter-spacing:.1em;vertical-align:middle;margin-right:10px;}
+.legal-doc .lead{color:var(--ink);font-size:15px;line-height:1.85;}
+.legal-doc li b,.legal-doc p b{color:var(--ink);}
+
+.em-resumo{border-left:2px solid var(--signal);background:rgba(214,255,63,.045);padding:11px 16px;margin:14px 0 6px;clip-path:var(--clip-sm);}
+.em-resumo b{font-family:var(--ff-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--signal);display:block;margin-bottom:5px;}
+.em-resumo span{color:var(--ink-dim);font-size:13px;line-height:1.7;}
+
+.note-info{border:1px solid var(--info);background:rgba(95,168,255,.06);clip-path:var(--clip-sm);padding:14px 16px;margin:14px 0 24px;color:var(--ink-dim);font-size:13px;line-height:1.7;}
+.note-info b{color:var(--info);}
+
+.def-grid{display:grid;gap:10px;margin:14px 0 6px;}
+.def{border:1px solid var(--line);background:var(--bg);clip-path:var(--clip-sm);padding:13px 16px;}
+.def dt{font-family:var(--ff-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--white);margin-bottom:5px;}
+.def dd{color:var(--ink-dim);font-size:13.5px;line-height:1.7;margin:0;}
+
+.back-top{display:inline-flex;align-items:center;gap:8px;font-family:var(--ff-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);margin-top:10px;}
+.back-top:hover{color:var(--signal);}
+
+.doc-end{margin-top:30px;border-top:1px solid var(--line);padding-top:22px;}
+.doc-end .label{display:block;margin-bottom:10px;}
+</style>
 </head>
 <body data-page="termos-de-uso">
 <section class="page-hero">
   <div class="wrap">
     <span class="label kicker">// TERMOS DE USO</span>
     <h1>Termos de Uso</h1>
-    <p>Regras-base para cadastro, uso, anúncios, propostas, responsabilidades, IA, pagamentos e disputas dentro do marketplace.</p>
+    <p>Regras-base que governam o cadastro, a assinatura, os anúncios, as propostas, os pagamentos, o uso de IA, a reputação, os dados e as disputas dentro do marketplace Funcionário Artificial.</p>
   </div>
 </section>
 <section class="legal-wrap wrap">
   <article class="legal-doc">
-    <div class="legal-note"><b>Importante:</b> este texto é uma versão-base para desenvolvimento do produto. Antes de usar em produção, revise com advogado especializado em direito digital, contratos, LGPD, consumo e meios de pagamento.</div>
 
-<h2>1. Natureza da plataforma</h2>
-<p>A Funcionário Artificial é uma plataforma digital de marketplace voltada à aproximação entre empresas interessadas em contratar funcionários digitais, agentes de IA, automações e serviços relacionados, e programadores ou prestadores independentes capazes de desenvolver, implantar, manter ou evoluir tais soluções.</p>
-<p>A plataforma atua como ambiente de divulgação, busca, comunicação, registro de propostas, intermediação comercial e, quando disponível, gestão de pagamento protegido. A plataforma não é empregadora dos programadores, não é sócia das empresas contratantes e não garante vínculo trabalhista entre as partes.</p>
-<h2>2. Perfis de usuários</h2>
-<ul>
-<li><b>Cliente:</b> empresa, empreendedor ou contratante que busca solução de IA para executar, reduzir ou automatizar uma função operacional.</li>
-<li><b>Programador:</b> profissional, equipe ou empresa que anuncia, desenvolve, implanta ou mantém funcionários digitais.</li>
-<li><b>Plataforma:</b> ambiente intermediador que organiza perfis, anúncios, propostas, registros e políticas de uso.</li>
-</ul>
-<h2>3. Cadastro, verificação e segurança</h2>
-<p>A plataforma poderá solicitar dados cadastrais, documentos, CNPJ, CPF, comprovantes, links profissionais, histórico, portfólio e outras informações necessárias para reduzir golpes, validar identidade e manter a segurança do marketplace.</p>
-<p>O usuário declara que as informações fornecidas são verdadeiras, atuais e completas. Informações falsas, tentativa de fraude, uso de identidade de terceiros ou criação de perfis enganosos poderão gerar bloqueio, retenção de valores em análise, cancelamento de acordos e comunicação às autoridades competentes.</p>
-<h2>4. Anúncios e propostas</h2>
-<p>Os anúncios devem descrever com clareza o que o funcionário digital faz, quais tarefas executa, quais limitações possui, quais integrações são incluídas, qual o prazo de implantação, qual o valor de implantação e qual a mensalidade de manutenção, quando houver.</p>
-<p>É proibido prometer resultado financeiro garantido, substituição integral de pessoa ou ausência total de erro quando a solução depende de IA generativa, dados de terceiros, APIs externas, sistemas do cliente ou validação humana.</p>
-<h2>5. Escopo e aceite</h2>
-<p>Antes do início do projeto, as partes devem registrar escopo, entregáveis, prazo, preço, critérios de aceite, suporte, manutenção, responsabilidades por integrações, dados necessários, acessos e limites de uso. Alterações fora do escopo devem ser tratadas como novo orçamento ou aditivo.</p>
-<h2>6. Responsabilidades do cliente</h2>
-<ul>
-<li>Definir claramente o problema, o cargo ou o processo que deseja automatizar.</li>
-<li>Fornecer dados, acessos, materiais, regras de negócio e validações necessárias.</li>
-<li>Testar a solução antes de uso crítico.</li>
-<li>Supervisionar respostas e decisões produzidas por IA, especialmente em áreas sensíveis.</li>
-<li>Usar a solução de acordo com a lei, contratos, políticas internas e normas aplicáveis.</li>
-</ul>
-<h2>7. Responsabilidades do programador</h2>
-<ul>
-<li>Entregar o que foi contratado dentro do escopo aprovado.</li>
-<li>Informar limitações técnicas, riscos de alucinação, dependências e custos externos.</li>
-<li>Proteger dados, credenciais e informações do cliente.</li>
-<li>Prestar manutenção se ela tiver sido contratada.</li>
-<li>Não reutilizar dados confidenciais do cliente sem autorização expressa.</li>
-</ul>
-<h2>8. IA, alucinações e validação humana</h2>
-<p>O usuário reconhece que sistemas de IA podem produzir respostas imprecisas, incompletas, enviesadas ou alucinatórias. A contratação de manutenção, monitoramento, testes e revisão humana é recomendada para reduzir risco operacional.</p>
-<p>A plataforma não garante que uma IA substituirá integralmente um funcionário humano, nem que gerará economia específica. Simulações apresentadas no site são exemplos comerciais e dependem do contexto real de cada empresa.</p>
-<h2>9. Limitação de responsabilidade da plataforma</h2>
-<p>A plataforma não desenvolve, opera ou controla diretamente os funcionários digitais anunciados por programadores independentes, salvo quando houver contratação expressa da própria plataforma como prestadora direta.</p>
-<p>A responsabilidade técnica pela entrega, qualidade, segurança e manutenção da solução é do programador contratado. A responsabilidade pelo uso, validação, decisões de negócio e dados fornecidos é do cliente.</p>
-<h2>10. Condutas proibidas</h2>
-<ul>
-<li>Fechar por fora para burlar taxas da plataforma após contato originado dentro do marketplace.</li>
-<li>Praticar fraude, chargeback abusivo, falsidade documental ou golpe de entrega.</li>
-<li>Publicar anúncios enganosos, ilegais, discriminatórios ou que violem direitos de terceiros.</li>
-<li>Solicitar soluções para fins ilícitos, invasão, spam, manipulação, vigilância abusiva ou violação de privacidade.</li>
-</ul>
-<h2>11. Dados pessoais e privacidade</h2>
-<p>O tratamento de dados pessoais deve observar a legislação aplicável, incluindo bases legais, finalidade, necessidade, segurança, transparência e direitos dos titulares. Clientes e programadores poderão ser considerados controladores ou operadores conforme o caso concreto.</p>
-<h2>12. Suspensão e encerramento</h2>
-<p>A plataforma poderá suspender contas, anúncios, pagamentos ou comunicações em caso de suspeita de fraude, violação destes Termos, risco jurídico, reclamações recorrentes ou ordem de autoridade competente.</p>
-<h2>13. Disputas</h2>
-<p>Quando a contratação ocorrer pela plataforma, as partes concordam em usar o procedimento de disputa, apresentando mensagens, escopo aprovado, entregas, evidências de teste, comprovantes e demais registros. A mediação da plataforma não substitui o Poder Judiciário.</p>
-<h2>14. Alterações</h2>
-<p>Estes Termos poderão ser atualizados. A continuidade de uso da plataforma após a publicação de nova versão poderá ser considerada aceite das alterações.</p>
+    <div class="doc-meta">
+      <span class="meta-chip"><i class="dotk"></i>Documento <b>Termos de Uso</b></span>
+      <span class="meta-chip">Versão <b>2.0 — base</b></span>
+      <span class="meta-chip">Âmbito <b>Todos os Usuários</b></span>
+      <span class="meta-chip">Natureza <b>Modelo para desenvolvimento</b></span>
+    </div>
+
+    <div class="legal-note"><b>Importante:</b> este é um texto-base, escrito para apoiar o desenvolvimento do produto. Ele organiza ideias e cláusulas usuais de um marketplace de serviços, mas <b>não é parecer jurídico nem documento pronto para produção</b>. Antes de publicar, exigir aceite de usuários ou usá-lo em qualquer cobrança, revise-o com advogado especializado em direito digital, contratos, relações de consumo, propriedade intelectual, LGPD, direito do trabalho e meios de pagamento, ajustando prazos, percentuais, multas e foro à sua operação real.</div>
+
+    <div class="note-info"><b>Como ler este documento:</b> cada cláusula traz o texto formal seguido de um bloco verde <b>“Em resumo”</b>, que é apenas uma explicação em linguagem simples para facilitar a leitura. Em caso de divergência, prevalece o texto da cláusula, e não o resumo. Estes Termos devem ser lidos junto com a Política de Pagamentos, o Contrato de Intermediação e a Política de Cookies. O índice abaixo leva direto a cada seção.</div>
+
+    <nav class="clause-index" aria-label="Índice de cláusulas">
+      <span class="label">SUMÁRIO</span>
+      <ol>
+        <li><a href="#t1-aceitacao"><span class="n">01</span> Aceitação e objeto</a></li>
+        <li><a href="#t2-definicoes"><span class="n">02</span> Definições</a></li>
+        <li><a href="#t3-natureza"><span class="n">03</span> Natureza da plataforma</a></li>
+        <li><a href="#t4-perfis"><span class="n">04</span> Perfis de usuários</a></li>
+        <li><a href="#t5-elegibilidade"><span class="n">05</span> Elegibilidade e capacidade</a></li>
+        <li><a href="#t6-conta"><span class="n">06</span> Cadastro, conta e segurança</a></li>
+        <li><a href="#t7-assinatura"><span class="n">07</span> Assinaturas e áreas restritas</a></li>
+        <li><a href="#t8-anuncios"><span class="n">08</span> Anúncios (ofertas) e vagas</a></li>
+        <li><a href="#t9-propostas"><span class="n">09</span> Propostas e formação de acordos</a></li>
+        <li><a href="#t10-escopo"><span class="n">10</span> Escopo, entregáveis e aceite</a></li>
+        <li><a href="#t11-cliente"><span class="n">11</span> Responsabilidades do Cliente</a></li>
+        <li><a href="#t12-programador"><span class="n">12</span> Responsabilidades do Programador</a></li>
+        <li><a href="#t13-pagamentos"><span class="n">13</span> Pagamentos, taxas e PIX</a></li>
+        <li><a href="#t14-escrow"><span class="n">14</span> Pagamento protegido e disputas</a></li>
+        <li><a href="#t15-ia"><span class="n">15</span> IA, alucinações e supervisão humana</a></li>
+        <li><a href="#t16-conteudo"><span class="n">16</span> Conteúdo do usuário e licença</a></li>
+        <li><a href="#t17-pi"><span class="n">17</span> Propriedade intelectual da plataforma</a></li>
+        <li><a href="#t18-conduta"><span class="n">18</span> Condutas proibidas e uso aceitável</a></li>
+        <li><a href="#t19-reputacao"><span class="n">19</span> Reputação, avaliações e feedback</a></li>
+        <li><a href="#t20-dados"><span class="n">20</span> Dados pessoais, privacidade e cookies</a></li>
+        <li><a href="#t21-garantias"><span class="n">21</span> Isenção de garantias</a></li>
+        <li><a href="#t22-limitacao"><span class="n">22</span> Limitação de responsabilidade</a></li>
+        <li><a href="#t23-indenizacao"><span class="n">23</span> Indenização</a></li>
+        <li><a href="#t24-suspensao"><span class="n">24</span> Suspensão e encerramento</a></li>
+        <li><a href="#t25-disponibilidade"><span class="n">25</span> Disponibilidade e mudanças no serviço</a></li>
+        <li><a href="#t26-comunicacoes"><span class="n">26</span> Comunicações e notificações</a></li>
+        <li><a href="#t27-alteracoes"><span class="n">27</span> Alterações destes Termos</a></li>
+        <li><a href="#t28-gerais"><span class="n">28</span> Disposições gerais</a></li>
+        <li><a href="#t29-foro"><span class="n">29</span> Lei aplicável e foro</a></li>
+        <li><a href="#t30-contato"><span class="n">30</span> Contato e canais oficiais</a></li>
+      </ol>
+    </nav>
+
+    <p class="lead">Estes Termos de Uso (“Termos”) regulam o acesso e o uso da plataforma <b>Funcionário Artificial</b> (a “Plataforma”), um marketplace que aproxima quem deseja automatizar uma função por meio de inteligência artificial (o “Cliente”) de quem constrói, vende, integra e mantém esses agentes — os funcionários digitais (o “Programador”). Ao acessar a Plataforma, criar conta, assinar um plano, publicar anúncios, enviar ou aceitar propostas, o Usuário declara que leu, compreendeu e concorda com estes Termos, que devem ser lidos em conjunto com a Política de Pagamentos, o Contrato de Intermediação e a Política de Cookies.</p>
+
+    <h2 id="t1-aceitacao"><span class="cn">01</span>Aceitação e objeto</h2>
+    <p>Estes Termos formam um contrato entre o Usuário e a Plataforma. O <b>uso da Plataforma implica aceitação integral</b> destes Termos e dos documentos que os complementam. Quem não concordar com qualquer disposição não deve criar conta nem utilizar os serviços. Quando o Usuário atua em nome de uma empresa, declara ter poderes para vinculá-la a estes Termos.</p>
+    <p>O objeto destes Termos é descrever as regras gerais de uso da Plataforma. As regras específicas de cada acordo entre Cliente e Programador são tratadas no Contrato de Intermediação e na proposta aceita; as regras de cobrança, na Política de Pagamentos.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>Usar o site significa aceitar estas regras. Se não concordar, não use. Quem entra por uma empresa precisa ter autorização para isso.</span></div>
+
+    <h2 id="t2-definicoes"><span class="cn">02</span>Definições</h2>
+    <p>Os termos abaixo, sempre que iniciados em maiúscula, têm o significado a seguir, no singular ou no plural:</p>
+    <div class="def-grid">
+      <dl class="def"><dt>Plataforma</dt><dd>O marketplace Funcionário Artificial: site, áreas logadas, banco de dados, mecanismos de pagamento, sistema de propostas, reputação e disputas, operado pela pessoa jurídica mantenedora.</dd></dl>
+      <dl class="def"><dt>Usuário</dt><dd>Qualquer pessoa que acessa a Plataforma, esteja ou não logada. Pode atuar como Cliente, como Programador, ou ambos.</dd></dl>
+      <dl class="def"><dt>Cliente</dt><dd>Usuário que busca, contrata ou paga por um funcionário digital, automação ou serviço técnico correlato.</dd></dl>
+      <dl class="def"><dt>Programador</dt><dd>Usuário que oferece, constrói, integra, entrega ou mantém funcionários digitais e serviços técnicos.</dd></dl>
+      <dl class="def"><dt>Conta</dt><dd>Cadastro individual de acesso à Plataforma, protegido por credenciais sob responsabilidade do Usuário.</dd></dl>
+      <dl class="def"><dt>Assinatura</dt><dd>Plano de acesso pago que libera áreas restritas do perfil de Cliente ou de Programador, conforme a Política de Pagamentos.</dd></dl>
+      <dl class="def"><dt>Funcionário Digital / Agente de IA</dt><dd>Solução baseada em IA — agente, assistente, bot, automação, fluxo, integração ou conjunto de prompts e modelos — destinada a executar ou apoiar uma função do Cliente.</dd></dl>
+      <dl class="def"><dt>Oferta</dt><dd>Anúncio publicado pelo Programador descrevendo um funcionário digital ou serviço disponível para contratação.</dd></dl>
+      <dl class="def"><dt>Vaga</dt><dd>Publicação do Cliente descrevendo a função que deseja automatizar, aberta ao recebimento de propostas.</dd></dl>
+      <dl class="def"><dt>Proposta</dt><dd>Oferta comercial estruturada (escopo, preço, prazo, condições) trocada entre as partes dentro da Plataforma.</dd></dl>
+      <dl class="def"><dt>Acordo</dt><dd>O contrato de prestação de serviços firmado entre Cliente e Programador a partir do aceite de uma Proposta.</dd></dl>
+      <dl class="def"><dt>Conteúdo</dt><dd>Textos, imagens, códigos, prompts, bases, avaliações, documentos e quaisquer materiais publicados ou trocados na Plataforma.</dd></dl>
+      <dl class="def"><dt>Pagamento Protegido / Escrow</dt><dd>Mecanismo pelo qual o valor pago pelo Cliente fica condicionado ao cumprimento de uma etapa antes de ser liberado ao Programador.</dd></dl>
+      <dl class="def"><dt>Taxa de Intermediação</dt><dd>Valor devido à Plataforma por aproximar as partes e operar a estrutura de acordo, conforme a Política de Pagamentos.</dd></dl>
+      <dl class="def"><dt>Disputa</dt><dd>Procedimento interno acionado quando Cliente e Programador divergem sobre entrega, qualidade, prazo ou pagamento.</dd></dl>
+      <dl class="def"><dt>Dados Pessoais</dt><dd>Toda informação relacionada a pessoa natural identificada ou identificável, nos termos da Lei nº 13.709/2018 (LGPD).</dd></dl>
+    </div>
+    <div class="em-resumo"><b>Em resumo</b><span>Estas são as palavras-chave dos Termos. Quando aparecerem com inicial maiúscula, querem dizer exatamente o que está definido aqui.</span></div>
+
+    <h2 id="t3-natureza"><span class="cn">03</span>Natureza da plataforma</h2>
+    <p>A Funcionário Artificial é uma plataforma digital de marketplace voltada à aproximação entre empresas interessadas em contratar funcionários digitais, agentes de IA, automações e serviços relacionados, e programadores ou prestadores independentes capazes de desenvolver, implantar, manter ou evoluir tais soluções.</p>
+    <p>A Plataforma atua como ambiente de divulgação, busca, comunicação, registro de propostas, intermediação comercial e, quando disponível, gestão de pagamento protegido. A Plataforma <b>não é empregadora</b> dos Programadores, <b>não é sócia</b> das empresas contratantes, não dirige o trabalho técnico e não garante vínculo trabalhista entre as partes.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>O site é uma ponte que conecta quem precisa de IA a quem constrói. Ele não é patrão de ninguém nem sócio de ninguém.</span></div>
+
+    <h2 id="t4-perfis"><span class="cn">04</span>Perfis de usuários</h2>
+    <ul>
+      <li><b>Cliente:</b> empresa, empreendedor ou contratante que busca solução de IA para executar, reduzir ou automatizar uma função operacional.</li>
+      <li><b>Programador:</b> profissional, equipe ou empresa que anuncia, desenvolve, implanta ou mantém funcionários digitais.</li>
+      <li><b>Plataforma:</b> ambiente intermediador que organiza perfis, anúncios, propostas, registros e políticas de uso.</li>
+    </ul>
+    <p>Um mesmo Usuário pode manter os dois perfis (Cliente e Programador), respeitando as regras e as assinaturas de cada um. As permissões de cada perfil são controladas no servidor, de modo que o acesso a áreas restritas depende de assinatura ativa correspondente.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>Há três papéis: quem contrata, quem constrói e a Plataforma. A mesma pessoa pode ser cliente e programador ao mesmo tempo.</span></div>
+
+    <h2 id="t5-elegibilidade"><span class="cn">05</span>Elegibilidade e capacidade</h2>
+    <p>Para usar a Plataforma, o Usuário deve ter ao menos 18 anos e capacidade civil plena, ou representar validamente a pessoa jurídica em nome de quem atua. A Plataforma é destinada a uso profissional e comercial, não a menores de idade.</p>
+    <p>O cadastro pode ser recusado, e o acesso pode ser limitado, por exigência legal, restrição regulatória, histórico de fraude ou risco à segurança do marketplace.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>É preciso ser maior de idade e capaz, ou representar uma empresa. O site é para uso profissional.</span></div>
+
+    <h2 id="t6-conta"><span class="cn">06</span>Cadastro, conta e segurança</h2>
+    <p>A Plataforma poderá solicitar dados cadastrais, documentos, CNPJ, CPF, comprovantes, links profissionais, histórico, portfólio e outras informações necessárias para reduzir golpes, validar identidade e manter a segurança do marketplace.</p>
+    <p>O Usuário declara que as informações fornecidas são <b>verdadeiras, atuais e completas</b> e é responsável por manter a confidencialidade de suas credenciais e por toda atividade realizada em sua Conta. Informações falsas, tentativa de fraude, uso de identidade de terceiros ou criação de perfis enganosos poderão gerar bloqueio, retenção de valores em análise, cancelamento de acordos e comunicação às autoridades competentes. O Usuário deve avisar a Plataforma, sem demora, sobre qualquer uso não autorizado da sua Conta.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>Cadastre-se com dados reais, proteja sua senha e responda pelo que acontece na sua conta. Dado falso ou fraude leva a bloqueio.</span></div>
+
+    <h2 id="t7-assinatura"><span class="cn">07</span>Assinaturas e áreas restritas</h2>
+    <p>O acesso a determinadas áreas — como ver todas as ofertas, publicar uma vaga, expor serviços ou consultar o que os clientes procuram — pode depender de <b>assinatura ativa</b> do perfil correspondente (Cliente ou Programador). Os valores, a forma de cobrança, a renovação e o cancelamento das assinaturas seguem a Política de Pagamentos e são informados antes da contratação.</p>
+    <p>A assinatura é uma autorização de acesso à Plataforma; ela <b>não se confunde</b> com o pagamento dos serviços contratados entre Cliente e Programador, nem garante o fechamento de qualquer acordo. O cancelamento da assinatura impede novas cobranças futuras de acesso, mas não desfaz, por si só, acordos já firmados entre as partes.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>Algumas áreas só abrem com assinatura ativa. Assinar dá acesso ao site — não paga o serviço do programador nem garante fechar negócio.</span></div>
+
+    <h2 id="t8-anuncios"><span class="cn">08</span>Anúncios (ofertas) e vagas</h2>
+    <p>Os anúncios devem descrever com clareza o que o funcionário digital faz, quais tarefas executa, quais limitações possui, quais integrações estão incluídas, qual o prazo de implantação, qual o valor de implantação e qual a mensalidade de manutenção, quando houver. As vagas publicadas por Clientes devem descrever com honestidade a função, o contexto e as restrições do trabalho.</p>
+    <p>É <b>proibido</b> prometer resultado financeiro garantido, substituição integral de pessoa ou ausência total de erro quando a solução depende de IA generativa, dados de terceiros, APIs externas, sistemas do Cliente ou validação humana. A Plataforma pode editar, despublicar ou recusar anúncios e vagas que violem estes Termos, sejam enganosos ou apresentem risco jurídico.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>Anúncios e vagas precisam ser honestos e claros. Nada de prometer “lucro garantido” ou “zero erro”. Anúncio enganoso pode ser removido.</span></div>
+
+    <h2 id="t9-propostas"><span class="cn">09</span>Propostas e formação de acordos</h2>
+    <p>A negociação entre Cliente e Programador ocorre por meio de Propostas trocadas dentro da Plataforma. O Acordo se forma quando ambos aceitam uma Proposta que contenha, no mínimo, escopo, entregáveis, preço, prazo, forma de pagamento, critérios de aceite, suporte e regras de cancelamento. A relação entre as partes é regida pela Proposta aceita e pelo Contrato de Intermediação.</p>
+    <p>Combinações verbais ou condições não registradas na Plataforma dificultam a comprovação em eventual Disputa e não vinculam a Plataforma. Recomenda-se formalizar todo ajuste relevante por aditivo dentro do ambiente oficial.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>O negócio “fecha” quando os dois aceitam uma proposta clara no site. O que ficar combinado por fora vale menos e fica difícil de provar.</span></div>
+
+    <h2 id="t10-escopo"><span class="cn">10</span>Escopo, entregáveis e aceite</h2>
+    <p>Antes do início do projeto, as partes devem registrar escopo, entregáveis, prazo, preço, critérios de aceite, suporte, manutenção, responsabilidades por integrações, dados necessários, acessos e limites de uso. Alterações fora do escopo devem ser tratadas como novo orçamento ou aditivo.</p>
+    <p>Uma entrega é considerada aceita quando cumpre o escopo aprovado e os critérios objetivos definidos, seja por aprovação expressa, por decurso do prazo de homologação sem manifestação fundamentada, ou por decisão de Disputa. Preferências subjetivas ou pedidos novos não previstos não impedem, por si só, a liberação do pagamento de uma etapa que cumpriu o combinado.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>Defina por escrito o que entra e o que sai. Se a entrega faz o combinado e o cliente não aponta um problema objetivo no prazo, ela conta como aceita.</span></div>
+
+    <h2 id="t11-cliente"><span class="cn">11</span>Responsabilidades do Cliente</h2>
+    <ul>
+      <li>Definir claramente o problema, o cargo ou o processo que deseja automatizar.</li>
+      <li>Fornecer dados, acessos, materiais, regras de negócio e validações necessárias, de forma verídica e legalmente apta para uso.</li>
+      <li>Testar a solução antes de qualquer uso crítico.</li>
+      <li>Supervisionar respostas e decisões produzidas por IA, especialmente em áreas sensíveis.</li>
+      <li>Usar a solução de acordo com a lei, contratos, políticas internas e normas aplicáveis.</li>
+      <li>Pagar os valores aprovados nas condições combinadas.</li>
+    </ul>
+    <p>O Cliente é o responsável final pela decisão de colocar o funcionário digital em produção e pelo uso que faz dele no seu negócio.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>O Cliente explica o que precisa, entrega insumos corretos, testa, paga, usa dentro da lei e mantém um humano revisando decisões importantes.</span></div>
+
+    <h2 id="t12-programador"><span class="cn">12</span>Responsabilidades do Programador</h2>
+    <ul>
+      <li>Entregar o que foi contratado dentro do escopo aprovado, com boa técnica e no prazo.</li>
+      <li>Informar limitações técnicas, riscos de alucinação, dependências e custos externos.</li>
+      <li>Proteger dados, credenciais e informações do Cliente, usando-os só para o trabalho contratado.</li>
+      <li>Documentar a solução e prestar manutenção quando ela tiver sido contratada.</li>
+      <li>Não reutilizar dados confidenciais do Cliente sem autorização expressa.</li>
+      <li>Respeitar direitos de terceiros, licenças de software, dados e propriedade intelectual.</li>
+    </ul>
+    <p>O Programador garante que detém os direitos necessários sobre o que entrega e que a solução não viola, ao seu conhecimento, direitos de terceiros.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>O Programador entrega o combinado com qualidade, avisa dos riscos, protege os dados, documenta e garante que tem direito de entregar aquilo.</span></div>
+
+    <h2 id="t13-pagamentos"><span class="cn">13</span>Pagamentos, taxas e PIX</h2>
+    <p>Os pagamentos na Plataforma — assinatura de acesso, implantação, manutenção mensal e taxas — seguem a Política de Pagamentos, que detalha tipos de cobrança, marcos, reembolsos e contestação. Quando disponível, o pagamento pode ser feito via <b>PIX</b>, com valor e favorecido informados antes da confirmação.</p>
+    <p>Sobre acordos fechados dentro do marketplace pode incidir <b>taxa de intermediação ou comissão</b>, sempre apresentada antes do fechamento. Cada parte é responsável por suas próprias obrigações fiscais e pela emissão de nota fiscal sobre os valores que recebe, salvo disposição diferente no Acordo.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>As cobranças seguem a Política de Pagamentos; dá para pagar por PIX. A taxa do site é sempre informada antes, e cada um cuida dos próprios impostos.</span></div>
+
+    <h2 id="t14-escrow"><span class="cn">14</span>Pagamento protegido e disputas</h2>
+    <p>Quando habilitado, o pagamento protegido (escrow) retém o valor pago pelo Cliente e o libera ao Programador após o cumprimento da etapa, o aceite ou o encerramento de Disputa. O mecanismo existe para equilibrar dois riscos: o Cliente pagar e não receber, e o Programador entregar e não receber.</p>
+    <p>Havendo conflito, qualquer parte pode abrir uma Disputa, na qual a Plataforma pode solicitar escopo, mensagens, entregas, evidências de teste, prints, logs e comprovantes. A Plataforma pode liberar, reter ou devolver valores conforme a apuração. A mediação da Plataforma <b>não substitui o Poder Judiciário</b>. O procedimento detalhado consta da Política de Pagamentos e do Contrato de Intermediação.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>O dinheiro fica retido até a etapa ser cumprida. Se der briga, abre disputa com provas e a Plataforma decide o destino do valor — sem tirar o direito de ir à Justiça.</span></div>
+
+    <h2 id="t15-ia"><span class="cn">15</span>IA, alucinações e supervisão humana</h2>
+    <p>O Usuário reconhece que sistemas de IA podem produzir respostas <b>imprecisas, incompletas, enviesadas ou alucinatórias</b>, depender de serviços de terceiros que mudam sem aviso e reagir de forma inesperada a entradas atípicas. A contratação de manutenção, monitoramento, testes e revisão humana é recomendada para reduzir o risco operacional.</p>
+    <p>Decisões de impacto financeiro, jurídico, médico, trabalhista, de segurança ou que afetem direitos de terceiros devem manter <b>supervisão humana</b>, com limites claros de autonomia do agente. A Plataforma não garante que uma IA substituirá integralmente um funcionário humano, nem que gerará economia específica; simulações apresentadas no site são exemplos comerciais e dependem do contexto real de cada empresa.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>IA erra. Em decisões importantes, mantenha um humano revisando. Os exemplos de economia do site são ilustrativos, não promessa.</span></div>
+
+    <h2 id="t16-conteudo"><span class="cn">16</span>Conteúdo do usuário e licença</h2>
+    <p>O Usuário continua titular do Conteúdo que publica (anúncios, descrições de vaga, mensagens, avaliações, portfólio). Ao publicar, o Usuário declara que tem os direitos necessários sobre esse Conteúdo e concede à Plataforma uma <b>licença limitada</b>, não exclusiva e gratuita, para hospedar, exibir, reproduzir e distribuir o Conteúdo na medida necessária para operar e divulgar o marketplace.</p>
+    <p>O Usuário é responsável pelo Conteúdo que publica e não deve inserir material ilegal, ofensivo, enganoso ou que viole direitos de terceiros, sigilo ou dados pessoais. A Plataforma pode remover Conteúdo que viole estes Termos, sem que isso a torne responsável por revisar previamente tudo o que é publicado.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>O que você publica continua seu, mas o site pode exibir e usar isso para funcionar. Você responde pelo conteúdo, e o que viola as regras pode ser removido.</span></div>
+
+    <h2 id="t17-pi"><span class="cn">17</span>Propriedade intelectual da plataforma</h2>
+    <p>A marca, o nome, o logotipo, o layout, o código, o design, os textos e os demais elementos da Plataforma são protegidos por direitos de propriedade intelectual e pertencem à Plataforma ou a seus licenciadores. O acesso à Plataforma não transfere ao Usuário qualquer desses direitos.</p>
+    <p>É vedado copiar, modificar, distribuir, vender, alugar, fazer engenharia reversa, raspar dados em massa (scraping) ou explorar comercialmente partes da Plataforma sem autorização prévia e por escrito, salvo o uso normal das funcionalidades disponibilizadas.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>A marca, o código e o design do site são da Plataforma. Usar o site não te dá esses direitos, e copiar ou raspar dados sem permissão é proibido.</span></div>
+
+    <h2 id="t18-conduta"><span class="cn">18</span>Condutas proibidas e uso aceitável</h2>
+    <p>É vedado a qualquer Usuário, entre outras condutas:</p>
+    <ul>
+      <li>fechar por fora para burlar taxas da Plataforma após contato originado dentro do marketplace, nos termos da cláusula de não circunvenção do Contrato de Intermediação;</li>
+      <li>praticar fraude, chargeback abusivo, falsidade documental, lavagem de dinheiro ou golpe de entrega;</li>
+      <li>publicar anúncios enganosos, ilegais, discriminatórios ou que violem direitos de terceiros;</li>
+      <li>solicitar ou construir soluções para fins ilícitos, invasão, spam, manipulação, vigilância abusiva ou violação de privacidade;</li>
+      <li>tentar invadir, sobrecarregar, copiar ou contornar mecanismos de segurança, pagamento, escrow, reputação ou disputa;</li>
+      <li>criar agentes destinados a enganar pessoas sobre sua natureza artificial quando isso for ilegal ou abusivo, ou a decidir em alto risco sem a supervisão exigida.</li>
+    </ul>
+    <p>O descumprimento autoriza a Plataforma a remover conteúdo, recusar acordos, reter valores cautelarmente, suspender ou encerrar contas e, quando cabível, comunicar autoridades.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>Nada de fraude, fugir de taxa, anúncio enganoso, uso ilícito ou tentar burlar a segurança do site. Quem faz isso perde acesso e pode ser denunciado.</span></div>
+
+    <h2 id="t19-reputacao"><span class="cn">19</span>Reputação, avaliações e feedback</h2>
+    <p>A Plataforma pode manter sistema de avaliação e reputação para apoiar a confiança entre as partes. As avaliações devem ser <b>verídicas, de boa-fé</b> e baseadas em experiência real de contratação, sem ofensas, chantagem (“avaliação em troca de desconto”) ou manipulação por avaliações falsas, próprias ou de terceiros contratados para esse fim.</p>
+    <p>A Plataforma pode moderar, ocultar ou remover avaliações que violem estes Termos e pode usar dados agregados de reputação para organizar a exibição de perfis e ofertas. Sugestões e feedback enviados voluntariamente podem ser usados para melhorar o serviço, sem que isso gere obrigação de remuneração.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>Avalie com honestidade e baseado em experiência real. Avaliação falsa, ofensiva ou usada como chantagem pode ser removida.</span></div>
+
+    <h2 id="t20-dados"><span class="cn">20</span>Dados pessoais, privacidade e cookies</h2>
+    <p>O tratamento de Dados Pessoais deve observar a legislação aplicável, em especial a LGPD, incluindo bases legais, finalidade, necessidade, segurança, transparência e direitos dos titulares. Conforme o caso concreto, Clientes e Programadores podem ser considerados controladores, operadores ou controladores independentes.</p>
+    <p>A Plataforma adota medidas de segurança razoáveis e trata os Dados Pessoais dos Usuários conforme sua política de privacidade. O uso de cookies e tecnologias semelhantes é descrito na Política de Cookies. Incidentes de segurança que possam acarretar risco aos titulares devem ser comunicados sem demora injustificada, e os dados devem ser eliminados ou devolvidos ao fim do tratamento, salvo guarda exigida por lei.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>Dados de pessoas seguem a LGPD: usar só para o combinado, proteger, avisar em caso de vazamento e apagar no fim. Cookies estão na política própria.</span></div>
+
+    <h2 id="t21-garantias"><span class="cn">21</span>Isenção de garantias</h2>
+    <p>A Plataforma é fornecida <b>“no estado em que se encontra”</b> e “conforme disponível”. A Plataforma emprega esforços razoáveis de segurança e disponibilidade, mas não garante operação ininterrupta, ausência de erros, compatibilidade com todos os dispositivos ou adequação a uma finalidade específica do Usuário.</p>
+    <p>A Plataforma não garante a qualidade, a legalidade, a segurança ou o desempenho dos funcionários digitais e serviços anunciados por Programadores independentes, nem o resultado de negócio do Cliente. Direitos de consumidores eventualmente aplicáveis não são afastados por esta cláusula.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>O site funciona “como está”, sem promessa de operar sem falhas. E ele não garante a qualidade do trabalho técnico de cada programador.</span></div>
+
+    <h2 id="t22-limitacao"><span class="cn">22</span>Limitação de responsabilidade</h2>
+    <p>A Plataforma não desenvolve, opera ou controla diretamente os funcionários digitais anunciados por Programadores independentes, salvo quando houver contratação expressa da própria Plataforma como prestadora direta. A responsabilidade técnica pela entrega, qualidade, segurança e manutenção da solução é do Programador; a responsabilidade pelo uso, validação, decisões de negócio e dados fornecidos é do Cliente.</p>
+    <p>Na máxima extensão permitida em lei, a Plataforma não responde por danos indiretos, lucros cessantes, perda de chance, dados ou reputação, nem por falhas de sistemas, APIs ou modelos de terceiros, mau uso ou descumprimento de uma das partes. Quando houver responsabilidade da Plataforma por seus serviços de intermediação, ela ficará limitada ao valor das taxas efetivamente recebidas pela Plataforma no Acordo específico, ressalvados os direitos irrenunciáveis de consumidores.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>A Plataforma responde só pela intermediação que faz. Os erros do serviço técnico são do Programador; as decisões de negócio são do Cliente. E há um teto para o que a Plataforma responde.</span></div>
+
+    <h2 id="t23-indenizacao"><span class="cn">23</span>Indenização</h2>
+    <p>O Usuário concorda em <b>indenizar e isentar</b> a Plataforma e demais usuários de perdas, danos, multas e despesas razoáveis (incluindo honorários) decorrentes de reclamações de terceiros causadas por seus próprios atos, em especial: violação destes Termos, infração a direitos de terceiros ou de propriedade intelectual, tratamento indevido de dados pessoais, fornecimento de informações falsas ou uso ilícito da Plataforma ou de um funcionário digital.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>Se você causar um processo de terceiro por culpa própria, você arca com o prejuízo e protege a Plataforma e os demais.</span></div>
+
+    <h2 id="t24-suspensao"><span class="cn">24</span>Suspensão e encerramento</h2>
+    <p>A Plataforma poderá suspender contas, anúncios, pagamentos ou comunicações em caso de suspeita de fraude, violação destes Termos, risco jurídico, reclamações recorrentes ou ordem de autoridade competente. Sempre que possível e seguro, haverá <b>aviso prévio</b> e prazo para regularização; em situações graves ou urgentes, a suspensão pode ser imediata e cautelar.</p>
+    <p>O encerramento não prejudica obrigações já vencidas, valores em escrow sujeitos a apuração, nem as cláusulas que sobrevivem ao término (propriedade intelectual, confidencialidade, limitação de responsabilidade, indenização e foro). O Usuário pode encerrar sua Conta a qualquer tempo, observados os Acordos em andamento.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>A conta pode ser suspensa por descumprimento ou risco — em geral com aviso antes. O que já estava combinado e alguns deveres continuam valendo depois.</span></div>
+
+    <h2 id="t25-disponibilidade"><span class="cn">25</span>Disponibilidade, manutenção e mudanças no serviço</h2>
+    <p>A Plataforma pode evoluir: incluir, alterar ou descontinuar funcionalidades, realizar manutenções programadas ou emergenciais e ajustar planos e recursos. Buscará comunicar mudanças relevantes com antecedência razoável, mas pode haver indisponibilidade temporária por manutenção, falha técnica, ataque ou fatores fora de seu controle.</p>
+    <p>Mudanças que afetem áreas pagas observarão a Política de Pagamentos. A continuidade do serviço não implica garantia de que uma funcionalidade específica será mantida indefinidamente.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>O site pode mudar, atualizar ou tirar funções, e às vezes ficar fora do ar por manutenção. Mudanças em áreas pagas seguem a Política de Pagamentos.</span></div>
+
+    <h2 id="t26-comunicacoes"><span class="cn">26</span>Comunicações e notificações</h2>
+    <p>As comunicações entre o Usuário e a Plataforma ocorrem pelos <b>canais oficiais</b> e pelo e-mail cadastrado. Avisos enviados ao endereço cadastrado presumem-se recebidos. É responsabilidade do Usuário manter seus dados de contato atualizados e acompanhar as mensagens e notificações da Plataforma.</p>
+    <p>Notificações formais sobre disputa, descumprimento, suspensão ou encerramento devem ser feitas por escrito e registradas, preferencialmente dentro da Plataforma, compondo a trilha de evidências.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>Fale pelos canais oficiais e mantenha seu e-mail atualizado. Aviso enviado ao endereço cadastrado conta como recebido.</span></div>
+
+    <h2 id="t27-alteracoes"><span class="cn">27</span>Alterações destes Termos</h2>
+    <p>Estes Termos poderão ser atualizados para refletir mudanças legais, técnicas ou de negócio. Alterações relevantes serão comunicadas pelos canais oficiais, com indicação da nova versão e data. A <b>continuidade de uso</b> da Plataforma após a publicação de nova versão poderá ser considerada aceite das alterações; quem não concordar pode encerrar sua Conta, observados os Acordos em andamento, que seguem regidos pela versão vigente quando foram firmados.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>As regras podem mudar com aviso. Continuar usando o site significa aceitar a nova versão. Acordos antigos seguem pela versão da época.</span></div>
+
+    <h2 id="t28-gerais"><span class="cn">28</span>Disposições gerais</h2>
+    <ul>
+      <li><b>Cessão:</b> o Usuário não pode ceder estes Termos a terceiros sem anuência prévia; a Plataforma pode cedê-los no contexto de reorganização societária, preservando os direitos dos Usuários.</li>
+      <li><b>Independência das cláusulas:</b> se alguma disposição for considerada inválida, as demais permanecem em vigor.</li>
+      <li><b>Não renúncia:</b> a tolerância quanto a um descumprimento não significa renúncia ao direito de exigir o cumprimento depois.</li>
+      <li><b>Integralidade:</b> estes Termos, com a Política de Pagamentos, o Contrato de Intermediação e a Política de Cookies, constituem o entendimento integral sobre o uso da Plataforma.</li>
+      <li><b>Idioma:</b> a versão em português prevalece sobre eventuais traduções.</li>
+    </ul>
+    <div class="em-resumo"><b>Em resumo</b><span>Detalhes jurídicos de fechamento: não dá para repassar os Termos sem aviso, se uma parte “cair” o resto continua, e este conjunto de documentos é o que vale.</span></div>
+
+    <h2 id="t29-foro"><span class="cn">29</span>Lei aplicável e foro</h2>
+    <p>Estes Termos são regidos pelas leis da República Federativa do Brasil. A versão final deve definir expressamente o <b>foro</b> competente ou a <b>câmara de mediação/arbitragem</b> eleita para dirimir conflitos, observadas as normas de proteção ao consumidor quando aplicáveis — que, em regra, asseguram ao consumidor o foro de seu domicílio. As partes buscarão, antes de medidas judiciais, a solução pelos canais internos de atendimento e disputa.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>Vale a lei brasileira. Onde os conflitos serão resolvidos precisa ser definido pelo advogado, respeitando o direito do consumidor.</span></div>
+
+    <h2 id="t30-contato"><span class="cn">30</span>Contato e canais oficiais</h2>
+    <p>Dúvidas, pedidos relativos a dados pessoais, denúncias de violação ou solicitações sobre a Conta devem ser encaminhados pelos <b>canais oficiais de atendimento</b> da Plataforma, a serem indicados no site. A versão final deve informar a razão social e o CNPJ da mantenedora, o endereço e o e-mail de contato, além do canal específico para assuntos de privacidade (encarregado/DPO), quando aplicável.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>Precisa falar com a Plataforma? Use os canais oficiais. A versão final deve trazer empresa, CNPJ e e-mail de contato.</span></div>
+
+    <div class="doc-end">
+      <span class="label">FIM DO DOCUMENTO</span>
+      <p>Versão 2.0 — base para desenvolvimento. Documento sujeito a revisão jurídica antes de uso em produção. Estes Termos devem ser lidos em conjunto com a Política de Pagamentos, o Contrato de Intermediação e a Política de Cookies.</p>
+      <a class="back-top" href="#">↑ Voltar ao topo</a>
+    </div>
 
   </article>
   <aside class="legal-side">

@@ -4,54 +4,269 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Política de Pagamentos — Funcionário Artificial</title>
-<meta name="description" content="Versão-base da política de pagamentos, escrow, reembolsos e disputas.">
+<meta name="description" content="Política de Pagamentos do marketplace Funcionário Artificial: assinatura, PIX, taxas, pagamento protegido, marcos, aceite, liberação, reembolso, chargeback e disputas.">
 <link rel="stylesheet" href="css/style.css">
+<style>
+/* ===== Melhorias específicas da página de pagamentos (escopadas em .legal-doc) ===== */
+.doc-meta{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:22px;}
+.doc-meta .meta-chip{font-family:var(--ff-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-dim);border:1px solid var(--line);background:var(--bg);clip-path:var(--clip-sm);padding:8px 12px;display:inline-flex;gap:8px;align-items:center;}
+.doc-meta .meta-chip b{color:var(--white);font-weight:500;letter-spacing:.06em;}
+.doc-meta .meta-chip .dotk{width:6px;height:6px;background:var(--signal);clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);}
+
+.clause-index{border:1px solid var(--line);background:var(--bg);clip-path:var(--clip-sm);padding:18px 20px;margin:8px 0 30px;}
+.clause-index>.label{display:block;margin-bottom:14px;}
+.clause-index ol{list-style:none;margin:0;columns:2;column-gap:30px;}
+.clause-index li{break-inside:avoid;margin:0 0 7px;}
+.clause-index a{font-family:var(--ff-mono);font-size:12px;letter-spacing:.02em;color:var(--ink-dim);display:flex;gap:10px;padding:3px 0;border-bottom:1px solid transparent;transition:.16s;}
+.clause-index a:hover{color:var(--signal);border-bottom-color:var(--line-soft);}
+.clause-index a .n{color:var(--ink-faint);min-width:24px;}
+@media(max-width:640px){ .clause-index ol{columns:1;} }
+
+.legal-doc h2[id]{scroll-margin-top:90px;}
+.legal-doc h2 .cn{font-family:var(--ff-mono);font-size:.46em;color:var(--signal);letter-spacing:.1em;vertical-align:middle;margin-right:10px;}
+.legal-doc .lead{color:var(--ink);font-size:15px;line-height:1.85;}
+.legal-doc li b,.legal-doc p b{color:var(--ink);}
+
+.em-resumo{border-left:2px solid var(--signal);background:rgba(214,255,63,.045);padding:11px 16px;margin:14px 0 6px;clip-path:var(--clip-sm);}
+.em-resumo b{font-family:var(--ff-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--signal);display:block;margin-bottom:5px;}
+.em-resumo span{color:var(--ink-dim);font-size:13px;line-height:1.7;}
+
+.note-info{border:1px solid var(--info);background:rgba(95,168,255,.06);clip-path:var(--clip-sm);padding:14px 16px;margin:14px 0 24px;color:var(--ink-dim);font-size:13px;line-height:1.7;}
+.note-info b{color:var(--info);}
+
+.def-grid{display:grid;gap:10px;margin:14px 0 6px;}
+.def{border:1px solid var(--line);background:var(--bg);clip-path:var(--clip-sm);padding:13px 16px;}
+.def dt{font-family:var(--ff-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--white);margin-bottom:5px;}
+.def dd{color:var(--ink-dim);font-size:13.5px;line-height:1.7;margin:0;}
+
+.back-top{display:inline-flex;align-items:center;gap:8px;font-family:var(--ff-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);margin-top:10px;}
+.back-top:hover{color:var(--signal);}
+
+.doc-end{margin-top:30px;border-top:1px solid var(--line);padding-top:22px;}
+.doc-end .label{display:block;margin-bottom:10px;}
+</style>
 </head>
 <body data-page="politica-de-pagamentos">
 <section class="page-hero">
   <div class="wrap">
     <span class="label kicker">// PAGAMENTOS</span>
     <h1>Política de Pagamentos</h1>
-    <p>Modelo inicial para explicar assinatura, implantação, manutenção, taxas, pagamento protegido, aceite e contestação.</p>
+    <p>Como funcionam assinatura, PIX, taxas de intermediação, pagamento protegido, marcos, aceite, liberação, retenção, reembolso, chargeback e disputas dentro do marketplace Funcionário Artificial.</p>
   </div>
 </section>
 <section class="legal-wrap wrap">
   <article class="legal-doc">
-    <div class="legal-note"><b>Importante:</b> este texto é uma versão-base para desenvolvimento do produto. Antes de usar em produção, revise com advogado especializado em direito digital, contratos, LGPD, consumo e meios de pagamento.</div>
 
-<h2>1. Objetivo</h2>
-<p>Esta Política explica como poderão funcionar pagamentos, assinaturas, taxas de intermediação, liberação de valores, reembolsos, cancelamentos e disputas dentro da Funcionário Artificial.</p>
-<h2>2. Tipos de pagamento</h2>
-<ul>
-<li><b>Assinatura de acesso:</b> valor mensal pago para usar áreas restritas da plataforma.</li>
-<li><b>Implantação:</b> valor pago pelo cliente para criação, configuração ou entrega inicial do funcionário digital.</li>
-<li><b>Manutenção mensal:</b> valor recorrente pago ao programador para suporte, correções, monitoramento e evolução.</li>
-<li><b>Taxa de intermediação:</b> percentual cobrado pela plataforma sobre acordos fechados dentro do marketplace.</li>
-</ul>
-<h2>3. Pagamento protegido</h2>
-<p>Quando disponível, a plataforma poderá operar um modelo de pagamento protegido, no qual o cliente paga o valor acordado e a liberação ao programador ocorre após cumprimento das etapas, aprovação do cliente ou encerramento de disputa.</p>
-<p>Esse modelo existe para reduzir dois riscos: o cliente pagar e não receber, e o programador entregar e não receber.</p>
-<h2>4. Marcos de entrega</h2>
-<p>Projetos podem ser divididos em marcos, como diagnóstico, protótipo, integração, homologação e entrega final. Cada marco deve possuir valor, prazo e critério objetivo de aceite.</p>
-<h2>5. Critérios de aceite</h2>
-<p>Uma entrega será considerada aceitável quando cumprir o escopo aprovado. Preferências subjetivas, pedidos novos ou mudanças de regra após o início não devem impedir liberação de pagamento se o escopo original foi cumprido.</p>
-<h2>6. Contestação</h2>
-<p>O cliente poderá contestar uma entrega dentro do prazo definido na proposta ou na plataforma. A contestação deve indicar pontos objetivos de descumprimento, anexar evidências e apontar qual item do escopo não foi atendido.</p>
-<p>O programador poderá responder com evidências de entrega, prints, vídeos, logs, links, mensagens, documentação ou demonstração técnica.</p>
-<h2>7. Reembolso</h2>
-<p>Reembolsos poderão ocorrer quando houver não entrega, descumprimento material do escopo, cancelamento dentro de prazo permitido ou decisão da mediação. Não haverá reembolso automático por arrependimento comercial após início da execução, salvo obrigação legal aplicável ou regra específica da oferta.</p>
-<h2>8. Chargeback e fraude</h2>
-<p>Chargebacks abusivos, falsas contestações, comprovantes falsos, uso de cartão ou conta de terceiros sem autorização, ou tentativa de receber a entrega sem pagar poderão gerar bloqueio de conta, retenção cautelar, cobrança administrativa e comunicação às autoridades.</p>
-<h2>9. Taxas da plataforma</h2>
-<p>A plataforma poderá cobrar assinatura, taxa fixa, percentual sobre implantação, percentual sobre manutenção mensal ou combinação desses modelos. As taxas devem ser apresentadas antes do fechamento do acordo.</p>
-<h2>10. Manutenção mensal</h2>
-<p>A manutenção mensal não deve ser confundida com garantia ilimitada. Ela pode incluir correção de alucinações, ajuste de prompts, revisão de bases, atualização de integrações, monitoramento de APIs e pequenas melhorias, conforme plano contratado.</p>
-<h2>11. Liberação de valores ao programador</h2>
-<p>Os valores poderão ser liberados após aprovação expressa, aprovação automática por decurso de prazo, conclusão de marco ou decisão em disputa. A plataforma poderá reter valores em análise quando houver suspeita de fraude, reclamação grave ou obrigação legal.</p>
-<h2>12. Assinaturas da plataforma</h2>
-<p>Assinaturas de acesso podem ser cobradas mensalmente e renovadas automaticamente, quando houver meio de pagamento compatível. O cancelamento impede novas cobranças futuras, mas não desfaz automaticamente serviços já contratados entre cliente e programador.</p>
-<h2>13. Impostos e notas fiscais</h2>
-<p>Cada parte é responsável por suas obrigações fiscais, emissão de nota fiscal, tributos e enquadramento jurídico, salvo disposição contratual diferente.</p>
+    <div class="doc-meta">
+      <span class="meta-chip"><i class="dotk"></i>Documento <b>Política de Pagamentos</b></span>
+      <span class="meta-chip">Versão <b>2.0 — base</b></span>
+      <span class="meta-chip">Âmbito <b>Assinatura · Acordos · Taxas</b></span>
+      <span class="meta-chip">Natureza <b>Modelo para desenvolvimento</b></span>
+    </div>
+
+    <div class="legal-note"><b>Importante:</b> este é um texto-base, escrito para apoiar o desenvolvimento do produto. Ele organiza ideias e cláusulas usuais de cobrança em um marketplace de serviços, mas <b>não é parecer jurídico nem documento pronto para produção</b>. Antes de publicar, exigir aceite de usuários ou usá-lo em qualquer cobrança, revise-o com advogado especializado em direito digital, contratos, relações de consumo, LGPD e meios de pagamento, ajustando valores, prazos, percentuais, multas e regras de reembolso à sua operação real e às exigências do seu provedor de pagamento.</div>
+
+    <div class="note-info"><b>Como ler este documento:</b> cada cláusula traz o texto formal seguido de um bloco verde <b>“Em resumo”</b>, que é apenas uma explicação em linguagem simples para facilitar a leitura. Em caso de divergência, prevalece o texto da cláusula, e não o resumo. Esta Política deve ser lida em conjunto com os Termos de Uso, o Contrato de Intermediação e a Política de Cookies. O índice abaixo leva direto a cada seção.</div>
+
+    <nav class="clause-index" aria-label="Índice de cláusulas">
+      <span class="label">SUMÁRIO</span>
+      <ol>
+        <li><a href="#p1-objetivo"><span class="n">01</span> Objetivo e âmbito</a></li>
+        <li><a href="#p2-definicoes"><span class="n">02</span> Definições</a></li>
+        <li><a href="#p3-visao-geral"><span class="n">03</span> Como o dinheiro circula</a></li>
+        <li><a href="#p4-tipos"><span class="n">04</span> Tipos de pagamento</a></li>
+        <li><a href="#p5-meios"><span class="n">05</span> Moeda e meios de pagamento (PIX)</a></li>
+        <li><a href="#p6-assinatura"><span class="n">06</span> Assinatura de acesso</a></li>
+        <li><a href="#p7-taxa"><span class="n">07</span> Taxa de intermediação</a></li>
+        <li><a href="#p8-escrow"><span class="n">08</span> Pagamento protegido (escrow)</a></li>
+        <li><a href="#p9-marcos"><span class="n">09</span> Marcos de entrega</a></li>
+        <li><a href="#p10-aceite"><span class="n">10</span> Critérios de aceite</a></li>
+        <li><a href="#p11-liberacao"><span class="n">11</span> Liberação de valores</a></li>
+        <li><a href="#p12-retencao"><span class="n">12</span> Retenção cautelar de valores</a></li>
+        <li><a href="#p13-contestacao"><span class="n">13</span> Contestação de entregas</a></li>
+        <li><a href="#p14-reembolso"><span class="n">14</span> Reembolso</a></li>
+        <li><a href="#p15-cancelamento"><span class="n">15</span> Cancelamento e rescisão</a></li>
+        <li><a href="#p16-manutencao"><span class="n">16</span> Manutenção mensal</a></li>
+        <li><a href="#p17-recorrencia"><span class="n">17</span> Cobrança recorrente e inadimplência</a></li>
+        <li><a href="#p18-comprovantes"><span class="n">18</span> Comprovantes e confirmação</a></li>
+        <li><a href="#p19-chargeback"><span class="n">19</span> Chargeback, fraude e uso indevido</a></li>
+        <li><a href="#p20-aml"><span class="n">20</span> Prevenção à lavagem e conformidade</a></li>
+        <li><a href="#p21-impostos"><span class="n">21</span> Impostos e notas fiscais</a></li>
+        <li><a href="#p22-erros"><span class="n">22</span> Erros de cobrança e correções</a></li>
+        <li><a href="#p23-disputas"><span class="n">23</span> Disputas relacionadas a pagamento</a></li>
+        <li><a href="#p24-alteracoes"><span class="n">24</span> Alterações de preços e desta Política</a></li>
+        <li><a href="#p25-limitacao"><span class="n">25</span> Limitação de responsabilidade</a></li>
+        <li><a href="#p26-gerais"><span class="n">26</span> Disposições gerais</a></li>
+        <li><a href="#p27-contato"><span class="n">27</span> Contato e suporte de cobrança</a></li>
+      </ol>
+    </nav>
+
+    <p class="lead">Esta Política de Pagamentos (“Política”) explica como funcionam os pagamentos dentro do marketplace <b>Funcionário Artificial</b> (a “Plataforma”): a assinatura de acesso, as taxas de intermediação, o pagamento protegido, os marcos, a liberação e a retenção de valores, os reembolsos, os cancelamentos e as disputas. Ela complementa os Termos de Uso e o Contrato de Intermediação e, em caso de conflito específico sobre cobrança, prevalece sobre eles naquilo que disser respeito a pagamentos.</p>
+
+    <h2 id="p1-objetivo"><span class="cn">01</span>Objetivo e âmbito</h2>
+    <p>Esta Política descreve como poderão funcionar pagamentos, assinaturas, taxas de intermediação, liberação de valores, reembolsos, cancelamentos e disputas dentro da Funcionário Artificial. Ela se aplica tanto à <b>assinatura de acesso</b> à Plataforma quanto aos <b>valores trocados entre Cliente e Programador</b> em acordos fechados no marketplace.</p>
+    <p>A Plataforma atua como intermediária e, quando disponível, como gestora de pagamento protegido; ela não é a prestadora do serviço técnico contratado e não garante resultado de negócio do Cliente.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>Aqui se explica tudo sobre dinheiro no site: o que você paga para usar a Plataforma e o que paga pelos serviços contratados.</span></div>
+
+    <h2 id="p2-definicoes"><span class="cn">02</span>Definições</h2>
+    <p>Os termos abaixo, sempre que iniciados em maiúscula, têm o significado a seguir:</p>
+    <div class="def-grid">
+      <dl class="def"><dt>Plataforma</dt><dd>O marketplace Funcionário Artificial, incluindo as ferramentas de assinatura, pagamento, escrow e disputa.</dd></dl>
+      <dl class="def"><dt>Cliente</dt><dd>Usuário que contrata e paga por um funcionário digital, automação ou serviço técnico correlato.</dd></dl>
+      <dl class="def"><dt>Programador</dt><dd>Usuário que oferece, constrói e mantém funcionários digitais e recebe pelos serviços prestados.</dd></dl>
+      <dl class="def"><dt>Assinatura de Acesso</dt><dd>Valor mensal pago para usar áreas restritas da Plataforma, igual para os perfis de Cliente e de Programador.</dd></dl>
+      <dl class="def"><dt>Implantação</dt><dd>Valor pago pelo Cliente para criação, configuração ou entrega inicial do funcionário digital.</dd></dl>
+      <dl class="def"><dt>Manutenção Mensal</dt><dd>Valor recorrente pago ao Programador por suporte, correções, monitoramento e evolução, conforme o plano.</dd></dl>
+      <dl class="def"><dt>Taxa de Intermediação / Comissão</dt><dd>Percentual devido à Plataforma sobre acordos fechados dentro do marketplace, exibido antes do fechamento.</dd></dl>
+      <dl class="def"><dt>Pagamento Protegido / Escrow</dt><dd>Mecanismo pelo qual o valor pago pelo Cliente fica retido e só é liberado ao Programador após o cumprimento de uma etapa.</dd></dl>
+      <dl class="def"><dt>Marco</dt><dd>Etapa de entrega com valor, prazo e critério de aceite próprios (por exemplo: diagnóstico, protótipo, homologação).</dd></dl>
+      <dl class="def"><dt>Aceite</dt><dd>Confirmação — expressa, automática por decurso de prazo, ou por decisão de Disputa — de que uma entrega cumpriu o escopo.</dd></dl>
+      <dl class="def"><dt>Liberação</dt><dd>Transferência, ao Programador, do valor retido em escrow após o aceite ou a conclusão da etapa.</dd></dl>
+      <dl class="def"><dt>Retenção Cautelar</dt><dd>Bloqueio temporário de valores enquanto a Plataforma apura fraude, reclamação grave ou cumpre obrigação legal.</dd></dl>
+      <dl class="def"><dt>Reembolso</dt><dd>Devolução, total ou parcial, de valores ao Cliente nas hipóteses previstas nesta Política.</dd></dl>
+      <dl class="def"><dt>Chargeback</dt><dd>Contestação de uma cobrança junto à operadora do meio de pagamento, que pode reverter o valor pago.</dd></dl>
+      <dl class="def"><dt>PIX</dt><dd>Meio de pagamento instantâneo do Banco Central do Brasil, utilizado pela Plataforma na fase inicial.</dd></dl>
+    </div>
+    <div class="em-resumo"><b>Em resumo</b><span>São as palavras-chave de cobrança. Quando aparecerem com inicial maiúscula, querem dizer exatamente o que está definido aqui.</span></div>
+
+    <h2 id="p3-visao-geral"><span class="cn">03</span>Como o dinheiro circula na plataforma</h2>
+    <p>Para facilitar o entendimento, há <b>dois fluxos de dinheiro distintos</b> na Plataforma:</p>
+    <ul>
+      <li><b>Assinatura → Plataforma:</b> o Usuário paga uma mensalidade para acessar as áreas restritas do seu perfil. Esse valor é da Plataforma e não se confunde com o pagamento dos serviços.</li>
+      <li><b>Pagamento do serviço → Programador (com taxa à Plataforma):</b> o Cliente paga pela implantação e/ou manutenção do funcionário digital. Quando o pagamento protegido está habilitado, o valor fica retido e é liberado ao Programador após o aceite; sobre o acordo pode incidir a taxa de intermediação devida à Plataforma.</li>
+    </ul>
+    <p>Manter esses fluxos separados evita confusão: cancelar a assinatura não “estorna” um serviço já contratado, e pagar um serviço não dispensa a assinatura de acesso, quando exigida.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>Uma coisa é a mensalidade para usar o site; outra é o pagamento do serviço ao programador. São bolsos diferentes e não se misturam.</span></div>
+
+    <h2 id="p4-tipos"><span class="cn">04</span>Tipos de pagamento</h2>
+    <ul>
+      <li><b>Assinatura de acesso:</b> valor mensal pago para usar áreas restritas da Plataforma.</li>
+      <li><b>Implantação:</b> valor pago pelo Cliente para criação, configuração ou entrega inicial do funcionário digital.</li>
+      <li><b>Manutenção mensal:</b> valor recorrente pago ao Programador para suporte, correções, monitoramento e evolução.</li>
+      <li><b>Taxa de intermediação:</b> percentual cobrado pela Plataforma sobre acordos fechados dentro do marketplace.</li>
+    </ul>
+    <p>Um mesmo projeto pode combinar mais de um tipo — por exemplo, uma implantação inicial seguida de manutenção mensal — e cada um deve estar descrito na proposta aceita.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>Existem quatro tipos de pagamento: mensalidade do site, implantação, manutenção e a taxa da Plataforma sobre o acordo.</span></div>
+
+    <h2 id="p5-meios"><span class="cn">05</span>Moeda e meios de pagamento (PIX)</h2>
+    <p>Os valores são expressos e cobrados em <b>reais (R$)</b>. Na fase inicial, a Plataforma utiliza o <b>PIX</b> como meio de pagamento, com pagamento registrado pelo Usuário; a chave PIX, o nome do favorecido e o valor são exibidos na própria tela de pagamento, e o código “copia e cola” é disponibilizado para facilitar a transferência.</p>
+    <p>Outros meios de pagamento poderão ser adicionados no futuro, observadas as regras dos respectivos provedores. Eventuais custos cobrados por instituições financeiras ou provedores de pagamento podem se aplicar conforme cada meio.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>Tudo em reais. Por enquanto o pagamento é por PIX; a chave e o valor aparecem na tela na hora de pagar.</span></div>
+
+    <h2 id="p6-assinatura"><span class="cn">06</span>Assinatura de acesso</h2>
+    <p>O acesso a áreas restritas pode depender de assinatura mensal ativa do perfil correspondente. Atualmente, o valor é de <b>R$ 299,00 por mês</b>, igual para os perfis de Cliente e de Programador, por ciclo de 30 dias, podendo ser atualizado conforme a cláusula de alterações desta Política, com aviso prévio.</p>
+    <h3>Renovação e cancelamento</h3>
+    <p>Assinaturas de acesso podem ser cobradas mensalmente e renovadas automaticamente, quando houver meio de pagamento compatível. O cancelamento <b>impede novas cobranças futuras</b> de acesso, mas não desfaz automaticamente serviços já contratados entre Cliente e Programador, nem gera reembolso proporcional de período já iniciado, salvo obrigação legal aplicável.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>São R$ 299/mês para qualquer perfil, ciclo de 30 dias. Cancelar evita cobranças futuras, mas não estorna o mês em andamento nem desfaz serviços já contratados.</span></div>
+
+    <h2 id="p7-taxa"><span class="cn">07</span>Taxa de intermediação</h2>
+    <p>Sobre acordos fechados dentro do marketplace pode incidir uma <b>taxa de intermediação</b> devida à Plataforma, que remunera a aproximação das partes e a operação da estrutura de acordo, escrow, reputação e disputas. A taxa pode ser cobrada como assinatura, taxa fixa, percentual sobre implantação, percentual sobre manutenção mensal ou combinação desses modelos.</p>
+    <p>A taxa de intermediação é <b>apresentada de forma transparente antes do fechamento do acordo</b>: ao confirmar o fechamento pelo site, o Cliente e o Programador visualizam o valor do acordo, o valor da taxa e o valor líquido que o Programador receberá. A taxa só existe quando o acordo é fechado dentro da Plataforma — combinar diretamente, sem usar o marketplace, não gera essa cobrança.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>A Plataforma cobra uma taxa sobre o acordo, sempre mostrada antes de fechar. Se você não fecha pelo site, não há taxa.</span></div>
+
+    <h2 id="p8-escrow"><span class="cn">08</span>Pagamento protegido (escrow)</h2>
+    <p>Quando disponível, a Plataforma poderá operar um modelo de pagamento protegido, no qual o Cliente paga o valor acordado e a liberação ao Programador ocorre após o cumprimento das etapas, a aprovação do Cliente ou o encerramento de disputa.</p>
+    <p>Esse modelo existe para reduzir dois riscos: <b>o Cliente pagar e não receber</b>, e <b>o Programador entregar e não receber</b>. Enquanto a etapa não é concluída ou aceita, o valor permanece retido pela estrutura de escrow.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>O dinheiro fica “preso” até a etapa ser cumprida e aceita. Protege os dois lados: ninguém fica sem receber nem sem a entrega.</span></div>
+
+    <h2 id="p9-marcos"><span class="cn">09</span>Marcos de entrega</h2>
+    <p>Projetos podem ser divididos em marcos, como diagnóstico, protótipo, integração, homologação e entrega final. Cada marco deve possuir <b>valor, prazo e critério objetivo de aceite</b> próprios, de modo que o pagamento acompanhe o avanço real do trabalho.</p>
+    <p>Dividir um projeto em marcos reduz risco para ambos os lados: o Cliente paga por etapa entregue, e o Programador recebe ao longo do caminho, sem depender de um único pagamento ao final.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>Projetos grandes podem ser fatiados em etapas, cada uma com preço, prazo e critério de aceite. Paga-se conforme o trabalho avança.</span></div>
+
+    <h2 id="p10-aceite"><span class="cn">10</span>Critérios de aceite</h2>
+    <p>Uma entrega será considerada aceitável quando cumprir o escopo aprovado. Preferências subjetivas, pedidos novos ou mudanças de regra após o início <b>não devem impedir</b> a liberação de pagamento se o escopo original foi cumprido.</p>
+    <p>O aceite pode ocorrer por aprovação expressa do Cliente, por aprovação automática após decurso do prazo de homologação sem manifestação fundamentada, ou por decisão no procedimento de disputa.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>Se a entrega faz o que estava no escopo, ela é aceita. Gosto pessoal ou pedido novo não segura o pagamento de uma etapa que cumpriu o combinado.</span></div>
+
+    <h2 id="p11-liberacao"><span class="cn">11</span>Liberação de valores ao programador</h2>
+    <p>Os valores poderão ser liberados ao Programador após <b>aprovação expressa</b>, <b>aprovação automática por decurso de prazo</b>, <b>conclusão de marco</b> ou <b>decisão em disputa</b>. A liberação representa o reconhecimento de que a etapa correspondente foi cumprida e aceita.</p>
+    <p>O prazo e a forma de repasse podem depender do meio de pagamento e do provedor utilizado, e serão informados na Plataforma.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>O valor vai para o programador quando a entrega é aprovada — na mão, por prazo, por marco ou por decisão de disputa.</span></div>
+
+    <h2 id="p12-retencao"><span class="cn">12</span>Retenção cautelar de valores</h2>
+    <p>A Plataforma poderá <b>reter valores em análise</b> quando houver suspeita de fraude, reclamação grave, ordem judicial, exigência legal ou risco relevante à segurança do marketplace. A retenção é uma medida cautelar e temporária, mantida apenas pelo tempo necessário à apuração.</p>
+    <p>Concluída a apuração, o valor é liberado ao Programador, devolvido ao Cliente ou dividido entre as partes, conforme o resultado, o acordo entre elas ou a decisão de disputa.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>Em caso de fraude, reclamação séria ou ordem judicial, o valor pode ser segurado por um tempo, só até esclarecer a situação.</span></div>
+
+    <h2 id="p13-contestacao"><span class="cn">13</span>Contestação de entregas</h2>
+    <p>O Cliente poderá contestar uma entrega dentro do prazo definido na proposta ou na Plataforma. A contestação deve indicar <b>pontos objetivos de descumprimento</b>, anexar evidências e apontar qual item do escopo não foi atendido.</p>
+    <p>O Programador poderá responder com evidências de entrega, prints, vídeos, logs, links, mensagens, documentação ou demonstração técnica. A análise considera o escopo aprovado, e não preferências surgidas depois do início do trabalho.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>Para contestar, aponte de forma concreta o que do escopo não foi cumprido e mostre provas. O programador também pode provar que entregou.</span></div>
+
+    <h2 id="p14-reembolso"><span class="cn">14</span>Reembolso</h2>
+    <p>Reembolsos poderão ocorrer quando houver <b>não entrega, descumprimento material do escopo, cancelamento dentro de prazo permitido ou decisão da mediação</b>. O reembolso pode ser total ou parcial, conforme o que foi efetivamente entregue e aceito até o momento.</p>
+    <p>Não haverá reembolso automático por arrependimento comercial após o início da execução, salvo obrigação legal aplicável ou regra específica da oferta. Direitos de arrependimento eventualmente garantidos por lei ao consumidor são preservados.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>Devolve-se quando não houve entrega, houve descumprimento sério, cancelamento no prazo ou decisão da mediação. “Mudei de ideia” depois de começar, em regra, não dá reembolso.</span></div>
+
+    <h2 id="p15-cancelamento"><span class="cn">15</span>Cancelamento e rescisão</h2>
+    <p>O cancelamento de um acordo antes do início, quando permitido, em regra não gera cobrança das etapas não iniciadas. A rescisão durante a execução acerta os valores de forma <b>proporcional ao que foi entregue e aceito</b>: etapas concluídas são pagas, e trabalho em andamento é avaliado conforme o avanço.</p>
+    <p>Os efeitos detalhados da rescisão (revogação de acessos, devolução de dados, sobrevivência de cláusulas) constam do Contrato de Intermediação. A assinatura de acesso segue as regras próprias da cláusula de assinatura.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>Cancelou antes de começar: em geral não paga. Encerrou no meio: paga proporcional ao que já foi feito e aceito.</span></div>
+
+    <h2 id="p16-manutencao"><span class="cn">16</span>Manutenção mensal</h2>
+    <p>A manutenção mensal <b>não deve ser confundida com garantia ilimitada</b>. Ela pode incluir correção de alucinações, ajuste de prompts, revisão de bases, atualização de integrações, monitoramento de APIs e pequenas melhorias, conforme o plano contratado.</p>
+    <p>Novas funcionalidades, mudanças de escopo e demandas fora do plano podem exigir orçamento à parte. O que está incluído e o que está fora da manutenção deve estar descrito na proposta.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>Manutenção mantém o agente de pé e ajustado, dentro do plano. Não é “tudo de graça”; novidades grandes podem custar à parte.</span></div>
+
+    <h2 id="p17-recorrencia"><span class="cn">17</span>Cobrança recorrente, falha de pagamento e inadimplência</h2>
+    <p>Valores recorrentes — como a assinatura de acesso e a manutenção mensal — podem ser cobrados em ciclos. Quando uma cobrança recorrente <b>falhar</b> (por exemplo, ausência de pagamento no ciclo), a Plataforma poderá tentar novamente, notificar o Usuário e conceder prazo para regularização.</p>
+    <p>Persistindo a inadimplência, o acesso às áreas restritas e os serviços recorrentes correspondentes poderão ser <b>suspensos</b> até a regularização, sem prejuízo da cobrança dos valores devidos. A suspensão por falta de pagamento não apaga obrigações já vencidas.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>Se a mensalidade não é paga, o acesso pode ser suspenso até acertar. O que já era devido continua devido.</span></div>
+
+    <h2 id="p18-comprovantes"><span class="cn">18</span>Comprovantes e confirmação de pagamento</h2>
+    <p>Na fase inicial, com pagamento via PIX, o Usuário registra o pagamento na Plataforma após realizá-lo. A <b>liberação do acesso ou da etapa ocorre quando o pagamento é confirmado</b> — de forma manual ou automática, conforme o provedor — e não apenas pela informação de que o PIX foi feito.</p>
+    <p>O Usuário deve guardar seus comprovantes. Em caso de divergência entre o valor informado e o valor efetivamente recebido, prevalece o pagamento confirmado, e a Plataforma poderá solicitar o comprovante para conciliação.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>Informar “já fiz o PIX” não libera na hora: a liberação acontece quando o pagamento é confirmado. Guarde o comprovante.</span></div>
+
+    <h2 id="p19-chargeback"><span class="cn">19</span>Chargeback, fraude e uso indevido</h2>
+    <p>Chargebacks abusivos, falsas contestações, comprovantes falsos, uso de cartão ou conta de terceiros sem autorização, ou tentativa de receber a entrega sem pagar poderão gerar <b>bloqueio de conta, retenção cautelar, cobrança administrativa e comunicação às autoridades</b>.</p>
+    <p>Quando um valor já liberado for revertido indevidamente por chargeback, a parte responsável pela reversão poderá ser cobrada do montante correspondente, além de eventuais custos e encargos, sem prejuízo das demais medidas previstas nos Termos de Uso.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>Golpe, contestação falsa ou tentar receber sem pagar leva a bloqueio, cobrança e denúncia. Chargeback abusivo pode ser cobrado de volta.</span></div>
+
+    <h2 id="p20-aml"><span class="cn">20</span>Prevenção à lavagem de dinheiro e conformidade</h2>
+    <p>A Plataforma pode adotar medidas de <b>prevenção à lavagem de dinheiro e ao financiamento de atividades ilícitas</b>, incluindo verificação de identidade, monitoramento de transações atípicas e solicitação de documentos ou esclarecimentos.</p>
+    <p>Transações que apresentem indícios de ilicitude poderão ser recusadas, suspensas ou comunicadas às autoridades competentes, conforme a legislação aplicável e as exigências dos provedores de pagamento.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>Para evitar lavagem de dinheiro e fraude, o site pode pedir documentos e barrar transações suspeitas, comunicando autoridades quando preciso.</span></div>
+
+    <h2 id="p21-impostos"><span class="cn">21</span>Impostos e notas fiscais</h2>
+    <p>Cada parte é responsável por suas próprias obrigações fiscais, emissão de nota fiscal, tributos e enquadramento jurídico, salvo disposição contratual diferente. O Programador é responsável pelos tributos sobre os valores que recebe pelos serviços, e a Plataforma pelos tributos sobre suas próprias taxas.</p>
+    <p>Quando exigido, a nota fiscal correspondente deve ser emitida à parte pagadora, observada a legislação aplicável.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>Cada um paga seus impostos e emite sua nota: o programador sobre o serviço, a Plataforma sobre a taxa.</span></div>
+
+    <h2 id="p22-erros"><span class="cn">22</span>Erros de cobrança e correções</h2>
+    <p>Em caso de <b>erro de cobrança</b> — cobrança em duplicidade, valor incorreto ou falha técnica — a Plataforma empregará esforços razoáveis para corrigir, estornar ou compensar o valor após apuração. O Usuário deve comunicar erros de cobrança pelos canais oficiais, com o comprovante, dentro de prazo razoável.</p>
+    <p>A correção de um erro de cobrança não constitui reconhecimento de qualquer outra obrigação além do próprio ajuste do valor.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>Cobrou errado ou em dobro? Avise com o comprovante e a Plataforma corrige ou estorna depois de checar.</span></div>
+
+    <h2 id="p23-disputas"><span class="cn">23</span>Disputas relacionadas a pagamento</h2>
+    <p>Conflitos sobre entrega, qualidade, prazo ou liberação de valores seguem o <b>procedimento de disputa</b> da Plataforma, no qual cada parte apresenta escopo, mensagens, entregas, evidências de teste, prints, logs e comprovantes. A Plataforma poderá liberar, reter, dividir ou devolver valores conforme a apuração.</p>
+    <p>A mediação da Plataforma tem natureza contratual sobre os valores em escrow e <b>não substitui o Poder Judiciário</b>. O detalhamento do procedimento consta dos Termos de Uso e do Contrato de Intermediação.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>Briga sobre pagamento se resolve na disputa, com provas dos dois lados. A decisão da Plataforma não impede recorrer à Justiça.</span></div>
+
+    <h2 id="p24-alteracoes"><span class="cn">24</span>Alterações de preços e desta Política</h2>
+    <p>A Plataforma poderá atualizar valores de assinatura, modelos de taxa e as regras desta Política para refletir mudanças legais, técnicas ou de negócio. <b>Alterações relevantes serão comunicadas com antecedência razoável</b>, com indicação da nova versão e data.</p>
+    <p>Mudanças de preço de assinatura passam a valer no ciclo seguinte ao aviso; quem não concordar pode cancelar antes da renovação. Acordos já fechados entre Cliente e Programador seguem as condições vigentes quando foram firmados, salvo ajuste entre as partes.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>Preços e regras podem mudar com aviso. Novo valor de mensalidade vale no próximo ciclo; acordos antigos seguem como foram fechados.</span></div>
+
+    <h2 id="p25-limitacao"><span class="cn">25</span>Limitação de responsabilidade quanto a pagamentos</h2>
+    <p>A Plataforma responde apenas pelos serviços de intermediação e pela operação do pagamento protegido que presta diretamente. Na máxima extensão permitida em lei, ela <b>não responde</b> por falhas de bancos, operadoras, provedores de pagamento ou do sistema PIX, por dados de pagamento incorretos informados pelas partes, nem por perdas decorrentes de mau uso, fraude de terceiros ou descumprimento de uma das partes.</p>
+    <p>Eventual responsabilidade da Plataforma quanto a pagamentos fica limitada, na medida permitida em lei, ao valor das taxas efetivamente recebidas no acordo específico, ressalvados os direitos irrenunciáveis de consumidores.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>A Plataforma cuida da intermediação e do escrow. Falha de banco, de PIX ou dado errado informado pelas partes não é responsabilidade dela, e há um teto para o que ela responde.</span></div>
+
+    <h2 id="p26-gerais"><span class="cn">26</span>Disposições gerais e documentos relacionados</h2>
+    <p>Esta Política integra os Termos de Uso e deve ser lida em conjunto com o <b>Contrato de Intermediação</b> (regras do acordo entre as partes) e com a <b>Política de Cookies</b>. Se alguma disposição for considerada inválida, as demais permanecem em vigor. A tolerância quanto a um descumprimento não significa renúncia ao direito de exigir o cumprimento depois. A versão em português prevalece sobre eventuais traduções.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>Esta Política anda junto com os Termos, o Contrato e a Política de Cookies. Se uma parte “cair”, o resto continua valendo.</span></div>
+
+    <h2 id="p27-contato"><span class="cn">27</span>Contato e suporte de cobrança</h2>
+    <p>Dúvidas sobre cobrança, pedidos de reembolso, erros de pagamento ou problemas com PIX devem ser encaminhados pelos <b>canais oficiais de atendimento</b> da Plataforma, a serem indicados no site. A versão final deve informar a razão social e o CNPJ da mantenedora, o e-mail de suporte e o canal específico para assuntos financeiros, além do prazo-alvo de resposta.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>Problema com pagamento? Fale pelos canais oficiais. A versão final deve trazer empresa, CNPJ e e-mail de suporte.</span></div>
+
+    <div class="doc-end">
+      <span class="label">FIM DO DOCUMENTO</span>
+      <p>Versão 2.0 — base para desenvolvimento. Documento sujeito a revisão jurídica antes de uso em produção. Esta Política deve ser lida em conjunto com os Termos de Uso, o Contrato de Intermediação e a Política de Cookies.</p>
+      <a class="back-top" href="#">↑ Voltar ao topo</a>
+    </div>
 
   </article>
   <aside class="legal-side">

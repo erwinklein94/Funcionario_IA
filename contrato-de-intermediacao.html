@@ -4,59 +4,397 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contrato de Intermediação — Funcionário Artificial</title>
-<meta name="description" content="Versão-base do contrato de intermediação entre plataforma, cliente e programador.">
+<meta name="description" content="Contrato-base de intermediação entre a plataforma Funcionário Artificial, o cliente contratante e o programador prestador: papéis, escopo, pagamento protegido, propriedade intelectual, LGPD, riscos de IA e disputas.">
 <link rel="stylesheet" href="css/style.css">
+<style>
+/* ===== Melhorias específicas da página de contrato (escopadas em .legal-doc) ===== */
+.doc-meta{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:22px;}
+.doc-meta .meta-chip{font-family:var(--ff-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-dim);border:1px solid var(--line);background:var(--bg);clip-path:var(--clip-sm);padding:8px 12px;display:inline-flex;gap:8px;align-items:center;}
+.doc-meta .meta-chip b{color:var(--white);font-weight:500;letter-spacing:.06em;}
+.doc-meta .meta-chip .dotk{width:6px;height:6px;background:var(--signal);clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);}
+
+.clause-index{border:1px solid var(--line);background:var(--bg);clip-path:var(--clip-sm);padding:18px 20px;margin:8px 0 30px;}
+.clause-index>.label{display:block;margin-bottom:14px;}
+.clause-index ol{list-style:none;margin:0;columns:2;column-gap:30px;}
+.clause-index li{break-inside:avoid;margin:0 0 7px;}
+.clause-index a{font-family:var(--ff-mono);font-size:12px;letter-spacing:.02em;color:var(--ink-dim);display:flex;gap:10px;padding:3px 0;border-bottom:1px solid transparent;transition:.16s;}
+.clause-index a:hover{color:var(--signal);border-bottom-color:var(--line-soft);}
+.clause-index a .n{color:var(--ink-faint);min-width:24px;}
+@media(max-width:640px){ .clause-index ol{columns:1;} }
+
+.legal-doc h2[id]{scroll-margin-top:90px;}
+.legal-doc h2 .cn{font-family:var(--ff-mono);font-size:.46em;color:var(--signal);letter-spacing:.1em;vertical-align:middle;margin-right:10px;}
+.legal-doc .lead{color:var(--ink);font-size:15px;line-height:1.85;}
+.legal-doc li b,.legal-doc p b{color:var(--ink);}
+
+.em-resumo{border-left:2px solid var(--signal);background:rgba(214,255,63,.045);padding:11px 16px;margin:14px 0 6px;clip-path:var(--clip-sm);}
+.em-resumo b{font-family:var(--ff-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--signal);display:block;margin-bottom:5px;}
+.em-resumo span{color:var(--ink-dim);font-size:13px;line-height:1.7;}
+
+.note-info{border:1px solid var(--info);background:rgba(95,168,255,.06);clip-path:var(--clip-sm);padding:14px 16px;margin:14px 0 24px;color:var(--ink-dim);font-size:13px;line-height:1.7;}
+.note-info b{color:var(--info);}
+
+.def-grid{display:grid;gap:10px;margin:14px 0 6px;}
+.def{border:1px solid var(--line);background:var(--bg);clip-path:var(--clip-sm);padding:13px 16px;}
+.def dt{font-family:var(--ff-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--white);margin-bottom:5px;}
+.def dd{color:var(--ink-dim);font-size:13.5px;line-height:1.7;margin:0;}
+
+.back-top{display:inline-flex;align-items:center;gap:8px;font-family:var(--ff-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);margin-top:10px;}
+.back-top:hover{color:var(--signal);}
+
+.doc-end{margin-top:30px;border-top:1px solid var(--line);padding-top:22px;}
+.doc-end .label{display:block;margin-bottom:10px;}
+</style>
 </head>
 <body data-page="contrato-de-intermediacao">
 <section class="page-hero">
   <div class="wrap">
     <span class="label kicker">// INTERMEDIAÇÃO</span>
     <h1>Contrato de Intermediação</h1>
-    <p>Modelo inicial para estruturar a relação entre marketplace, cliente contratante e programador prestador.</p>
+    <p>Contrato-base que estrutura, de ponta a ponta, a relação entre o marketplace Funcionário Artificial, o cliente contratante e o programador prestador: papéis, formação do acordo, pagamento protegido, propriedade intelectual, dados, riscos de IA e resolução de disputas.</p>
   </div>
 </section>
 <section class="legal-wrap wrap">
   <article class="legal-doc">
-    <div class="legal-note"><b>Importante:</b> este texto é uma versão-base para desenvolvimento do produto. Antes de usar em produção, revise com advogado especializado em direito digital, contratos, LGPD, consumo e meios de pagamento.</div>
 
-<h2>1. Partes envolvidas</h2>
-<p>Este modelo descreve a relação entre a Plataforma, o Cliente Contratante e o Programador Prestador em acordos originados dentro da Funcionário Artificial.</p>
-<h2>2. Objeto</h2>
-<p>O objeto é a intermediação de contratação de serviços relacionados a funcionários digitais, agentes de IA, automações, integrações, implantação, suporte, manutenção e evolução técnica.</p>
-<h2>3. Papel da plataforma</h2>
-<ul>
-<li>Disponibilizar ambiente de anúncio e busca.</li>
-<li>Registrar propostas, escopo, mensagens e aceite.</li>
-<li>Oferecer mecanismo de pagamento protegido quando disponível.</li>
-<li>Aplicar política de disputas e reputação.</li>
-<li>Cobrar taxas de intermediação, assinatura ou comissão.</li>
-</ul>
-<p>A plataforma não assume obrigação de resultado técnico do programador, não se torna empregadora, não integra a equipe do cliente e não responde por promessas feitas fora dos canais oficiais.</p>
-<h2>4. Papel do cliente</h2>
-<p>O cliente deve explicar o processo de negócio, fornecer informações corretas, conceder acessos necessários, homologar a entrega, pagar os valores aprovados e manter supervisão humana adequada sobre decisões geradas por IA.</p>
-<h2>5. Papel do programador</h2>
-<p>O programador deve executar o escopo aprovado, observar boas práticas técnicas, proteger credenciais e dados, documentar a solução e informar limitações, dependências e riscos de uso.</p>
-<h2>6. Formação do acordo</h2>
-<p>O acordo se forma quando as partes aceitam proposta contendo, no mínimo: escopo, entregáveis, preço, prazo, forma de pagamento, critérios de aceite, suporte, manutenção, propriedade intelectual e regras de cancelamento.</p>
-<h2>7. Escrow ou pagamento protegido</h2>
-<p>Quando habilitado, o valor pago pelo cliente ficará condicionado à conclusão da etapa contratada. A plataforma poderá liberar, reter ou devolver valores conforme aceite, acordo entre as partes ou decisão no procedimento de disputa.</p>
-<h2>8. Propriedade intelectual</h2>
-<p>Salvo ajuste diferente, o cliente recebe direito de uso da solução entregue para sua operação interna. Códigos, bibliotecas, templates, frameworks, prompts genéricos e componentes pré-existentes do programador podem continuar sendo de titularidade do programador.</p>
-<p>Dados, documentos, base de conhecimento e informações confidenciais do cliente continuam pertencendo ao cliente.</p>
-<h2>9. Confidencialidade</h2>
-<p>As partes devem manter sigilo sobre dados, credenciais, processos, informações comerciais, clientes, fornecedores, documentos e qualquer material não público acessado durante a contratação.</p>
-<h2>10. Proteção de dados</h2>
-<p>Quando houver tratamento de dados pessoais, as partes devem definir suas posições de controlador, operador ou controladores independentes conforme o caso, além de adotar medidas de segurança compatíveis com o risco.</p>
-<h2>11. Alucinação e falha de IA</h2>
-<p>As partes reconhecem que funcionários digitais baseados em IA podem errar. O contrato deve prever manutenção, logs, testes, revisão humana, limites de autonomia e regras de escalonamento quando houver risco financeiro, jurídico, médico, trabalhista, reputacional ou operacional.</p>
-<h2>12. Mediação de disputas</h2>
-<p>Em caso de conflito, a plataforma poderá solicitar documentos, vídeos, prints, logs, escopo, mensagens e evidências. A plataforma poderá propor solução, liberar valores parcialmente, devolver valores ou manter bloqueio temporário até resolução.</p>
-<h2>13. Não circumvenção</h2>
-<p>Quando cliente e programador se conhecerem por meio da plataforma, não deverão fechar por fora para evitar taxas por período determinado na versão final do contrato. Essa cláusula deve ser revisada juridicamente para definir prazo, multa e limites razoáveis.</p>
-<h2>14. Limitação de responsabilidade</h2>
-<p>A plataforma responde apenas pelos serviços próprios de intermediação que presta diretamente. Não responde por perdas decorrentes de mau uso, escopo mal definido, dados incorretos, sistemas externos, APIs de terceiros, ausência de validação humana ou descumprimento de uma das partes.</p>
-<h2>15. Foro e lei aplicável</h2>
-<p>A versão final deve definir lei aplicável, foro ou câmara de mediação/arbitragem, observando normas de consumo quando aplicáveis.</p>
+    <div class="doc-meta">
+      <span class="meta-chip"><i class="dotk"></i>Documento <b>Contrato de Intermediação</b></span>
+      <span class="meta-chip">Versão <b>2.0 — base</b></span>
+      <span class="meta-chip">Âmbito <b>Plataforma · Cliente · Programador</b></span>
+      <span class="meta-chip">Natureza <b>Modelo para desenvolvimento</b></span>
+    </div>
+
+    <div class="legal-note"><b>Importante:</b> este é um texto-base, escrito para apoiar o desenvolvimento do produto. Ele organiza ideias e cláusulas usuais de um marketplace de serviços, mas <b>não é parecer jurídico nem contrato pronto para produção</b>. Antes de publicar, exigir aceite de usuários ou usá-lo em qualquer cobrança, revise-o com advogado especializado em direito digital, contratos, relações de consumo, propriedade intelectual, LGPD, direito do trabalho e meios de pagamento, ajustando prazos, percentuais, multas e foro à sua operação real.</div>
+
+    <div class="note-info"><b>Como ler este documento:</b> cada cláusula traz o texto formal seguido de um bloco verde <b>“Em resumo”</b>, que é apenas uma explicação em linguagem simples para facilitar a leitura. Em caso de divergência, prevalece o texto da cláusula, e não o resumo. O índice abaixo leva direto a cada seção.</div>
+
+    <nav class="clause-index" aria-label="Índice de cláusulas">
+      <span class="label">SUMÁRIO</span>
+      <ol>
+        <li><a href="#c1-definicoes"><span class="n">01</span> Definições</a></li>
+        <li><a href="#c2-objeto"><span class="n">02</span> Objeto e finalidade</a></li>
+        <li><a href="#c3-natureza"><span class="n">03</span> Natureza jurídica da relação</a></li>
+        <li><a href="#c4-cadastro"><span class="n">04</span> Cadastro, conta e elegibilidade</a></li>
+        <li><a href="#c5-plataforma"><span class="n">05</span> Papel da Plataforma</a></li>
+        <li><a href="#c6-cliente"><span class="n">06</span> Papel do Cliente</a></li>
+        <li><a href="#c7-programador"><span class="n">07</span> Papel do Programador</a></li>
+        <li><a href="#c8-formacao"><span class="n">08</span> Formação do acordo</a></li>
+        <li><a href="#c9-escopo"><span class="n">09</span> Escopo, entregáveis e marcos</a></li>
+        <li><a href="#c10-aceite"><span class="n">10</span> Critérios de aceite e homologação</a></li>
+        <li><a href="#c11-precos"><span class="n">11</span> Preço, taxas e tributos</a></li>
+        <li><a href="#c12-escrow"><span class="n">12</span> Pagamento protegido (escrow)</a></li>
+        <li><a href="#c13-liberacao"><span class="n">13</span> Liberação, retenção e devolução</a></li>
+        <li><a href="#c14-rescisao"><span class="n">14</span> Cancelamento, rescisão e reembolso</a></li>
+        <li><a href="#c15-manutencao"><span class="n">15</span> Manutenção, suporte e SLA</a></li>
+        <li><a href="#c16-pi"><span class="n">16</span> Propriedade intelectual e licenças</a></li>
+        <li><a href="#c17-confidencialidade"><span class="n">17</span> Confidencialidade</a></li>
+        <li><a href="#c18-lgpd"><span class="n">18</span> Proteção de dados e LGPD</a></li>
+        <li><a href="#c19-ia"><span class="n">19</span> Riscos de IA e supervisão humana</a></li>
+        <li><a href="#c20-garantias"><span class="n">20</span> Garantias e isenções</a></li>
+        <li><a href="#c21-conduta"><span class="n">21</span> Conduta proibida e uso aceitável</a></li>
+        <li><a href="#c22-circunvencao"><span class="n">22</span> Não circunvenção</a></li>
+        <li><a href="#c23-disputas"><span class="n">23</span> Mediação e disputas</a></li>
+        <li><a href="#c24-suspensao"><span class="n">24</span> Suspensão e encerramento de conta</a></li>
+        <li><a href="#c25-limitacao"><span class="n">25</span> Limitação de responsabilidade</a></li>
+        <li><a href="#c26-indenizacao"><span class="n">26</span> Indenização</a></li>
+        <li><a href="#c27-forca-maior"><span class="n">27</span> Força maior</a></li>
+        <li><a href="#c28-comunicacoes"><span class="n">28</span> Comunicações e notificações</a></li>
+        <li><a href="#c29-gerais"><span class="n">29</span> Cessão e disposições gerais</a></li>
+        <li><a href="#c30-alteracoes"><span class="n">30</span> Alterações do contrato</a></li>
+        <li><a href="#c31-foro"><span class="n">31</span> Lei aplicável e foro</a></li>
+        <li><a href="#c32-vigencia"><span class="n">32</span> Vigência e versões</a></li>
+      </ol>
+    </nav>
+
+    <p class="lead">O presente Contrato de Intermediação (“Contrato”) tem por finalidade descrever as regras segundo as quais a <b>Funcionário Artificial</b> (a “Plataforma”) aproxima, em um mesmo ambiente digital, pessoas e empresas que desejam automatizar uma função por meio de inteligência artificial (cada uma, o “Cliente”) e profissionais ou estúdios que constroem, vendem, integram e mantêm esses agentes — os chamados funcionários digitais (cada um, o “Programador”). Ao criar conta, anunciar uma oferta, publicar uma vaga, enviar ou aceitar uma proposta, ou fechar um acordo dentro da Plataforma, Cliente e Programador declaram que leram, compreenderam e concordam com este Contrato, com os Termos de Uso, com a Política de Pagamentos e com a Política de Cookies, que o complementam e dele fazem parte.</p>
+
+    <h2 id="c1-definicoes"><span class="cn">01</span>Definições</h2>
+    <p>Para evitar ambiguidade, os termos abaixo, sempre que iniciados em maiúscula, têm o significado a seguir, no singular ou no plural, no masculino ou no feminino:</p>
+    <div class="def-grid">
+      <dl class="def"><dt>Plataforma</dt><dd>O marketplace Funcionário Artificial, incluindo site, áreas logadas, banco de dados, mecanismos de pagamento, sistema de propostas, reputação e disputas, operado pela pessoa jurídica mantenedora.</dd></dl>
+      <dl class="def"><dt>Usuário</dt><dd>Qualquer pessoa que acessa a Plataforma, esteja ou não logada. Quando logado e contratante de serviços, é Cliente; quando logado e prestador de serviços, é Programador. A mesma pessoa pode ter os dois perfis.</dd></dl>
+      <dl class="def"><dt>Cliente</dt><dd>Usuário que busca, contrata ou paga por um funcionário digital, automação ou serviço técnico correlato, com assinatura de cliente ativa quando exigida.</dd></dl>
+      <dl class="def"><dt>Programador</dt><dd>Usuário que oferece, constrói, integra, entrega ou mantém funcionários digitais e serviços técnicos, com assinatura de programador ativa quando exigida.</dd></dl>
+      <dl class="def"><dt>Funcionário Digital / Agente de IA</dt><dd>Solução baseada em inteligência artificial — agente, assistente, bot, automação, fluxo, integração ou conjunto de prompts e modelos — destinada a executar ou apoiar uma função operacional do Cliente.</dd></dl>
+      <dl class="def"><dt>Oferta</dt><dd>Anúncio publicado pelo Programador descrevendo um funcionário digital ou serviço disponível para contratação.</dd></dl>
+      <dl class="def"><dt>Vaga</dt><dd>Publicação do Cliente descrevendo a função que deseja automatizar e o problema a ser resolvido, aberta ao recebimento de propostas.</dd></dl>
+      <dl class="def"><dt>Proposta</dt><dd>Oferta comercial estruturada trocada entre as partes, contendo escopo, entregáveis, preço, prazo, condições de pagamento, suporte e demais termos do acordo pretendido.</dd></dl>
+      <dl class="def"><dt>Acordo</dt><dd>O contrato de prestação de serviços efetivamente firmado entre Cliente e Programador a partir do aceite de uma Proposta dentro da Plataforma. O Acordo é distinto deste Contrato de Intermediação.</dd></dl>
+      <dl class="def"><dt>Escopo</dt><dd>Descrição objetiva do que será entregue e do que está expressamente fora do trabalho, servindo de referência para o aceite.</dd></dl>
+      <dl class="def"><dt>Marco</dt><dd>Etapa de entrega com valor, prazo e critério de aceite próprios (por exemplo: diagnóstico, protótipo, integração, homologação, entrega final).</dd></dl>
+      <dl class="def"><dt>Pagamento Protegido / Escrow</dt><dd>Mecanismo pelo qual o valor pago pelo Cliente fica condicionado ao cumprimento de uma etapa antes de ser liberado ao Programador.</dd></dl>
+      <dl class="def"><dt>Taxa de Intermediação / Comissão</dt><dd>Valor devido à Plataforma por aproximar as partes e operar a estrutura de acordo, escrow, reputação e disputas, conforme a Política de Pagamentos.</dd></dl>
+      <dl class="def"><dt>Disputa</dt><dd>Procedimento interno acionado quando Cliente e Programador divergem sobre entrega, qualidade, prazo, pagamento ou cumprimento do Escopo.</dd></dl>
+      <dl class="def"><dt>Conteúdo</dt><dd>Textos, imagens, códigos, prompts, bases de conhecimento, documentos, dados e quaisquer materiais inseridos, trocados ou gerados na Plataforma.</dd></dl>
+      <dl class="def"><dt>Dados Pessoais</dt><dd>Toda informação relacionada a pessoa natural identificada ou identificável, nos termos da Lei nº 13.709/2018 (LGPD).</dd></dl>
+    </div>
+    <div class="em-resumo"><b>Em resumo</b><span>Estas são as palavras-chave do contrato. Sempre que aparecerem com inicial maiúscula, querem dizer exatamente o que está definido aqui.</span></div>
+
+    <h2 id="c2-objeto"><span class="cn">02</span>Objeto e finalidade</h2>
+    <p>O objeto deste Contrato é a <b>intermediação digital</b>: a Plataforma oferece o ambiente, as ferramentas e as regras que permitem ao Cliente encontrar quem constrói o funcionário digital de que precisa e ao Programador encontrar quem deseja contratá-lo, registrando propostas, escopo, mensagens, aceites e pagamentos. A intermediação abrange a contratação de serviços relacionados a funcionários digitais, agentes de IA, automações, integrações, implantação, treinamento de bases, configuração, suporte, manutenção e evolução técnica.</p>
+    <p>A finalidade da Plataforma é reduzir o atrito e o risco dessa contratação, dando às partes um registro confiável do que foi combinado, um meio de pagamento que protege ambos os lados e um caminho de resolução quando algo dá errado. A Plataforma <b>não presta</b>, ela própria, os serviços técnicos anunciados pelos Programadores, nem garante resultado de negócio do Cliente.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>O site conecta quem precisa automatizar uma função a quem sabe construir o agente. Quem faz o trabalho técnico é o Programador, não a Plataforma.</span></div>
+
+    <h2 id="c3-natureza"><span class="cn">03</span>Natureza jurídica da relação</h2>
+    <p>A Plataforma atua como <b>intermediária independente</b>. A relação criada por este Contrato não configura, em nenhuma hipótese:</p>
+    <ul>
+      <li>vínculo empregatício, de emprego ou de subordinação entre a Plataforma e o Cliente, entre a Plataforma e o Programador, ou entre Cliente e Programador;</li>
+      <li>sociedade, consórcio, joint venture, mandato, representação comercial, franquia ou grupo econômico entre as partes;</li>
+      <li>responsabilidade solidária ou subsidiária da Plataforma pelas obrigações técnicas, fiscais, trabalhistas, previdenciárias ou comerciais assumidas no Acordo entre Cliente e Programador.</li>
+    </ul>
+    <p>Cada parte é autônoma, arca com seus próprios custos, tributos e equipe, e responde por seus próprios atos. A Plataforma não integra a equipe do Cliente, não dirige o trabalho do Programador e não assume obrigação de resultado quanto ao funcionário digital entregue.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>Ninguém vira empregado ou sócio de ninguém. A Plataforma é uma ponte independente; cada um cuida das próprias obrigações.</span></div>
+
+    <h2 id="c4-cadastro"><span class="cn">04</span>Cadastro, conta e elegibilidade</h2>
+    <p>Para contratar ou prestar serviços, o Usuário deve criar conta com informações verdadeiras, completas e atualizadas, e manter a confidencialidade de suas credenciais. O acesso a determinadas áreas pode depender de assinatura ativa do perfil correspondente (Cliente ou Programador), conforme a Política de Pagamentos.</p>
+    <h3>Requisitos</h3>
+    <ul>
+      <li>ser maior de 18 anos e plenamente capaz, ou representar validamente a pessoa jurídica em nome de quem atua;</li>
+      <li>fornecer dados de identificação, contato e, quando exigido, dados fiscais e de pagamento corretos;</li>
+      <li>responsabilizar-se por toda atividade realizada sob sua conta, salvo uso comprovadamente fraudulento por terceiros.</li>
+    </ul>
+    <p>A Plataforma pode recusar, suspender ou encerrar contas com dados falsos, duplicadas para burlar regras, ou usadas para fins vedados por este Contrato, observado o devido processo descrito na cláusula de suspensão.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>Cadastre-se com dados reais, guarde bem sua senha e lembre: você responde pelo que acontece na sua conta.</span></div>
+
+    <h2 id="c5-plataforma"><span class="cn">05</span>Papel e responsabilidades da Plataforma</h2>
+    <p>No limite de sua atuação como intermediária, a Plataforma se compromete a empregar esforços razoáveis para:</p>
+    <ul>
+      <li><b>Ambiente de anúncio e busca:</b> disponibilizar espaço para publicação de ofertas e vagas e ferramentas de busca e filtragem.</li>
+      <li><b>Registro do acordo:</b> registrar propostas, escopo, mensagens, aceites e demais marcos da negociação, criando uma trilha verificável do que foi combinado.</li>
+      <li><b>Pagamento protegido:</b> oferecer, quando disponível, mecanismo de escrow que condiciona a liberação dos valores ao cumprimento das etapas.</li>
+      <li><b>Disputas e reputação:</b> manter procedimento de disputa e sistema de avaliação e reputação entre as partes.</li>
+      <li><b>Cobrança transparente:</b> apresentar taxas de assinatura, intermediação ou comissão antes do fechamento do Acordo.</li>
+      <li><b>Segurança e disponibilidade:</b> adotar medidas técnicas e organizacionais razoáveis de segurança e buscar a disponibilidade contínua do serviço, sem garantir operação ininterrupta ou livre de erros.</li>
+    </ul>
+    <p>A Plataforma <b>não</b> assume obrigação de resultado técnico do Programador, não revisa nem garante a qualidade, a legalidade ou a adequação de cada solução entregue, não se torna empregadora ou contratante do serviço técnico e não responde por promessas, combinações ou pagamentos feitos fora dos canais oficiais.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>A Plataforma dá o ambiente, o registro, o pagamento protegido e a mediação. Ela não garante a qualidade do trabalho técnico em si — isso é com o Programador.</span></div>
+
+    <h2 id="c6-cliente"><span class="cn">06</span>Papel e responsabilidades do Cliente</h2>
+    <p>O Cliente é responsável por viabilizar o trabalho e usar o funcionário digital de forma adequada. Cabe ao Cliente:</p>
+    <ul>
+      <li><b>Explicar o processo:</b> descrever com clareza a função a automatizar, o resultado esperado, as regras de negócio e as restrições aplicáveis;</li>
+      <li><b>Fornecer insumos corretos:</b> entregar informações, exemplos, documentos e bases verídicos e livres de impedimento legal para uso;</li>
+      <li><b>Conceder acessos:</b> liberar, de forma segura e reversível, os acessos, sistemas, APIs e credenciais necessários, podendo revogá-los ao fim do trabalho;</li>
+      <li><b>Homologar:</b> testar e validar a entrega dentro do prazo, apontando objetivamente o que não cumpre o Escopo;</li>
+      <li><b>Pagar:</b> quitar os valores aprovados nas condições combinadas;</li>
+      <li><b>Manter supervisão humana:</b> não delegar a uma IA, sem revisão, decisões de risco financeiro, jurídico, médico, trabalhista ou que afetem direitos de terceiros.</li>
+    </ul>
+    <p>O Cliente é o responsável final pela decisão de colocar o funcionário digital em produção e pelo uso que faz dele em seu negócio.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>O Cliente explica o que precisa, entrega os insumos, dá os acessos, testa, paga e mantém um humano revisando decisões importantes.</span></div>
+
+    <h2 id="c7-programador"><span class="cn">07</span>Papel e responsabilidades do Programador</h2>
+    <p>O Programador é responsável pela execução técnica do que foi aprovado. Cabe ao Programador:</p>
+    <ul>
+      <li><b>Executar o Escopo:</b> entregar o que foi acordado, com boa técnica e dentro do prazo;</li>
+      <li><b>Boas práticas:</b> observar padrões razoáveis de engenharia, segurança e qualidade do estado da arte da área;</li>
+      <li><b>Proteger credenciais e dados:</b> tratar acessos e informações do Cliente com sigilo e segurança, usando-os apenas para o trabalho contratado;</li>
+      <li><b>Documentar:</b> entregar documentação mínima que permita operar, manter e, quando aplicável, transferir a solução;</li>
+      <li><b>Informar limites:</b> alertar, por escrito, sobre limitações, dependências de terceiros, riscos de uso e situações em que a IA não deve decidir sozinha;</li>
+      <li><b>Cumprir a lei:</b> respeitar direitos de terceiros, licenças de software, dados e propriedade intelectual ao construir a solução.</li>
+    </ul>
+    <p>O Programador garante que detém os direitos necessários sobre o que entrega e que a solução não viola, ao seu conhecimento, direitos de terceiros.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>O Programador faz o que foi combinado, com qualidade e segurança, documenta, avisa dos riscos e garante que tem direito de entregar aquilo.</span></div>
+
+    <h2 id="c8-formacao"><span class="cn">08</span>Formação do acordo</h2>
+    <p>O Acordo entre Cliente e Programador se forma quando ambos aceitam, dentro da Plataforma, uma Proposta que contenha, no mínimo:</p>
+    <ol>
+      <li>identificação das partes e do funcionário digital ou serviço;</li>
+      <li>escopo e entregáveis, com o que está incluído e o que está excluído;</li>
+      <li>preço, forma e cronograma de pagamento;</li>
+      <li>prazos e marcos;</li>
+      <li>critérios objetivos de aceite;</li>
+      <li>condições de suporte e manutenção;</li>
+      <li>regras de propriedade intelectual e licença;</li>
+      <li>regras de cancelamento, reembolso e rescisão.</li>
+    </ol>
+    <p>Combinações verbais, mensagens fora dos canais oficiais ou condições não registradas na Proposta aceita não vinculam a Plataforma e dificultam a comprovação em eventual disputa. Recomenda-se que todo ajuste relevante seja formalizado por aditivo dentro da Plataforma.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>O contrato entre as partes só “fecha” quando os dois aceitam uma proposta clara no site. O que ficar combinado por fora vale menos — e fica difícil de provar.</span></div>
+
+    <h2 id="c9-escopo"><span class="cn">09</span>Escopo, entregáveis e marcos</h2>
+    <p>O Escopo é a coluna vertebral do Acordo e deve descrever, de forma objetiva, o que será entregue, em que formato, com quais integrações e — igualmente importante — <b>o que está fora</b> do trabalho. Quando o projeto for dividido em Marcos, cada um terá valor, prazo e critério de aceite próprios.</p>
+    <h3>Mudanças de escopo</h3>
+    <p>Pedidos novos, mudanças de regra de negócio ou funcionalidades não previstas configuram alteração de Escopo e podem implicar novo prazo e novo valor, a serem formalizados por aditivo. A ausência de um item no Escopo não pode ser usada para reter pagamento de etapa que cumpriu o que estava combinado.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>Escreva claramente o que entra e o que não entra. Pedido novo no meio do caminho pode mudar prazo e preço, e isso deve virar aditivo.</span></div>
+
+    <h2 id="c10-aceite"><span class="cn">10</span>Critérios de aceite e homologação</h2>
+    <p>Uma entrega é considerada aceita quando cumpre o Escopo aprovado e passa nos critérios objetivos definidos na Proposta. O aceite pode ocorrer por:</p>
+    <ul>
+      <li><b>Aprovação expressa:</b> o Cliente confirma a entrega na Plataforma;</li>
+      <li><b>Aprovação automática por decurso de prazo:</b> esgotado o prazo de homologação sem manifestação fundamentada do Cliente, a etapa é considerada aceita;</li>
+      <li><b>Decisão de disputa:</b> quando houver divergência, o aceite segue a solução do procedimento de disputa.</li>
+    </ul>
+    <p>Preferências subjetivas, gosto pessoal ou pedidos novos não previstos no Escopo não impedem, por si só, a liberação do pagamento de uma etapa que entregou o combinado.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>Se a entrega faz o que foi combinado e o Cliente não aponta um problema objetivo no prazo, ela conta como aceita.</span></div>
+
+    <h2 id="c11-precos"><span class="cn">11</span>Preço, taxas e tributos</h2>
+    <p>Os valores do Acordo (implantação, mensalidade, marcos) são definidos livremente entre Cliente e Programador na Proposta. Sobre os acordos fechados dentro da Plataforma podem incidir <b>taxa de intermediação, comissão ou assinatura</b>, conforme a Política de Pagamentos, sempre apresentadas antes do fechamento.</p>
+    <h3>Tributos e notas fiscais</h3>
+    <p>Cada parte é responsável por suas próprias obrigações fiscais, pela emissão de nota fiscal e pelo recolhimento dos tributos incidentes sobre os valores que recebe, salvo disposição diferente no Acordo. A Plataforma recolhe e documenta apenas os tributos relativos às suas próprias taxas.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>O preço do serviço é entre Cliente e Programador. A Plataforma cobra sua taxa à parte, sempre informada antes. Cada um paga seus próprios impostos.</span></div>
+
+    <h2 id="c12-escrow"><span class="cn">12</span>Pagamento protegido (escrow)</h2>
+    <p>Quando habilitado, o pagamento protegido funciona assim: o Cliente paga o valor de uma etapa, o valor fica <b>retido</b> pela estrutura de escrow e só é <b>liberado</b> ao Programador após o cumprimento da etapa, o aceite do Cliente ou o encerramento de eventual disputa. O mecanismo existe para equilibrar dois riscos clássicos: o Cliente pagar e não receber, e o Programador entregar e não receber.</p>
+    <p>A Plataforma pode, conforme aceite, acordo entre as partes ou decisão de disputa, <b>liberar</b> o valor ao Programador, <b>reter</b> cautelarmente o valor enquanto apura uma reclamação grave ou suspeita de fraude, ou <b>devolver</b> o valor ao Cliente.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>O dinheiro fica “preso” até a etapa ser cumprida. Se der tudo certo, vai para o Programador; se houver problema sério, pode ser retido ou devolvido.</span></div>
+
+    <h2 id="c13-liberacao"><span class="cn">13</span>Liberação, retenção e devolução de valores</h2>
+    <p>A liberação dos valores ao Programador pode ocorrer por aprovação expressa, aprovação automática por decurso de prazo, conclusão de Marco ou decisão de disputa. A Plataforma pode reter valores em análise quando houver suspeita de fraude, reclamação grave, ordem judicial ou obrigação legal.</p>
+    <p>Haverá devolução ao Cliente, total ou parcial, nos casos de não entrega, descumprimento material do Escopo, cancelamento dentro de prazo permitido ou decisão da mediação. <b>Não há devolução automática por arrependimento comercial</b> após o início da execução, salvo obrigação legal aplicável ou regra específica da oferta.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>O valor é liberado quando a entrega é aceita. Pode ser segurado em caso de fraude ou ordem judicial, e devolvido se não houve entrega ou se a mediação decidir assim.</span></div>
+
+    <h2 id="c14-rescisao"><span class="cn">14</span>Cancelamento, rescisão e reembolso</h2>
+    <p>O Acordo pode terminar por conclusão, por distrato (acordo das partes), por rescisão motivada (quando uma parte descumpre obrigação relevante e não corrige no prazo concedido) ou por rescisão imotivada, quando prevista, observados os efeitos sobre etapas já iniciadas.</p>
+    <h3>Efeitos da rescisão</h3>
+    <ul>
+      <li>etapas já aceitas são pagas; etapas não iniciadas, em regra, não são cobradas;</li>
+      <li>trabalho em andamento é avaliado proporcionalmente ao que foi efetivamente entregue;</li>
+      <li>acessos e credenciais devem ser revogados e dados confidenciais devolvidos ou eliminados, conforme as cláusulas de confidencialidade e dados;</li>
+      <li>obrigações de sigilo, propriedade intelectual, não circunvenção e limitação de responsabilidade sobrevivem ao fim do Acordo.</li>
+    </ul>
+    <div class="em-resumo"><b>Em resumo</b><span>Dá para encerrar o acordo de várias formas. Paga-se pelo que já foi entregue e aceito; algumas obrigações, como sigilo, continuam valendo depois do fim.</span></div>
+
+    <h2 id="c15-manutencao"><span class="cn">15</span>Manutenção, suporte e níveis de serviço (SLA)</h2>
+    <p>A manutenção mensal, quando contratada, mantém o funcionário digital funcionando e atualizado — <b>não é garantia ilimitada</b> nem desenvolvimento contínuo de novas funcionalidades. Conforme o plano, pode incluir:</p>
+    <ul>
+      <li>correção de alucinações e ajuste de prompts e regras;</li>
+      <li>revisão e atualização de bases de conhecimento;</li>
+      <li>monitoramento e adaptação a mudanças de APIs e integrações de terceiros;</li>
+      <li>pequenas melhorias e suporte técnico dentro do escopo do plano.</li>
+    </ul>
+    <p>Quando o Acordo definir níveis de serviço (SLA), devem ser especificados horários de atendimento, prazos de resposta e de solução por gravidade, janelas de manutenção e o que está fora da cobertura. Falhas causadas por mau uso, alterações feitas por terceiros ou indisponibilidade de serviços externos não se confundem com falha do Programador.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>Manutenção mantém o agente de pé e ajustado, dentro do plano. Não é “tudo de graça para sempre”, e o que está fora da cobertura precisa estar escrito.</span></div>
+
+    <h2 id="c16-pi"><span class="cn">16</span>Propriedade intelectual e licenças</h2>
+    <p>Salvo ajuste diferente na Proposta, o Cliente recebe o <b>direito de uso</b> da solução entregue para a operação interna do seu negócio. Componentes pré-existentes do Programador — códigos, bibliotecas, templates, frameworks, prompts genéricos e ferramentas reaproveitáveis — podem permanecer de titularidade do Programador, que concede ao Cliente licença para usá-los como parte da entrega.</p>
+    <p>Dados, documentos, base de conhecimento e informações confidenciais do Cliente continuam pertencendo ao Cliente. Se as partes desejarem <b>cessão total e exclusiva</b> de direitos sobre a solução desenvolvida sob medida, isso deve ser expressamente previsto, com preço e abrangência definidos. Modelos de IA, APIs e softwares de terceiros seguem as licenças dos respectivos titulares.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>Por padrão, o Cliente pode usar a solução no seu negócio; as “peças genéricas” do Programador continuam dele. Se quiser exclusividade total, escreva isso na proposta.</span></div>
+
+    <h2 id="c17-confidencialidade"><span class="cn">17</span>Confidencialidade</h2>
+    <p>As partes devem manter sigilo sobre dados, credenciais, processos, informações comerciais, clientes, fornecedores, documentos, prompts, bases e qualquer material não público acessado durante a contratação. A informação confidencial só pode ser usada para a finalidade do Acordo e não pode ser divulgada a terceiros sem autorização, salvo exigência legal ou de autoridade competente, hipótese em que a parte obrigada a divulgar deve, quando possível, comunicar previamente a outra.</p>
+    <p>O dever de confidencialidade sobrevive ao término do Acordo pelo prazo definido na Proposta e, na falta deste, por prazo razoável compatível com a sensibilidade da informação.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>O que uma parte aprende sobre a outra durante o trabalho é segredo: usa-se só para o projeto e não se repassa a ninguém. Isso continua valendo depois do fim.</span></div>
+
+    <h2 id="c18-lgpd"><span class="cn">18</span>Proteção de dados pessoais e LGPD</h2>
+    <p>Quando o trabalho envolver tratamento de Dados Pessoais, as partes devem definir, no Acordo, seus papéis nos termos da LGPD — controlador, operador ou controladores independentes — conforme quem decide as finalidades e os meios do tratamento.</p>
+    <h3>Obrigações mínimas</h3>
+    <ul>
+      <li>tratar dados apenas para as finalidades do Acordo e com base legal adequada;</li>
+      <li>adotar medidas técnicas e organizacionais de segurança compatíveis com o risco;</li>
+      <li>limitar o acesso ao estritamente necessário e registrar operações relevantes;</li>
+      <li>comunicar, sem demora injustificada, incidentes de segurança que possam acarretar risco ou dano aos titulares;</li>
+      <li>apoiar o atendimento a pedidos de titulares e a requisições da Autoridade Nacional de Proteção de Dados (ANPD);</li>
+      <li>ao fim do tratamento, eliminar ou devolver os dados, salvo guarda exigida por lei.</li>
+    </ul>
+    <p>Transferências internacionais de dados e o uso de subcontratados (inclusive provedores de modelos de IA e nuvem) devem observar a LGPD e ser informados à outra parte. A Plataforma trata os Dados Pessoais dos Usuários conforme sua própria política de privacidade.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>Se o projeto mexe com dados de pessoas, vale a LGPD: usar só para o combinado, proteger, avisar em caso de vazamento e apagar ou devolver no fim.</span></div>
+
+    <h2 id="c19-ia"><span class="cn">19</span>Riscos de IA, alucinação e supervisão humana</h2>
+    <p>As partes reconhecem que funcionários digitais baseados em IA podem <b>errar</b>, produzir respostas incorretas ou inventadas (alucinações), refletir vieses dos dados, agir de forma inesperada diante de entradas atípicas ou depender de serviços de terceiros que mudam sem aviso. Por isso, o Acordo deve prever salvaguardas proporcionais ao risco:</p>
+    <ul>
+      <li><b>Supervisão humana:</b> revisão humana obrigatória em decisões de impacto financeiro, jurídico, médico, trabalhista, de segurança ou que afetem direitos de terceiros;</li>
+      <li><b>Limites de autonomia:</b> definição clara do que o agente pode e do que não pode decidir ou executar sozinho;</li>
+      <li><b>Logs e auditoria:</b> registro de operações relevantes que permita investigar incidentes;</li>
+      <li><b>Testes e monitoramento:</b> testes antes da entrada em produção e monitoramento contínuo;</li>
+      <li><b>Escalonamento:</b> regras para acionar um humano quando o agente atingir um limite ou detectar incerteza.</li>
+    </ul>
+    <p>O Cliente é o responsável final pela decisão de usar a saída do funcionário digital em seu negócio e por manter a supervisão adequada; o Programador é responsável por construir as salvaguardas combinadas e por informar os riscos conhecidos.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>IA erra. Decisões importantes precisam de um humano revisando, com limites claros e registros. Quem decide usar a resposta no negócio é o Cliente.</span></div>
+
+    <h2 id="c20-garantias"><span class="cn">20</span>Garantias e isenções</h2>
+    <p>O Programador garante que executará o Escopo com técnica razoável e que possui os direitos necessários sobre o que entrega. Salvo previsão expressa, <b>não há garantia</b> de que o funcionário digital atingirá determinada métrica de negócio, será livre de erros, operará sem interrupção ou produzirá resultados específicos, dada a natureza probabilística da IA e a dependência de fatores externos.</p>
+    <p>A Plataforma fornece seus serviços de intermediação “no estado em que se encontram”, empregando esforços razoáveis de disponibilidade e segurança, sem garantir operação ininterrupta, ausência de falhas ou adequação a uma finalidade específica do Usuário. Direitos de consumidores eventualmente aplicáveis não são afastados por esta cláusula.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>Garante-se que o trabalho será feito com técnica e direitos em ordem, mas não se promete um número mágico de resultado nem “zero erro”, porque IA é probabilística.</span></div>
+
+    <h2 id="c21-conduta"><span class="cn">21</span>Conduta proibida e uso aceitável</h2>
+    <p>É vedado a qualquer Usuário utilizar a Plataforma ou os funcionários digitais para:</p>
+    <ul>
+      <li>praticar fraude, lavagem de dinheiro, golpe, falsidade ou qualquer atividade ilícita;</li>
+      <li>violar direitos de terceiros, propriedade intelectual, sigilo ou dados pessoais;</li>
+      <li>publicar conteúdo enganoso, ofensivo, discriminatório, ou que incite dano;</li>
+      <li>burlar taxas, escrow, reputação ou o procedimento de disputa;</li>
+      <li>tentar invadir, sobrecarregar, copiar ou fazer engenharia reversa da Plataforma;</li>
+      <li>criar agentes destinados a enganar pessoas sobre sua natureza artificial quando isso for ilegal ou abusivo, ou a tomar decisões de alto risco sem a supervisão exigida.</li>
+    </ul>
+    <p>O descumprimento autoriza a Plataforma a remover conteúdo, recusar acordos, reter valores cautelarmente, suspender ou encerrar contas e, quando cabível, comunicar autoridades.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>Nada de fraude, violação de direitos, conteúdo abusivo ou tentativa de burlar as regras do site. Quem faz isso perde acesso e pode ser denunciado.</span></div>
+
+    <h2 id="c22-circunvencao"><span class="cn">22</span>Não circunvenção</h2>
+    <p>Quando Cliente e Programador se conhecem por meio da Plataforma, comprometem-se a não combinar o serviço “por fora” com o único objetivo de evitar as taxas de intermediação, durante o período definido na versão final do Contrato. Essa cláusula deve ser revisada juridicamente para fixar <b>prazo razoável, eventual multa e limites</b>, equilibrando a proteção do negócio da Plataforma com a liberdade de contratação das partes.</p>
+    <p>A cláusula não pretende impedir relações legítimas e duradouras entre Cliente e Programador, mas coibir o uso da Plataforma apenas como vitrine para depois fugir das taxas que sustentam o serviço.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>Se as partes se conheceram aqui, não vale fechar por fora só para fugir da taxa por um tempo. O prazo e a multa precisam ser definidos pelo advogado.</span></div>
+
+    <h2 id="c23-disputas"><span class="cn">23</span>Mediação e resolução de disputas</h2>
+    <p>Diante de conflito sobre entrega, qualidade, prazo ou pagamento, qualquer parte pode abrir uma Disputa na Plataforma. No procedimento, a Plataforma pode solicitar documentos, vídeos, prints, logs, escopo, mensagens e demais evidências, e cada parte tem o direito de apresentar sua versão e suas provas.</p>
+    <h3>Possíveis desfechos</h3>
+    <ul>
+      <li>liberar o valor integral ao Programador;</li>
+      <li>liberar parte do valor e devolver parte ao Cliente;</li>
+      <li>devolver o valor ao Cliente;</li>
+      <li>manter bloqueio temporário até nova etapa de apuração.</li>
+    </ul>
+    <p>A decisão da Plataforma na Disputa tem natureza de <b>mediação contratual</b> sobre os valores em escrow e não substitui o direito de qualquer parte de buscar as vias judiciais ou arbitrais cabíveis.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>Deu briga? Abre disputa, cada lado mostra provas e a Plataforma decide o que fazer com o dinheiro retido. Isso não tira o direito de ir à Justiça.</span></div>
+
+    <h2 id="c24-suspensao"><span class="cn">24</span>Suspensão e encerramento de conta</h2>
+    <p>A Plataforma pode suspender ou encerrar o acesso de um Usuário em caso de violação deste Contrato, fraude, risco à segurança, ordem judicial ou exigência legal. Sempre que possível e seguro, a Plataforma <b>notifica previamente</b> e concede prazo para regularização; em situações graves ou urgentes, a suspensão pode ser imediata e cautelar.</p>
+    <p>O encerramento não prejudica obrigações já vencidas, valores em escrow sujeitos a apuração, nem as cláusulas que sobrevivem ao término (sigilo, propriedade intelectual, não circunvenção, limitação de responsabilidade e foro). O Usuário pode encerrar sua própria conta a qualquer tempo, observados os Acordos em andamento.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>A conta pode ser suspensa ou encerrada por descumprimento ou risco — em geral com aviso antes. O que já estava combinado e os deveres de sigilo continuam valendo.</span></div>
+
+    <h2 id="c25-limitacao"><span class="cn">25</span>Limitação de responsabilidade</h2>
+    <p>A Plataforma responde apenas pelos serviços próprios de intermediação que presta diretamente. Na máxima extensão permitida pela lei aplicável, a Plataforma <b>não responde</b> por perdas decorrentes de:</p>
+    <ul>
+      <li>qualidade, legalidade ou desempenho do funcionário digital entregue pelo Programador;</li>
+      <li>escopo mal definido, dados incorretos ou insumos fornecidos pelas partes;</li>
+      <li>falhas de sistemas, APIs ou modelos de terceiros;</li>
+      <li>ausência de validação ou supervisão humana adequada;</li>
+      <li>uso indevido, decisões de negócio do Cliente ou descumprimento de uma das partes;</li>
+      <li>danos indiretos, lucros cessantes, perda de chance, dados ou reputação.</li>
+    </ul>
+    <p>Quando houver responsabilidade da Plataforma por seus serviços de intermediação, ela ficará limitada, na medida permitida em lei, ao valor das taxas efetivamente recebidas pela Plataforma no Acordo específico, ressalvados os direitos irrenunciáveis de consumidores.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>A Plataforma responde só pela intermediação que ela faz. Ela não paga pelos erros do serviço técnico ou pelas decisões de negócio das partes, e há um teto para o que ela responde.</span></div>
+
+    <h2 id="c26-indenizacao"><span class="cn">26</span>Indenização</h2>
+    <p>Cada parte concorda em <b>indenizar e isentar</b> as demais e a Plataforma de perdas, danos, multas e despesas razoáveis (incluindo honorários) decorrentes de reclamações de terceiros causadas por seus próprios atos, em especial: violação deste Contrato, infração a direitos de terceiros ou de propriedade intelectual, tratamento indevido de dados pessoais, fornecimento de informações falsas ou uso ilícito do funcionário digital.</p>
+    <p>A parte que receber a reclamação deve comunicar a outra com brevidade e cooperar de boa-fé na defesa, sem fazer acordo que vincule a outra parte sem o seu consentimento.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>Se alguém causar um processo de terceiro por culpa própria, essa pessoa arca com o prejuízo e protege as demais.</span></div>
+
+    <h2 id="c27-forca-maior"><span class="cn">27</span>Força maior</h2>
+    <p>Nenhuma parte responde por atraso ou falha causados por eventos fora de seu controle razoável, como desastres naturais, falhas generalizadas de energia ou telecomunicações, quedas de provedores de nuvem ou de modelos de IA, ataques cibernéticos de grande escala, atos de autoridade, greves ou comoção social. A parte afetada deve comunicar o evento e empregar esforços razoáveis para mitigar os efeitos e retomar as obrigações assim que possível.</p>
+    <p>Se a situação de força maior perdurar por período prolongado, definido na versão final do Contrato, qualquer parte pode rescindir o Acordo afetado sem penalidade, acertando-se apenas as etapas já cumpridas.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>Se algo grande e fora de controle (apagão, queda de nuvem, desastre) impedir o cumprimento, ninguém é punido por isso — só se avisa e se tenta resolver.</span></div>
+
+    <h2 id="c28-comunicacoes"><span class="cn">28</span>Comunicações e notificações</h2>
+    <p>As comunicações entre as partes e com a Plataforma devem ocorrer pelos <b>canais oficiais</b> da Plataforma e pelos e-mails cadastrados. Avisos enviados a esses endereços presumem-se recebidos. É responsabilidade de cada Usuário manter seus dados de contato atualizados e acompanhar as mensagens e notificações da Plataforma.</p>
+    <p>Notificações formais relacionadas a disputa, descumprimento, suspensão ou rescisão devem ser feitas por escrito e registradas, preferencialmente dentro da Plataforma, para que componham a trilha de evidências.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>Fale pelos canais oficiais e mantenha seu e-mail atualizado. Aviso enviado ao endereço cadastrado conta como recebido.</span></div>
+
+    <h2 id="c29-gerais"><span class="cn">29</span>Cessão, sucessão e disposições gerais</h2>
+    <ul>
+      <li><b>Cessão:</b> o Usuário não pode ceder este Contrato ou seu Acordo a terceiros sem anuência prévia; a Plataforma pode cedê-lo no contexto de reorganização societária, preservando os direitos dos Usuários.</li>
+      <li><b>Independência das cláusulas:</b> se alguma disposição for considerada inválida, as demais permanecem em vigor, e a cláusula afetada será interpretada para refletir, ao máximo, a intenção original e a lei.</li>
+      <li><b>Não renúncia:</b> a tolerância quanto a um descumprimento não significa renúncia ao direito de exigir o cumprimento depois.</li>
+      <li><b>Integralidade:</b> este Contrato, com os Termos de Uso, a Política de Pagamentos e a Política de Cookies, constitui o entendimento integral sobre a intermediação, prevalecendo sobre entendimentos anteriores sobre o mesmo objeto.</li>
+      <li><b>Idioma:</b> a versão em português prevalece sobre eventuais traduções.</li>
+    </ul>
+    <div class="em-resumo"><b>Em resumo</b><span>Detalhes jurídicos de fechamento: não dá para repassar o contrato sem aviso, se uma parte “cair” o resto continua, e este conjunto de documentos é o que vale.</span></div>
+
+    <h2 id="c30-alteracoes"><span class="cn">30</span>Alterações do contrato</h2>
+    <p>A Plataforma pode atualizar este Contrato para refletir mudanças legais, técnicas ou de negócio. Alterações relevantes serão comunicadas pelos canais oficiais com antecedência razoável e indicação da nova versão e data. O uso continuado da Plataforma após a vigência da nova versão implica concordância; quem não concordar pode encerrar sua conta, observados os Acordos em andamento, que seguem regidos pela versão vigente quando foram firmados.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>O contrato pode mudar com aviso. Continuar usando o site significa aceitar a nova versão; acordos antigos seguem pela versão da época.</span></div>
+
+    <h2 id="c31-foro"><span class="cn">31</span>Lei aplicável e foro</h2>
+    <p>Este Contrato é regido pelas leis da República Federativa do Brasil. A versão final deve definir expressamente o <b>foro</b> competente ou a <b>câmara de mediação/arbitragem</b> eleita para dirimir conflitos, observadas as normas de proteção ao consumidor quando aplicáveis — que, em regra, asseguram ao consumidor o foro de seu domicílio. As partes buscarão, antes de medidas judiciais, a solução por meio do procedimento interno de disputa e, quando previsto, da mediação.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>Vale a lei brasileira. Onde os conflitos serão resolvidos (qual cidade ou arbitragem) precisa ser definido pelo advogado, respeitando o direito do consumidor.</span></div>
+
+    <h2 id="c32-vigencia"><span class="cn">32</span>Vigência e controle de versões</h2>
+    <p>Este Contrato vige enquanto o Usuário mantiver conta ativa ou Acordo em andamento na Plataforma e, quanto às cláusulas que sobrevivem ao término (definições, confidencialidade, propriedade intelectual, não circunvenção, limitação de responsabilidade, indenização e foro), pelo prazo nelas indicado. Cada versão deve registrar número e data, e a Plataforma deve manter histórico que permita identificar qual versão regia cada Acordo.</p>
+    <div class="em-resumo"><b>Em resumo</b><span>O contrato vale enquanto você usa o site, e algumas regras continuam depois. Cada versão tem número e data, para se saber qual valia em cada acordo.</span></div>
+
+    <div class="doc-end">
+      <span class="label">FIM DO DOCUMENTO</span>
+      <p>Versão 2.0 — base para desenvolvimento. Documento sujeito a revisão jurídica antes de uso em produção. Em caso de dúvida sobre um acordo específico, prevalecem o Escopo e a Proposta aceitos na Plataforma, lidos em conjunto com este Contrato, os Termos de Uso e a Política de Pagamentos.</p>
+      <a class="back-top" href="#">↑ Voltar ao topo</a>
+    </div>
 
   </article>
   <aside class="legal-side">
